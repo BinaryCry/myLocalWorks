@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="initialscale=1.0, width=device-width">
+        <!--
+        initialscale=1.0 - браузер устройства с маленьким экраном не будет пытаться уместить весь сайт в маленькое окно; 
+        соотношение разрешения будет 1 к 1 что на мобильно, что на обычном дисплее
+        width=device-width - ширина самой области просмотра будет равна ширине экрана устройства
+         --> 
+		<title>MedTheme2</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<style type="text/css">
+            #map {
+                width: 400px;
+                height: 350px;
+                margin: 50px auto 20px;
+                background-color: #678678;
+            }
+            .inp {
+                display: block;
+                margin: 0 auto 10px;
+                
+            }
+        </style>
+		<script src="jquery.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+		<script type="text/javascript" src="ymaps.js"></script>
+        
+		<script type="text/javascript">
+            $(function(){
+                var zoom = 12;
+                var DATA = [
+        				{
+        					hint: 'Киев',
+        					balloon: 'Столица Украины'
+        				}
+                    ]
+                //creatMap(zoom,DATA,'map');
+                
+               /* ymaps.ready( function(){
+                MAP = new ymaps.Map('map', { center: [50.450418,30.523541], zoom: zoom} )        
+                        var myReverseGeocoder = ymaps.geocode([50.450418,30.523541],  {kind: 'metro', result : 5});
+                        
+                        myReverseGeocoder.then(
+                            function(res){
+                              MAP.geoObjects.add(res.geoObjects)
+                            }
+                        
+                        )
+                        }) */
+                
+                
+                function gc(name, desc='Отметка на карте'){
+                    ymaps.ready( function(){
+                        
+                        var myReverseGeocoder = ymaps.geocode([49.594577,34.548334]);
+                        myReverseGeocoder.then(
+                            function(res){
+                              console.log(res.geoObjects.get(0).properties.getAll())
+                              console.log(res.geoObjects.get(0).properties.get('name'))
+                              console.log(res.geoObjects.get(0).properties.get('description'))
+                              MAP.geoObjects.add(res.geoObjects)
+                            }
+                        
+                        )
+                        
+                       var myGeocoder = ymaps.geocode(name)
+                        myGeocoder.then(
+                            function (res) {
+                                var arr = res.geoObjects.get(0).geometry.getCoordinates()
+                                $('.i1').val( arr[0] )
+                                $('.i2').val( arr[1] )
+                                
+                                /* show on map */
+                                DATA = [
+                    				{
+                    					hint: name,
+                    					balloon: desc
+                    				}
+                                ]
+                                $('#map').remove()
+                                $('body').prepend('<div id="map"></div>');
+                                creatMap(zoom,DATA,'map');
+                                /* end show on map */
+                                
+                            },
+                            function (err) {
+                                console.log('Ошибка')
+                            }
+                        ) 
+                    } )
+                }
+                $('#get').on('click',function(){
+                    gc( $('#name').val() )
+                })
+                
+                /* ---------------------------------------- */
+                
+                
+                
+            })
+        </script>
+	</head>
+	<body>
+    
+        <div id="map"></div>
+        
+        <input type="text" class="inp" id="name">
+        <input type="text" class="inp i1">
+        <input type="text" class="inp i2">
+        <button class="inp" id="get">Get coords</button>
+        
+	</body>
+</html>
