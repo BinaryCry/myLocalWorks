@@ -38,4 +38,6 @@ echo "This fruit is ${arr['fruit']}",'<br>';
 echo "This fruit is {$arr[fruit]}",'<br>';
 
 
+
+
 ?>

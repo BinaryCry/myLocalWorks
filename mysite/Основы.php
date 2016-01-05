@@ -18,6 +18,9 @@
 	
 		<?php
 	
+	// имена переменных решистрозависимые
+	
+	
 			$bool = TRUE;
 			unset($bool);
 			$bool = false;

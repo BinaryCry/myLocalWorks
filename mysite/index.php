@@ -214,6 +214,7 @@
         // !!!!!
         echo $a = ''; // пустая строка == false, то есть результатом этого выражения будель false и в случае, где идет проверка while($a = ''), результатом данной проверки будет false и цикл закончится
         // то есть при выраении $a = $b, НА ИСТИННОСТЬ БУДЕТ ПРОВЕРЯТЬСЯ РЕЗУЛЬТАТ, ТО ЕСТЬ $a
+        
         echo '<hr>';
     ?>
 	<?php
@@ -247,6 +248,158 @@
         expFS(5,5);
         expFS(5); // вторым значением функции будет 2
     
+    //!!! ГЛОБАЛЬНЫЕ И ЛОКАЛЬНЫЕ
+    // в PHP внутри функции глобальные переменные не видны
+    $value = 5;
+    function showValue(){
+        echo $value."<br>"; // не выведится
+    }
+    // но можно получить ее вот так
+    function showGValue(){
+        global $value;
+        echo $value."<br>";
+    }
+    showValue();
+    SHOWGVALUE();
+    
+    //!!! Массив GLOBALS
+    // когда мы пишем вот так:
+    $age = 25;
+    // на самом деле происходит вот так:
+    $GLOBALS['age'] = 25;
+    
+    // поэтому можно делать вот так:
+    function showGValue2(){
+        echo $GLOBALS['value']."<br>";
+    }
+    showGValue2();
+    
+    // СТАТИЧЕСКИЕ ПЕРМЕННЫЕ
+    function showA(){
+        $a = 1;
+        echo ++$a,'<br>';
+    }
+    showA();showA();showA(); // каждый раз переменная будет создаваться и обрабатываться заново, поэтому каждый раз при вызове функции будет выводиться одно и то же значение
+    
+    // переменную можно сохранить
+    function showA2(){
+        static $a = 1;
+        echo ++$a,'<br>';
+    }
+    showA2();showA2();showA2();
+    
+    
+    function getMenu($menu,$vertical=true){
+        if( gettype($menu) != 'array' ) { echo "Был передан не массив",'<br>'; return false; }
+        
+        $style = '';
+        
+        if(!$vertical) $style = "style=\"display: inline; margin-right: 10px\"";
+            
+        echo '<ul style="list-style: none; margin: 0; padding: 0">';
+            foreach($menu as $key => $value) {
+                echo "<li $style><a href=\"$value\">$key</a></li>";
+            }
+        echo '</ul>','<br>';
+    }
+    getMenu($menu);
+    getMenu($menu,false);
+    getMenu($value);
+    
+    // своя функция count
+    function myCountFoo($arg){
+        switch( gettype($arg) ) {
+            case 'NULL'  : return 0;
+            case 'array' : $i=0; foreach($arg as $key => $value) { $i++; } return $i;
+            default : return '1';
+        }
+    }
+    // analog + mode (на случай, если массив многомерный)
+    function myCountFoo2($arg, $mode=0){
+        if( is_null($arg) ) { return 0; }
+        if( !is_array($arg) ) { return 1; }
+        $i=0;
+        foreach($arg as $value) { 
+            if( $mode==1 and is_array($value) ) {
+                $i += myCountFoo2($value,1);
+            }
+            $i++;
+        }
+        return $i;
+    }
+    
+    $massive[] = 1;
+    $massive[] = 2;
+    $massive[] = array('1','2','3');
+    $numeric   = 123;
+    $string    = '123';
+    $nullvalue = NULL;
+    
+    echo myCountFoo($massive);
+    echo myCountFoo($numeric);
+    echo myCountFoo($nullvalue);
+    
+    echo myCountFoo2($massive,1);
+    
+    
+    // функция без параметров
+    echo "<br>";
+    function funcArgs(){
+        echo func_num_args(),"<br>"; // даже если функция не принимает параметры, можно посмотреть их количество
+        $args = func_get_args();  // получаем массив переданных аргументов
+        echo "<pre>";
+        print_r($args);
+        echo "</pre>";
+        echo func_get_arg(1),"<br>"; // получить конкретный аргумент
+    }
+    funcArgs('a',25,true);
+    
+    // ССЫЛКИ
+    $Aval = 10;
+    $Bval = &$Aval; // ссылка на нее
+    $Bval += 5;
+    
+    function changeVal(&$val){ // в данном случае, функция принимает ссылку на глобальную переменную и работает с ней, вместо того, чтобы скопировать ее значение
+        $val += 5;
+    }
+    changeVal($Aval);
+    echo $Aval;
+    
+    // foreach работает со ссылками, в 5 версии можно указат foreach( $arr as &$val ) и тогда изменяться будет исходный массив
+    
+    //echo PHP_VERSION;
+    
+    echo "<pre>";
+    print_r(get_defined_functions()); // функция вернет массив со всеми установленными и пользовательскими функциями
+    echo "</pre>";
+    
     ?>
+    
+    
+    
+    
+    <!--
+    
+    Имена переменных и ключей регистрозависимые, имена фунеций регистронезависимые
+    Контанты могут быть регистро(не)зависимыми:
+    define('Pi', 3.141592, true); // последний параметр указывает на то, что имя константы будет регистронезависимым
+     
+    Регистрозависимые
+    variables
+    array keys
+    class properties
+    class constants
+    constants
+    
+    Регистронезависемые
+    keywords and constructs (if, else, null, foreach, echo ...)
+    functions
+    class methods and constructors
+     
+     -->
+     
+     
+     
+    
 	</body>
 </html>
