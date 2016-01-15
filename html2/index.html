@@ -747,21 +747,79 @@
             .innrDataBox {
                 float: right;
                 width: 68%;
+                margin-top: .25em;
             }
             .higherBox {
                 background-color: #f6f6f6;
+                width: 68%;
+                float: right;
+				min-height: 1em;
             }
-            .higherBoxData, .lowerBoxData {
-                margin-left: 1.5em;
+            .lowerBox {
+                margin-left: .5em;
             }
             
+            .diamond {
+                background-color: transparent;
+                background-image: url('icon/cards/bookmark.png');
+                background-repeat: no-repeat;
+                
+                height: 3.625em; /* 58px; */
+                width: 3.4375em; /* 55px; */
+                
+                float: left;
+                margin-right: .5em;
+                margin-top: -0.72em;
+            }
+            .clientNameDescBox {
+                float: left;
+            }
+            
+            h3.clientName {
+                color: #d24a43;
+                margin: 0;
+                font-size: 1.2em;
+                text-transform: uppercase;
+                font-family: 'Open Sans Bold';
+            }
+            p.simple {
+                margin: 0;
+                font-size: 0.875em;
+                color: #525252; 
+            }
+            .infoPanel, .infoBox {
+                clear: both;
+            }
+            .infoPanel {
+            }
+            .infoPanel ul {
+                margin: 0 0 0 1em;
+                padding: 0;
+                list-style: none;
+            }
+            .infoPanel ul li {
+                display: block;
+                width: 50%;
+            }
+            
+            .infoPanel ul li:nth-child(odd) {
+                float: left;
+            }
+            .infoPanel ul li:nth-child(even) {
+                float: right;
+            }
+
 		</style>
 		<script src="jquery.js"></script>
-        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
+        
 		<script type="text/javascript">
           
           $( function(){
-           
+            
+            
+            
+            
           } )
             
 		  $(window).on('load', function(){
@@ -1265,7 +1323,7 @@
 		  })
 		</script>
 	</head>
-	<body>            
+	<body>    
 		<div id="Up">
 			<div id="Head">
     			<div id="Logo">
@@ -1575,16 +1633,43 @@
                                 <div class="mainBox">
                                     
                                     <div class="innrMainBox">
+                                    
+                                    
+                                    <div class="higherBox">
+                                            <div class="higherBoxData">
+                                                
+                                            </div>
+                                        </div>
+                                    
                                         <div class="innrImgBox" style="background-image: url('http://meddovidka.ua/images/client/logo/85.jpg')">
                                         </div>
                                     
                                         <div class="innrDataBox">
-                                            <div class="higherBox">
-                                                <div class="higherBoxData">h</div>
-                                            </div>
+                                            
                                             <div class="lowerBox">
-                                                <div class="lowerBoxData">l</div>
+                                               <div>
+                                                   <div class="diamond"></div>
+                                                   <div class="clientNameDescBox">
+                                                       <h3 class="clientName">"Новофарм"</h3>
+                                                       <p class="simple">Аптека, которая всегда рядом</p>
+                                                   </div>
+                                                   
+                                               </div>
                                             </div>
+                                            <div class="clearfix"></div>
+                                            <div class="infoPanel">
+                                                <ul>
+                                                    <li><a>1</a></li>
+                                                    <li><a>2</a></li>
+                                                    <li><a>3</a></li>
+                                                    <li><a>4</a></li>
+                                                    <li><a>5</a></li>
+                                                    <li><a>6</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="infoBox">
+                                            <p class="simple">В аптеке "Новофарм" - низкие цены! Провизоры предоставят вам развернутую информацию по применению лекарственных препаратов, в т.ч. сведения о составе и формах выпуска, фармакологических свойствах. Мы защитим  Ваше здоровье!  </p>
                                         </div>
                                     </div>
                                     
