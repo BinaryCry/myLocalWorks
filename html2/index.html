@@ -793,13 +793,18 @@
             .infoPanel {
             }
             .infoPanel ul {
-                margin: 0 0 0 1em;
+                margin: 1em 01em 1em;
                 padding: 0;
                 list-style: none;
+				overflow: hidden;
             }
             .infoPanel ul li {
                 display: block;
                 width: 50%;
+				font-size: 0.875em;
+				min-height: 2.5em;
+				margin-bottom: .5em;
+				float: left;
             }
             
             .infoPanel ul li:nth-child(odd) {
@@ -808,6 +813,43 @@
             .infoPanel ul li:nth-child(even) {
                 float: right;
             }
+			
+			.infoPanel ul li a {
+				font-family: 'Open Sans' !important;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			
+			.infoPanel ul li a, .infoPanel ul li span {
+				padding: 0 3.25em;
+				display: block;
+				float: left;
+				line-height: 1.25em
+			}
+			
+			.boxLink, .boxPhone, .boxAddr, .boxInfo, .boxShed, .boxAdv {
+                background-position: 0 0;
+                background-repeat: no-repeat;
+			}
+			.boxLink {
+				background-image: url('icon/cards/site.png');
+			}
+			.boxPhone {
+				background-image: url('icon/cards/contacts.png');
+			}
+			.boxAddr {
+				background-image: url('icon/cards/address.png');
+			}
+			.boxInfo {
+				background-image: url('icon/cards/information.png');
+			}
+			.boxShed {
+				background-image: url('icon/cards/opening-hours.png');
+			}
+			.boxAdv {
+				background-image: url('icon/cards/comment.png');
+				color: #d24a43;
+			}
 
 		</style>
 		<script src="jquery.js"></script>
@@ -1136,7 +1178,24 @@
                     $('#Info').height()
                   )
               }
-              
+			  
+              /* ------------------------ */
+			  /* BOXES */
+			  
+			  function boxElementsAdaptation(){
+				  $('.infoPanel ul li a, .infoPanel ul li span').each(function(){
+					if( $(this).height() < $(this).parent().height() ) {
+						$(this).css({'margin-top' : 
+						
+							( $(this).parent().height() / 2 ) - ( $(this).height() / 2 )
+						
+						})
+					}
+				  })
+				  $('.innrImgBox').height( $('.innrDataBox').height() )
+			  }
+			  boxElementsAdaptation()
+			  
               /* ------------------------ */
 
               /* Slider */
@@ -1151,6 +1210,9 @@
                     
                     showHideScroller() // скроллер
                     logoAdaptation() // лого
+					
+					
+					boxElementsAdaptation()
 				} );
 				
 				/* arrows & stop sliding */
@@ -1651,7 +1713,7 @@
                                                    <div class="diamond"></div>
                                                    <div class="clientNameDescBox">
                                                        <h3 class="clientName">"Новофарм"</h3>
-                                                       <p class="simple">Аптека, которая всегда рядом</p>
+                                                       <p class="simple">аптека, которая всегда рядом</p>
                                                    </div>
                                                    
                                                </div>
@@ -1659,12 +1721,18 @@
                                             <div class="clearfix"></div>
                                             <div class="infoPanel">
                                                 <ul>
-                                                    <li><a>1</a></li>
-                                                    <li><a>2</a></li>
-                                                    <li><a>3</a></li>
-                                                    <li><a>4</a></li>
-                                                    <li><a>5</a></li>
-                                                    <li><a>6</a></li>
+                                                    <li class="boxLink"><a href="#">Перейти на сайт</a></li>
+													
+                                                    
+                                                    <li class="boxPhone"><span>(044) 123 45 67<br>(044) 123 45 67<br>(044) 123 45 67</span></li>
+													
+													<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
+													
+                                                    <li class="boxInfo"><a>Информация</a></li>
+                                                    
+													<li class="boxShed"><span>Ежедневно<br>Круглосуточно</span></li>
+													
+                                                    <li class="boxAdv"><span>Действует скидка 5%</span></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -1674,12 +1742,6 @@
                                     </div>
                                     
                                 </div>
-                                
-                                
-                                
-                                
-                            
-                                
                             
                             </div>
                         </div>
