@@ -583,13 +583,15 @@
                 padding: 1em 0em 1em 1.5em;
             }
             #innerContent h1 {
-                line-height: 1.5em;
+                border-bottom: 1px solid #001d69;
+            }
+			#innerContent h1, #innerContent h2 {
+				line-height: 1.5em;
                 font-size: 1.5em;
                 margin: 0;
                 text-transform: uppercase;
                 color: #001d69;
-                border-bottom: 1px solid #001d69;
-            }
+			}
             #innerContent a {
                 font-family: 'Open Sans Bold';
                 color: #001d69;
@@ -678,7 +680,6 @@
             #controlPanel {
                 margin: 1em 0 6em;
             }
-            
             #controlPanel .activeF {
                 display: block;
                 float: right;
@@ -689,7 +690,6 @@
                 box-shadow: none;
                 width: 25.5%;
             }
-            
             #controlPanel .inSearchFilters, #controlPanel ul#buttons li, .mainBox, #controlPanel ul.filters {
                 box-sizing: border-box;
                 border: 1px solid #e8e8e8;
@@ -699,7 +699,6 @@
                 width: 101%;
                 margin-left: -1px;
             }
-            
             #controlPanel ul#buttons {
                 margin: 0;
                 padding: 0;
@@ -715,7 +714,8 @@
             #controlPanel ul#buttons li:hover {
                 color: #00154c;
             }
-            #Box {
+            .Box {
+				margin-bottom: 2em;
             }
             .mainBox {
                 /* small
@@ -736,18 +736,27 @@
                 /* bg img in style */
                 background-position: center;
                 background-repeat: no-repeat;
-                background-size: 65%;
-                
-                height: 5em;
+                background-size: 55%;
                 
                 width: 32%;
                 background-color:  #fff;
                 float: left;
+				
+				box-sizing: border-box;
+				border-right: 1px solid rgb(232, 232, 232);
+				border-bottom: 1px solid rgb(232, 232, 232);
+				border-radius: 0 0 0.35714285714285714285714285714286em 0;
             }
+			.News .innrImgBox {
+                background-size: cover;
+			}
             .innrDataBox {
                 float: right;
                 width: 68%;
                 margin-top: .25em;
+            }
+            .Results .innrDataBox {
+                width: 100%;
             }
             .higherBox {
                 background-color: #f6f6f6;
@@ -755,10 +764,47 @@
                 float: right;
 				min-height: 1em;
             }
+            .Results .higherBox {
+                width: 100%;
+            }
+			.resultTable {
+				width: 100%;
+				margin-bottom: .5em;
+			}
+			.resultTable tbody {
+				margin-bottom: 1em;
+			}
+			.resultTable tr {
+				border-bottom: 1px solid #e8e8e8;
+				overflow: hidden;
+			}
+			.resultTable tr:last-child {
+				border-bottom: 0px none;
+			}
+			.resultTable tr p {
+				padding: .2em 1em;
+				margin: 0;
+			}
+			.resultTable tr, .resultTable td {
+				display: block;
+			}
+			td.phName {
+				width: 78%;
+				float: left;
+			}
+			td.phPrice {
+				width: 18%;
+				float:right;
+				text-align: right;
+			}
+			.higherBox .dateBox {
+                font-size: 0.875em;
+				float: right;
+				padding-right: .5em;
+			}
             .lowerBox {
                 margin-left: .5em;
             }
-            
             .diamond {
                 background-color: transparent;
                 background-image: url('icon/cards/bookmark.png');
@@ -771,17 +817,32 @@
                 margin-right: .5em;
                 margin-top: -0.72em;
             }
+			.notVip .diamond {
+				display: none;
+			}
             .clientNameDescBox {
                 float: left;
             }
-            
             h3.clientName {
-                color: #d24a43;
                 margin: 0;
                 font-size: 1.2em;
                 text-transform: uppercase;
-                font-family: 'Open Sans Bold';
             }
+			h3.clientName a {
+				text-decoration: none;
+                color: #d24a43 !important;
+			}
+			.notVip h3.clientName a {
+				text-decoration: none;
+                color: #001d69 !important;
+			}
+			.News h3.clientName a {
+				text-decoration: none;
+                color: green !important;
+			}
+			h3.clientName a:hover {
+				opacity: .75;
+			}
             p.simple {
                 margin: 0;
                 font-size: 0.875em;
@@ -790,10 +851,45 @@
             .infoPanel, .infoBox {
                 clear: both;
             }
-            .infoPanel {
+            .infoBox {
+				padding: 0 1em .5em;
             }
+			.News .innrMainBox {
+				border-bottom: 2px solid green;
+			}
+			.notVip .innrMainBox {
+				border-bottom: 2px solid #001d69;
+			}
+			.News .infoBox {
+				clear: none !important;
+				width: 68%;
+				float: right;
+				padding: 0;
+				margin-top: 1em;
+				min-height: 4em;
+				overflow: hidden;
+			}
+			.News .infoBox p.simple {
+				padding: 0 1em .5em;
+			}
+			.News .clientNameDescBox h3, .notVip .clientNameDescBox h3  {
+				padding-left: .45em;
+			}
+			
+			.News .clientNameDescBox p, .notVip .clientNameDescBox p {
+				padding-left: .65em;
+			}
+			.News .clientNameDescBox h3 {
+				color: green;
+			}
+			.News .clientNameDescBox p {
+				font-family: 'Open Sans Semibold';
+			}
+			.boxLink {
+				display: block;
+			}
             .infoPanel ul {
-                margin: 1em 01em 1em;
+                margin: 1em 1em .5em;
                 padding: 0;
                 list-style: none;
 				overflow: hidden;
@@ -806,27 +902,23 @@
 				margin-bottom: .5em;
 				float: left;
             }
-            
             .infoPanel ul li:nth-child(odd) {
                 float: left;
             }
             .infoPanel ul li:nth-child(even) {
                 float: right;
             }
-			
 			.infoPanel ul li a {
 				font-family: 'Open Sans' !important;
 				text-decoration: none;
 				cursor: pointer;
 			}
-			
 			.infoPanel ul li a, .infoPanel ul li span {
 				padding: 0 3.25em;
 				display: block;
 				float: left;
 				line-height: 1.25em
 			}
-			
 			.boxLink, .boxPhone, .boxAddr, .boxInfo, .boxShed, .boxAdv {
                 background-position: 0 0;
                 background-repeat: no-repeat;
@@ -848,7 +940,71 @@
 			}
 			.boxAdv {
 				background-image: url('icon/cards/comment.png');
-				color: #d24a43;
+				color: green;
+			}
+			
+			.instrMain {
+				margin-top: 1.5em;
+			}
+			.instrImg {
+				background-color: #fff;
+				background-position: center;
+                background-repeat: no-repeat;
+                background-size: 75%;
+				box-sizing: border-box;
+				border: 1px solid rgb(232, 232, 232);
+				border-radius: 0.35714285714285714285714285714286em;
+				
+				float: left;
+			}
+			.innrInstr {
+				padding-left: 2em;
+			}
+			.instrMainInfo {
+				width: 55%;
+				float: right;
+			}
+			.instrImg {
+				width: 45%;
+			}
+			.instrOtherInfo {
+				margin-top: 2em;
+			}
+			.contr {
+				border-radius: 0.35714285714285714285714285714286em;
+				overflow: hidden;
+				margin: 1.5em 0;
+			}
+			.contrHead {
+				background-color: #fc7037;
+				background-position: 1.5em center;
+                background-repeat: no-repeat;
+				background-image: url('icon/contr.png');
+			}
+			.contrHead p {
+				margin: 0;
+				color: #fff;
+				font-family: 'Open Sans Semibold';
+				padding: 1.5em 0 1.5em 3.5em;
+			}
+			.contrInnr {
+				background-color: #fff6ed;
+				overflow: hidden;
+			}
+			.contrInnr ul {
+				list-style: none;
+				margin: 0;
+				padding: .85em 1.5em;
+			}
+			.contrInnr ul li:before {
+				content: '- ';
+			}
+			
+			.semibold {
+				font-family: 'Open Sans Semibold';
+			}
+			.uppercase {
+				text-transform: uppercase;
 			}
 
 		</style>
@@ -1182,22 +1338,49 @@
               /* ------------------------ */
 			  /* BOXES */
 			  
+			function getHeight(elem) {
+				var H = 0
+				elem.children().each(function(){
+					H += $(this).height()
+				})
+				return H + parseInt(elem.find('.infoBox').css('margin-top')) + parseInt(elem.find('.innrDataBox').css('margin-top'))
+			}
 			  function boxElementsAdaptation(){
 				  $('.infoPanel ul li a, .infoPanel ul li span').each(function(){
 					if( $(this).height() < $(this).parent().height() ) {
 						$(this).css({'margin-top' : 
-						
 							( $(this).parent().height() / 2 ) - ( $(this).height() / 2 )
-						
 						})
 					}
 				  })
-				  $('.innrImgBox').height( $('.innrDataBox').height() )
+				  $('.innrImgBox').each(function(){
+					if ( $(this).parents('.Box').hasClass('News') ) {
+						$(this).height(
+							getHeight( $(this).parents('.innrMainBox') )
+						)
+					} else {
+						$(this).height(
+							$(this).parents('.Box').children().find('.innrDataBox').height()
+						)
+					}
+				  })
+				  
+				  //$('.innrImgBox').height( $('.innrDataBox').height() )
 			  }
 			  boxElementsAdaptation()
 			  
               /* ------------------------ */
-
+			  /* Instruction */
+			  
+			  function instrImgAdapt(){
+				$('.instrImg').height(
+					$('.instrImg').width()
+				)
+			  }
+			  instrImgAdapt()
+			  
+              /* ------------------------ */
+			  
               /* Slider */
               
                 /* slider adaptation after resizing */
@@ -1208,11 +1391,11 @@
                     normalizeSliderheaders()
                     sizingHeadersBox()
                     
+					// not slider
                     showHideScroller() // скроллер
                     logoAdaptation() // лого
-					
-					
-					boxElementsAdaptation()
+					boxElementsAdaptation() // картинки карточек
+					instrImgAdapt() // картинка инструкции
 				} );
 				
 				/* arrows & stop sliding */
@@ -1689,72 +1872,343 @@
                             </div>
                             
                             <div class="clearfix"></div>
-                
-                            <div id="Box">
-                            
-                                <div class="mainBox">
-                                    
-                                    <div class="innrMainBox">
-                                    
-                                    
-                                    <div class="higherBox">
-                                            <div class="higherBoxData">
-                                                
-                                            </div>
-                                        </div>
-                                    
-                                        <div class="innrImgBox" style="background-image: url('http://meddovidka.ua/images/client/logo/85.jpg')">
-                                        </div>
-                                    
-                                        <div class="innrDataBox">
-                                            
-                                            <div class="lowerBox">
-                                               <div>
-                                                   <div class="diamond"></div>
-                                                   <div class="clientNameDescBox">
-                                                       <h3 class="clientName">"Новофарм"</h3>
-                                                       <p class="simple">аптека, которая всегда рядом</p>
-                                                   </div>
-                                                   
-                                               </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="infoPanel">
-                                                <ul>
-                                                    <li class="boxLink"><a href="#">Перейти на сайт</a></li>
-													
-                                                    
-                                                    <li class="boxPhone"><span>(044) 123 45 67<br>(044) 123 45 67<br>(044) 123 45 67</span></li>
-													
-													<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
-													
-                                                    <li class="boxInfo"><a>Информация</a></li>
-                                                    
-													<li class="boxShed"><span>Ежедневно<br>Круглосуточно</span></li>
-													
-                                                    <li class="boxAdv"><span>Действует скидка 5%</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="infoBox">
-                                            <p class="simple">В аптеке "Новофарм" - низкие цены! Провизоры предоставят вам развернутую информацию по применению лекарственных препаратов, в т.ч. сведения о составе и формах выпуска, фармакологических свойствах. Мы защитим  Ваше здоровье!  </p>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            
-                            </div>
-                        </div>
-    				</div>
-    				<div id="Aside">
-                        <div class="banner">
-                            BANNER<br>
-                            BANNER<br>
-                            BANNER<br>
-                            BANNER<br>
-                            BANNER<br>
-                        </div>
-    				</div>
+							<div id="BOXES">
+							
+								<h2>Клиент/Филиал</h2>
+							
+								<div class="Box">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<span class="dateBox"></span>
+												</div>
+											</div>
+											<a href="#" class="boxLink">
+												<div class="innrImgBox" style="background-image: url('http://meddovidka.ua/images/client/logo/338.png')">
+												</div>
+											</a>
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="diamond"></div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
+														   <p class="simple">аптека, которая всегда рядом</p>
+													   </div>
+												   </div>
+												</div>
+												<div class="clearfix"></div>
+												<div class="infoPanel">
+													<ul>
+														<li class="boxLink"><a href="#">Перейти на сайт</a></li>
+														<li class="boxPhone"><span>(044) 123-45-67, (044) 123-45-67</span></li>
+														<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
+														<li class="boxInfo"><a>Информация</a></li>
+														<li class="boxShed"><span>Ежедневно :: Круглосуточно</span></li>
+														<li class="boxAdv"><span>Действует скидка 5%</span></li>
+													</ul>
+												</div>
+											</div>
+											<div class="infoBox">
+												<p class="simple">В аптеке "Новофарм" - низкие цены! Провизоры предоставят вам развернутую информацию по применению лекарственных препаратов, в т.ч. сведения о составе и формах выпуска, фармакологических свойствах. Мы защитим  Ваше здоровье!  </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<h2>Не VIP</h2>
+								
+								<div class="Box notVip">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<span class="dateBox"></span>
+												</div>
+											</div>
+											<a href="#" class="boxLink">
+												<div class="innrImgBox" style="background-image: url('http://meddovidka.ua/images/client/logo/338.png')">
+												</div>
+											</a>
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="diamond"></div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
+														   <p class="simple">аптека, которая всегда рядом</p>
+													   </div>
+												   </div>
+												</div>
+												<div class="clearfix"></div>
+												<div class="infoPanel">
+													<ul>
+														<li class="boxLink"><a href="#">Перейти на сайт</a></li>
+														<li class="boxPhone"><span>(044) 123-45-67, (044) 123-45-67</span></li>
+														<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
+														<li class="boxInfo"><a>Информация</a></li>
+														<li class="boxShed"><span>Ежедневно :: Круглосуточно</span></li>
+														<li class="boxAdv"><span>Действует скидка 5%</span></li>
+													</ul>
+												</div>
+											</div>
+											<div class="infoBox">
+												<p class="simple">В аптеке "Новофарм" - низкие цены! Провизоры предоставят вам развернутую информацию по применению лекарственных препаратов, в т.ч. сведения о составе и формах выпуска, фармакологических свойствах. Мы защитим  Ваше здоровье!  </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							<h2>Новость, акции, скидки</h2>
+							
+								<div class="Box News">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<span class="dateBox">Категория // 18.12.2016</span>
+												</div>
+											</div>
+											<a href="#" class="boxLink">
+												<div class="innrImgBox" style="background-image: url('img/news1.jpg')">
+												</div>
+											</a>	
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">Акция и скидка</a></h3>
+														   <p class="simple">в аптеке раздают аспирин</p>
+													   </div>
+												   </div>
+												</div>
+											</div>
+											<div class="infoBox">
+												<p class="simple">В аптеке "Новофарм" - низкие цены! Провизоры предоставят вам развернутую информацию по применению лекарственных препаратов, в т.ч. сведения о составе и формах выпуска, фармакологических свойствах. Мы защитим  Ваше здоровье!  </p>
+											</div>
+										</div>
+									</div>
+								</div>	
+								
+							<h2>Выдача результатов</h2>
+								
+								<div class="Box Results">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<table class="resultTable">
+														<tr>
+															<td class="phName">
+																<p>Фарингосепт (Дарница)</p>
+															</td>
+															<td class="phPrice">
+																<p>86.70 грн.</p>
+															</td>
+														</tr>
+														<tr>
+															<td class="phName">
+																<p>Корвалтаб</s>
+															</td>
+															<td class="phPrice">
+																<p>34.25 грн.</p>
+															</td>
+														</tr>
+														<tr>
+															<td class="phName">
+																<p>Мазь "Доктор Мом" 25мг</s>
+															</td>
+															<td class="phPrice">
+																<p>125.60 грн.</p>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="diamond"></div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
+														   <p class="simple">аптека, которая всегда рядом</p>
+													   </div>
+												   </div>
+												</div>
+												<div class="clearfix"></div>
+												<div class="infoPanel">
+													<ul>
+														<li class="boxLink"><a href="#">Перейти на сайт</a></li>
+														<li class="boxPhone"><span>(044) 123-45-67, (044) 123-45-67</span></li>
+														<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
+														<li class="boxInfo"><a>Информация</a></li>
+														<li class="boxShed"><span>Ежедневно :: Круглосуточно</span></li>
+														<li class="boxAdv"><span>Действует скидка 5%</span></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="Box notVip Results">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<table class="resultTable">
+														<tr>
+															<td class="phName">
+																<p>Фарингосепт (Дарница)</p>
+															</td>
+															<td class="phPrice">
+																<p>86.70 грн.</p>
+															</td>
+														</tr>
+														<tr>
+															<td class="phName">
+																<p>Корвалтаб</s>
+															</td>
+															<td class="phPrice">
+																<p>34.25 грн.</p>
+															</td>
+														</tr>
+														<tr>
+															<td class="phName">
+																<p>Мазь "Доктор Мом" 25мг</s>
+															</td>
+															<td class="phPrice">
+																<p>125.60 грн.</p>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="diamond"></div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
+														   <p class="simple">аптека, которая всегда рядом</p>
+													   </div>
+												   </div>
+												</div>
+												<div class="clearfix"></div>
+												<div class="infoPanel">
+													<ul>
+														<li class="boxLink"><a href="#">Перейти на сайт</a></li>
+														<li class="boxPhone"><span>(044) 123-45-67, (044) 123-45-67</span></li>
+														<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
+														<li class="boxInfo"><a>Информация</a></li>
+														<li class="boxShed"><span>Ежедневно :: Круглосуточно</span></li>
+														<li class="boxAdv"><span>Действует скидка 5%</span></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+							</div> <!-- end BOXES -->
+							<hr>
+							<h1>Инструкция</h1>
+							<div class="Instrunction">
+								<div class="instrMain">
+									<div class="instrImg" style="background-image: url('http://meddovidka.ua/images/stories/1clinics/laferobion-2.jpg');"></div>
+									<div class="instrMainInfo">
+										<div class="innrInstr">
+											<h2>Лаферобион</h2>
+											<p class="uppercase">
+												Альтернативное название
+											</p>
+											<p>
+												<span class="uppercase">Фармакологическая группа:</span><br>такая-то, такая-то
+											</p>
+											<p>
+												Эффективный комплексный препарат противовирусного, антимикробного, антихламидийного, антипролиферативного и иммуномодулирующего действия. Латинское название: Laferobion Фармакологические группы: Иммуномодуляторы. Противовирусные средства.
+											</p>
+											
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="instrOtherInfo">
+										<p>
+										 <span class="semibold">Нозологическая классификация (МКБ-10):</span>
+											<ul>
+												<li>
+													<span class="semibold">A63</span> Другие болезни, передающиеся преимущественно половым путем, не классифицированные в других рубриках.
+												</li>
+												<li>
+													<span class="semibold">B18</span> Хронический вирусный гепатит.
+												</li>
+												<li>
+													<span class="semibold">B25</span> Цитомегаловирусная болезнь.
+												</li>
+												<li>
+													<span class="semibold">J18</span> Пневмония без уточнения возбудителя.
+												</li>
+												<li>
+													<span class="semibold">N12</span> Тубулоинтерстициальный нефрит, не уточненный как острый или хронический.
+												</li>
+												<li>
+													<span class="semibold">O95-O99</span> Другие акушерские состояния, не классифицированные в других рубриках.
+												</li>
+												<li>
+													<span class="semibold">P35- P39</span> Инфекционные болезни, специфичные для перинатального периода. 
+												</li>
+											</ul>
+										</p>
+										
+										<div class="contr">
+											<div class="contrHead">
+												<p class="uppercase">Противопоказания:</p>
+											</div>
+											<div class="contrInnr">
+												<ul>
+													<li> Непереносимости действующего вещества – интерферона, а также других компонентов препарата,
+													</li>Тяжелых заболеваниях почек и печени;
+													<li>Тяжелых сердечно-сосудистых заболеваниях;
+													</li>
+													<li>Угнетении миелоидного ростка кроветворения;
+													</li>
+													<li>Заболевания щитовидной железы; Эпилепсии и другие заболевания центральной нервной системы;
+													</li>
+													<li>Лаферобион противопоказан к применению при беременности и в период лактации из-за отсутствия необходимых исследований.
+													</li>
+												</ul>
+												     
+											</div>
+										</div>
+										<p>
+											<span class="uppercase">Преимущества лекарственной формы препарата</span>
+										</p>
+										<p>
+											Лаферобион выпускается в ректальных суппозиториях. Необходимо отметить, что интерферон, входящий в состав Лаферобиона, производят с помощью методов биотехнологии без использования донорской крови, что исключает возможность заражения различными опасными вирусами (гепатитов, ВИЧ и т.д.).
+
+											В процессе применения не вызывает образования нейтрализующих антител и развития побочных эффектов, может использоваться для лечения новорожденных (недоношенных) детей и беременных женщин.
+
+											Лекарственная форма удобна и безболезненна в применении, позволяет применять Лаферобион больным самостоятельно и в амбулаторных условиях.
+
+											Основой суппозиториев препарата Лаферобион является твердый жир (пальмовое масло), что позволяет избежать аллергических реакций, часто встречающихся при применении ректальных форм на основе масла какао.
+										</p>
+									</div>
+								</div>
+							</div>
+                        </div> <!-- end innerContent -->
+    				</div> <!-- end Main -->
+					<div id="Aside">
+						<div class="banner">
+							BANNER<br>
+							BANNER<br>
+							BANNER<br>
+							BANNER<br>
+							BANNER<br>
+						</div>
+					</div>
+				</div> <!-- end Content -->
+    				
     			</div>
                 <div class="clearfix"></div>
     			<div id="Footer">
