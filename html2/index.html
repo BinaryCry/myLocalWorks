@@ -35,7 +35,7 @@
             body {
                 margin: 0;
                 background-color: #fff;
-               /* min-width: 1280px; */
+                min-width: 1280px;
             }
 			#Up, #Inside {
 				width: 85%;
@@ -55,7 +55,7 @@
 				width: 25%;
 				height: 50px;
 				float: left;
-                background-image: url('icon/logo.png');
+                background-image: url('logo_f3.png');
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
@@ -327,12 +327,17 @@
                 background-repeat: no-repeat;
                 display: none;
             }
-            .inSearchFilters:first-child {
+            .inSearchFilters.search {
                 background-image: none !important;
                 box-shadow : 0px 0px 3px 2px rgb(165, 225, 250);
                 display: block;
                 width: 97%;
             }
+			
+			.Box .inSearchFilters {
+				display: block;
+			}
+			
             .innrF {
                 position: absolute;
                 width: 100%;
@@ -684,38 +689,58 @@
                 display: block;
                 float: right;
             }
-            #controlPanel .inSearchFilters {
+            #controlPanel .inSearchFilters, .Box .inSearchFilters {
                 margin: 0;
                 height: 2.5em;
                 box-shadow: none;
                 width: 25.5%;
             }
-            #controlPanel .inSearchFilters, #controlPanel ul#buttons li, .mainBox, #controlPanel ul.filters {
+			.Box .inSearchFilters {
+				width: 100%;
+			}
+			.Box .inSearchFilters span {
+				padding-left: 1em;
+			}
+			
+            #controlPanel .inSearchFilters, #controlPanel ul#buttons li, .mainBox, #controlPanel ul.filters, .Box .inSearchFilters, .Box ul.filters, .Box ul#buttons li {
                 box-sizing: border-box;
                 border: 1px solid #e8e8e8;
             }
-            #controlPanel ul.filters {
+			
+            #controlPanel ul.filters, .Box ul.filters {
                 border-top: 0px none;
                 width: 101%;
                 margin-left: -1px;
             }
-            #controlPanel ul#buttons {
+			.Box ul.filters {
+                width: 101.5%;
+				
+			}
+            #controlPanel ul#buttons, .Box ul#buttons {
                 margin: 0;
                 padding: 0;
                 list-style: none;
                 text-transform: uppercase;
             }
-            #controlPanel ul#buttons li {
+            #controlPanel ul#buttons li, .Box ul#buttons li {
                 float: left;
                 padding: .5em 1em;
                 margin-right: .5em;
                 cursor: pointer;
             }
-            #controlPanel ul#buttons li:hover {
+            #controlPanel ul#buttons li:hover, .Box ul#buttons li:hover {
                 color: #00154c;
             }
+			.Box ul.filters li {
+				float: left !important;
+				width: 100%;
+			}
+			.Box ul.filters li:last-child {
+				margin-bottom: 0;
+			}
+			
             .Box {
-				margin-bottom: 2em;
+				margin-bottom: 1em;
             }
             .mainBox {
                 /* small
@@ -727,11 +752,14 @@
                 border: 1px solid #f6f6f6;
                 border-bottom: 2px solid #f34942;
                 border-radius: 0 0 0.35714285714285714285714285714286em 0.35714285714285714285714285714286em;
-                overflow: hidden;
+                
                 /* small
                 margin: .5em;
                 */
             }
+			.News .innrMainBox, .Results .innrMainBox {
+				overflow: hidden;
+			}
             .innrImgBox {
                 /* bg img in style */
                 background-position: center;
@@ -852,7 +880,7 @@
                 clear: both;
             }
             .infoBox {
-				padding: 0 1em .5em;
+				padding: .5em 1em .5em;
             }
 			.News .innrMainBox {
 				border-bottom: 2px solid green;
@@ -892,7 +920,7 @@
                 margin: 1em 1em .5em;
                 padding: 0;
                 list-style: none;
-				overflow: hidden;
+				/* overflow: hidden; */
             }
             .infoPanel ul li {
                 display: block;
@@ -914,7 +942,7 @@
 				cursor: pointer;
 			}
 			.infoPanel ul li a, .infoPanel ul li span {
-				padding: 0 3.25em;
+				padding: 0  1.5em 0 3.25em;
 				display: block;
 				float: left;
 				line-height: 1.25em
@@ -1007,6 +1035,48 @@
 				text-transform: uppercase;
 			}
 
+			.filials {
+				width: 100%;
+				font-size: 0.875em;
+				box-sizing: border-box;
+				border: 1px solid #e8e8e8;
+				border-radius: 0.35714285714285714285714285714286em;
+				overflow: hidden;
+				margin-bottom: .5em;
+			}
+			.comb .combInnr {
+				padding: .5em 1em;
+				overflow: hidden;
+				border-bottom: 1px solid #e8e8e8;
+			}
+			.filials:last-child {
+				border-bottom: 0px none;
+			}
+			.filials .top {
+				width: 30%;
+				float: left;
+			}
+			.filials .mid {
+				width: 35%;
+				float: left;
+			}
+			.filials .bot {
+				width: 35%;
+				float: left;
+				background-image: url('icon/arrow_clock_dark.png');
+				background-repeat: no-repeat;
+				background-size: 1.5em;
+			}
+			.bot span {
+				padding-left: 2em;
+			}
+			
+			
+			/* Media Calls */
+			@media screen and (max-width: 320px) {
+	
+			}
+			
 		</style>
 		<script src="jquery.js"></script>
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
@@ -1242,9 +1312,9 @@
                 }
               })
               
-              /* Form Submit */
+              /* Form Submit (глюк формы) */
               $('#mainForm').on('submit', function(){
-                $('.inSearchFiltersCheck').off('click') // чтобы не вызывать двойной клик при возврате назад
+              //  $('.inSearchFiltersCheck').off('click') // чтобы не вызывать двойной клик при возврате назад
               })
               
               /* simple or full */
@@ -1296,7 +1366,7 @@
                     $('#inSearchCenter').find('[data-fname="'+i+'"]').children('input').val( decodeURIComponent(param[i]) )
                 }
                 // сверка после сабмита
-                $('.activeF').each(function(){
+                $('#Search .activeF').each(function(){
                     $(this).children('span.current').text(
                         $(this).find('li[data-id='+$(this).children('input').val()+']').text()
                     )
@@ -1322,7 +1392,7 @@
                   var top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
                   if(top > 0) {
                       window.scrollBy(0,-50);
-                      t = setTimeout(up,20);
+                      t = setTimeout(up,15);
                   } else clearTimeout(t);
                     return false;
               }
@@ -1383,7 +1453,7 @@
 			  
               /* Slider */
               
-                /* slider adaptation after resizing */
+                /* slider and other adaptations after resizing */
 				$(window).on('resize', function() {
 					sliderAdaptation()
 					advAdaptation()
@@ -1396,6 +1466,7 @@
                     logoAdaptation() // лого
 					boxElementsAdaptation() // картинки карточек
 					instrImgAdapt() // картинка инструкции
+					littleFix() // фильтр в филиалах
 				} );
 				
 				/* arrows & stop sliding */
@@ -1563,7 +1634,17 @@
                             'margin-top' : ( $(this).parent().height() / 2 ) - ( $(this).height() / 2 )
                         })
                     })
-                }                
+                }      
+
+				/* Fix */
+				function littleFix() {
+					$('.Box .inSearchFilters').each(function(){
+						$(this).width(
+							$(this).parents().find('.boxAddr').width() - parseInt($(this).parent().css('padding-left')) - parseInt($(this).parent().css('padding-right'))
+						)
+					})
+				}
+				littleFix()
               
 		  })
 		</script>
@@ -1707,7 +1788,7 @@
                     <div id="inSearch">
                         <form id="mainForm">
                         <div id="inSearchLeft">
-                            <div class="inSearchFilters" data-fname="search">
+                            <div class="inSearchFilters search" data-fname="search">
                                 <input class="" placeholder="Поиск" type="text" name="search" value="" >
                             </div>
                             <div class="inSearchFilters activeF" data-fname="city">
@@ -1845,7 +1926,7 @@
                         <div id="innerContent">
                             <h1>Главная часть Й Ё q Д у</h1>
                             <p><a href="#">Lorem Ipsum</a> - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum. Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>
-                            <hr>
+                            
                             
                             
                             <h1>Где купить?</h1>
@@ -1876,7 +1957,7 @@
 							
 								<h2>Клиент/Филиал</h2>
 							
-								<div class="Box">
+								<div class="Box" data-client-id="123">
 									<div class="mainBox">
 										<div class="innrMainBox">
 										<div class="higherBox">
@@ -1891,7 +1972,7 @@
 											<div class="innrDataBox">
 												<div class="lowerBox">
 												   <div>
-													   <div class="diamond"></div>
+													   <div class="diamond" title="Специальное предложение!"></div>
 													   <div class="clientNameDescBox">
 														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
 														   <p class="simple">аптека, которая всегда рядом</p>
@@ -1919,7 +2000,7 @@
 								
 								<h2>Не VIP</h2>
 								
-								<div class="Box notVip">
+								<div class="Box notVip" data-filial-id="123">
 									<div class="mainBox">
 										<div class="innrMainBox">
 										<div class="higherBox">
@@ -1934,7 +2015,7 @@
 											<div class="innrDataBox">
 												<div class="lowerBox">
 												   <div>
-													   <div class="diamond"></div>
+													   <div class="diamond" title="Специальное предложение!"></div>
 													   <div class="clientNameDescBox">
 														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
 														   <p class="simple">аптека, которая всегда рядом</p>
@@ -1946,7 +2027,25 @@
 													<ul>
 														<li class="boxLink"><a href="#">Перейти на сайт</a></li>
 														<li class="boxPhone"><span>(044) 123-45-67, (044) 123-45-67</span></li>
-														<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
+														
+														<li class="boxAddr">
+															<a>
+																<div class="inSearchFilters activeF" data-fname="city">
+																	<span class="current">Киев (5)</span>
+																	<input type="hidden" name="city" value="0">
+																	<div class="innrF">    
+																		<ul class="filters">
+																			<li data-id="1">Киев</li>
+																			<li data-id="2">Полтава</li>
+																			<li data-id="3">Днепропетровск</li>
+																			<li data-id="3">Львов</li>
+																			<li data-id="3">Харьков</li>
+																		</ul>
+																	</div>
+																</div>
+															</a>
+														</li>
+														
 														<li class="boxInfo"><a>Информация</a></li>
 														<li class="boxShed"><span>Ежедневно :: Круглосуточно</span></li>
 														<li class="boxAdv"><span>Действует скидка 5%</span></li>
@@ -1954,7 +2053,53 @@
 												</div>
 											</div>
 											<div class="infoBox">
-												<p class="simple">В аптеке "Новофарм" - низкие цены! Провизоры предоставят вам развернутую информацию по применению лекарственных препаратов, в т.ч. сведения о составе и формах выпуска, фармакологических свойствах. Мы защитим  Ваше здоровье!  </p>
+												<div class="filials">
+													<div class="comb">
+														<div class="combInnr">
+															<div class="top">
+																ул. Тараса Шевченка, 4
+															</div>
+															
+															<div class="mid">
+																(044) 123-45-67, (044) 123-45-67
+															</div>
+															
+															<div class="bot">
+																<span>Ежедневно :: Круглосуточно</span>
+															</div>
+														</div>
+													</div>
+													<div class="comb">	
+														<div class="combInnr">
+															<div class="top">
+																ул. Тараса Шевченка, 4
+															</div>
+															
+															<div class="mid">
+																(044) 123-45-67, (044) 123-45-67
+															</div>
+															
+															<div class="bot">
+																<span>Ежедневно :: Круглосуточно</span>
+															</div>
+														</div>
+													</div>
+													<div class="comb">	
+														<div class="combInnr">
+															<div class="top">
+																ул. Тараса Шевченка, 4
+															</div>
+															
+															<div class="mid">
+																(044) 123-45-67, (044) 123-45-67
+															</div>
+															
+															<div class="bot">
+																<span>Ежедневно :: Круглосуточно</span>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -2029,7 +2174,7 @@
 											<div class="innrDataBox">
 												<div class="lowerBox">
 												   <div>
-													   <div class="diamond"></div>
+													   <div class="diamond" title="Специальное предложение!"></div>
 													   <div class="clientNameDescBox">
 														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
 														   <p class="simple">аптека, которая всегда рядом</p>
@@ -2088,7 +2233,7 @@
 											<div class="innrDataBox">
 												<div class="lowerBox">
 												   <div>
-													   <div class="diamond"></div>
+													   <div class="diamond" title="Специальное предложение!"></div>
 													   <div class="clientNameDescBox">
 														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
 														   <p class="simple">аптека, которая всегда рядом</p>
@@ -2112,7 +2257,7 @@
 								</div>
 							
 							</div> <!-- end BOXES -->
-							<hr>
+							
 							<h1>Инструкция</h1>
 							<div class="Instrunction">
 								<div class="instrMain">
@@ -2231,5 +2376,6 @@
    		   </div>
         </div>
     <div id="scroller"></div>
+	
 	</body>
 </html>
