@@ -7,8 +7,12 @@
         initialscale=1.0 - браузер устройства с маленьким экраном не будет пытаться уместить весь сайт в маленькое окно; 
         соотношение разрешения будет 1 к 1 что на мобильно, что на обычном дисплее
         width=device-width - ширина самой области просмотра будет равна ширине экрана устройства
+		
+		test
+		123qweasd		
+		
          --> 
-		<title>Wet-Nose</title>
+		<title>"Мокрый нос" - сайт про любимчиков</title>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<style type="text/css">
 		
@@ -19,10 +23,25 @@
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>        
 		<script type="text/javascript">
 		
+			/* if after body
+			(function($){
+			alert($('#first').text())
+			})
+			(jQuery)
+			*/
+			
+			$( function(){
+			
+				alert($('#first').text())
+			
+			} )
 			
 		
 		</script>
 	</head>
 	<body>
+	
+		<div id="first">text</div>
+	
 	</body>
 </html>
