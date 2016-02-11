@@ -28,7 +28,10 @@
 		<![endif]-->
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>         
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+
+		<script src="https://swx.cdn.skype.com/shared/v/1.1.23.0/SkypeBootstrap.min.js"></script>
+		
 		<script type="text/javascript">
 
 			/* if after body
@@ -50,20 +53,136 @@
 				//alert('window already loaded')
 			
 			})
+			
+			/*
+			$(function () {
+				'use strict';    // create an instance of the Application object;
+				// note, that different instances of Application may
+				// represent different users
+				var Application
+				var client;
+				Skype.initialize({
+					apiKey: 'SWX-BUILD-SDK',
+				}, function (api) {
+					
+					Application = api.application;
+					client = new Application();
+					console.log(client)
+					
+					afterInit(client);
+					
+				}, function (err) {
+					alert('some error occurred: ' + err);
+				});
+				
+				function afterInit(C){
+				
+					C.signInManager.state.changed(function (state) {
+						$('#state').text(state);
+					});
+					
+					
+					C.signInManager.signIn({
+						username: '',
+						password: ''
+					}).then(
+						//onSuccess callback
+						function () {
+							// when the sign in operation succeeds display the user name
+							alert('Signed in as ' + C.personsAndGroupsManager.mePerson.displayName());
+						}, 
+						//onFailure callback
+						function (error) {
+							console.log(error)
+							// if something goes wrong in either of the steps above,
+							// display the error message
+							alert(error || 'Cannot sign in');
+						});
+				
+				}
+				
+			}); */
+			
 
 		</script>
 	</head>
 	<body>
 	
-		<div class="container">
+		<div class="container"> <!-- 940-1100px withought -fluid; по центру; http://bootstrap-ru.com/scaffolding.php -->
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3" style="height: 300px; background-color: #678678;"></div> <!-- в сумме 12 колонок http://getbootstrap.com/css/#grid -->
-				<div class="col-lg-9 col-md-9 col-sm-9" style="height: 300px; background-color: #876876;"></div>
+				<div class="col-lg-9 col-md-9 col-sm-8" style="height: 300px; background-color: #876876;"></div>
+			</div>
+		</div>
+		<br>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 col-sm-6" style="height: 300px; background-color: #678678;"></div>
+				<div class="col-md-4 col-sm-4 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" style="height: 300px; background-color: #876876;"></div> <!-- offset - отступ слева от блока на количество колонок -->
+			</div>
+		</div>
+		<br>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6" style="height: 300px; background-color: #678678;">
+					<div class="row">
+					
+						<div class="col-md-4" style="height: 30px; background-color: red;"></div>
+						<div class="col-md-4" style="height: 30px; background-color: green;"></div>
+						<div class="col-md-4" style="height: 30px; background-color: blue;"></div>
+						<!-- новые колонки делаются на 12 и те, в свою очередь, тоже -->
+					</div>
+				</div>
+				<div class="col-md-4 col-md-offset-1 hidden-sm " style="height: 300px; background-color: #876876;"></div> <!-- отсуп будет == размеру колонки текущего класса, то есть, если состояние md, то и отступ будет == ширине колонки md (отступ появится, только если для него хватит места, то есть offset-lg не будет видет при md и ниже, а xs будет видет на самых малых экранах); hidden-класс - скрыть элемент при указанном размере экрана; visible-класс, будет виден только при определенном размере экрана -->
 			</div>
 		</div>
 
-
+		
+		<div class="container">
+			<div class="row">
+				<h1>Название сайта <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span></h1>
+				<div class="navbar navbar-inverse">
+				<!-- <div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar navbar-inverse navbar-static-top"> -- container нужно вынести как самостоятельный блок
+				<div class="navbar navbar-inverse navbar-fixed-bottom"> -->
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+							
+								<span class="sr-only">Открыть навигацию</span> <!-- для скринридеров -->
+								
+								<span class="icon-bar"></span> <!-- полоска в кнопке меню -->
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							
+							</button> <!-- в атрибуте data-toggle используется имя класса, который стоит в блоке, который будет менять видимость -->
+							<a href="#">Логотип</a>
+						</div>
+						<div class="collapse navbar-collapse" id="responsive-menu"> <!-- на .collapse будет работает кнопка--> <!-- айдишник может быть любой, главное, скопировать #его в data-target выше -->
+							<ul class="nav navbar-nav">
+								<li><a href="#">Пункт 1</a></li>
+								<li><a href="#">Пункт Второй</a></li>
+								<li>
+									<a href="#">Пункт 3<b class="caret"></b></a>
+								</li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="state"></div>
+		
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="bootstrap/js/bootstrap.min.js"></script> 
+		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script> 
 	</body>
 </html>
