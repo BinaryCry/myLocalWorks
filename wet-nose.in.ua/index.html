@@ -11,10 +11,10 @@
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 		<style type="text/css">
 
 			.row {
-				
 				
 			}
 
@@ -108,6 +108,111 @@
 	</head>
 	<body>
 	
+<!--	div.mode[title="1$"]*5-->
+<!--	div#mode>ul.menu>li.menu-item*5>a.menu-item-link[href="#"]{Button $}-->
+
+<!--
+h1 > p непосредстенно дочерний http://htmlbook.ru/css/selector/child
+h1 + p первый непосредстенно идущий за h1 http://htmlbook.ru/css/selector/adjacent
+h1 ~ p все p, стоящие после h1, у обоих общий родитель (множественный аналог +)
+h1   p дочерний любого уровня вложенности
+    
+css 2015 https://htmlacademy.ru/blog/41
+-->
+
+	
+		<div class="container">
+			<div class="row">
+				<h1>Название сайта <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span><i class="fa fa-bolt fa-4x"></i></h1>
+				<div class="navbar navbar-inverse">
+				<!-- <div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar navbar-inverse navbar-static-top"> -- container нужно вынести как самостоятельный блок
+				<div class="navbar navbar-inverse navbar-fixed-bottom"> -->
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu"> <!-- в атрибуте data-toggle используется имя класса, который стоит в блоке, который будет менять видимость -->
+							
+								<span class="sr-only">Открыть навигацию</span> <!-- для скринридеров -->
+								
+								<span class="icon-bar"></span> <!-- полоска в кнопке меню -->
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							
+							</button>
+							<a class="navbar-brand" href="#">Логотип</a>
+						</div>
+						<div class="collapse navbar-collapse" id="responsive-menu"> <!-- на .collapse будет работает кнопка--> <!-- айдишник может быть любой, главное, скопировать #его в data-target выше -->
+							<ul class="nav navbar-nav">
+								<li><a href="#">Пункт 1</a></li>
+								<li><a href="#">Пункт Второй</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Пункт 3 <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Пункт 4</a></li>
+										<li><a href="#">Пункт 4</a></li>
+										<li><a href="#">Пункт 4</a></li>
+										<li class="divider"></li>
+										<li><a href="#">Пункт 4</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+								<li><a href="#">Пункт 4</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div id="carousel" class="carousel slide">
+			<!-- Индикаторы -->
+			<ol class="carousel-indicators">
+				<li class="active" data-target="#carousel" data-slide-to="0"></li>
+				<li data-target="#carousel" data-slide-to="1"></li>
+				<li data-target="#carousel" data-slide-to="2"></li>
+			</ol>
+			
+			<!-- Слайды -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="http://cs408622.vk.me/v408622768/1aa9/HLvOn2Nxc6M.jpg">
+					<div class="carousel-caption">
+						<h3>Заголовок</h3>
+						<p>Подзаголовок</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="http://cs616627.vk.me/v616627670/1f3ec/51iT--Qb48E.jpg">
+					<div class="carousel-caption">
+						<h3>Заголовок</h3>
+						<p>Подзаголовок</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="http://cs616627.vk.me/v616627670/1f3ec/51iT--Qb48E.jpg">
+					<div class="carousel-caption">
+						<h3>Заголовок</h3>
+						<p>Подзаголовок</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Стрелки -->
+			<a href="#carousel" class="left carousel-control" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a href="#carousel" class="right carousel-control" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+	
+	
 		<div class="container"> <!-- 940-1100px withought -fluid; по центру; http://bootstrap-ru.com/scaffolding.php -->
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3" style="height: 300px; background-color: #678678;"></div> <!-- в сумме 12 колонок http://getbootstrap.com/css/#grid -->
@@ -133,52 +238,12 @@
 						<!-- новые колонки делаются на 12 и те, в свою очередь, тоже -->
 					</div>
 				</div>
-				<div class="col-md-4 col-md-offset-1 hidden-sm " style="height: 300px; background-color: #876876;"></div> <!-- отсуп будет == размеру колонки текущего класса, то есть, если состояние md, то и отступ будет == ширине колонки md (отступ появится, только если для него хватит места, то есть offset-lg не будет видет при md и ниже, а xs будет видет на самых малых экранах); hidden-класс - скрыть элемент при указанном размере экрана; visible-класс, будет виден только при определенном размере экрана -->
+				<div class="col-md-4 col-lg-offset-1 hidden-sm " style="height: 300px; background-color: #876876;"></div> <!-- отсуп будет == размеру колонки текущего класса, то есть, если состояние md, то и отступ будет == ширине колонки md (отступ появится, только если для него хватит места, то есть offset-lg не будет видет при md и ниже, а xs будет видет на самых малых экранах); hidden-класс - скрыть элемент при указанном размере экрана; visible-класс, будет виден только при определенном размере экрана -->
 			</div>
 		</div>
 
 		
-		<div class="container">
-			<div class="row">
-				<h1>Название сайта <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span></h1>
-				<div class="navbar navbar-inverse">
-				<!-- <div class="navbar navbar-inverse navbar-fixed-top">
-				<div class="navbar navbar-inverse navbar-static-top"> -- container нужно вынести как самостоятельный блок
-				<div class="navbar navbar-inverse navbar-fixed-bottom"> -->
-					<div class="container">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
-							
-								<span class="sr-only">Открыть навигацию</span> <!-- для скринридеров -->
-								
-								<span class="icon-bar"></span> <!-- полоска в кнопке меню -->
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							
-							</button> <!-- в атрибуте data-toggle используется имя класса, который стоит в блоке, который будет менять видимость -->
-							<a href="#">Логотип</a>
-						</div>
-						<div class="collapse navbar-collapse" id="responsive-menu"> <!-- на .collapse будет работает кнопка--> <!-- айдишник может быть любой, главное, скопировать #его в data-target выше -->
-							<ul class="nav navbar-nav">
-								<li><a href="#">Пункт 1</a></li>
-								<li><a href="#">Пункт Второй</a></li>
-								<li>
-									<a href="#">Пункт 3<b class="caret"></b></a>
-								</li>
-								<li><a href="#">Пункт 4</a></li>
-								<li><a href="#">Пункт 4</a></li>
-								<li><a href="#">Пункт 4</a></li>
-								<li><a href="#">Пункт 4</a></li>
-								<li><a href="#">Пункт 4</a></li>
-								<li><a href="#">Пункт 4</a></li>
-								<li><a href="#">Пункт 4</a></li>
-								<li><a href="#">Пункт 4</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		
 		<div id="state"></div>
 		
