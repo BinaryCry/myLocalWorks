@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	<style type="text/css">
+		#mapBox {
+			width: 400px;
+			height: 450px;
+			background-color: #898989;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript">
+			
+			
+			$( function(){
+				var DATA = new Array();
+				$('.price_block').each( function() {
+					
+					DATA.push( {  hint : $(this).find('.address').text(), balloon : $(this).find('.description').text(), blockId : $(this).attr('id') } );
+					
+				} );
+				console.log(DATA);
+				
+			} );
+		
+	</script>
+</head>
+<body>
+
+	<div id="cardblock_1" class="price_block">
+		<div class="address">Владимирский Централ</div>
+		<div class="description">Ветер северный</div>
+	</div>
+	<div id="cardblock_2" class="price_block">
+		<div class="address">Киев</div>
+		<div class="description">Столица</div>
+	</div>
+	<div id="cardblock_3" class="price_block">
+		<div class="address">Одесса</div>
+		<div class="description">Город</div>
+	</div>
+	<div id="cardblock_4" class="price_block">
+		<div class="address">Варшава</div>
+		<div class="description">Польша</div>
+	</div>
+	
+</body>
+</html>

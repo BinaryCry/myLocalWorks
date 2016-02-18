@@ -1,0 +1,106 @@
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<script type="text/javascript">
+		
+		
+		var MAP; // global map object
+		var pointStyle = 'islands#darkGreenDotIcon'; // https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/option.presetStorage-docpage/
+		ymaps.ready(init); // wait for Yandex Maps initializing
+		
+		function init() {
+			MAP = new ymaps.Map("mapBox", { center: [50.450361, 30.523639], zoom: 7} );
+			MAP.setType('yandex#publicMap'); // type of map
+			MAP.controls.remove('geolocationControl');
+			MAP.controls.remove('searchControl');
+			MAP.controls.remove('trafficControl');
+			MAP.controls.remove('rulerControl');
+			
+			/* data in hind & balloon can be formated by tags & css-rules */
+			
+			// Одиночные добавления
+			/*
+			var mark1 = new ymaps.Placemark([50.450361, 30.523639], {  hintContent: 'Киев!', balloonContent: 'Столица Украины' }, { preset: pointStyle }); // only create point
+			
+			var mark2 = new ymaps.Placemark([50.511079, 30.790897], {  hintContent: 'Бровары!', balloonContent: 'Город Украины' }, { preset: pointStyle }); // only create point
+			*/
+			// data in balloon can be advanced */
+			/*
+			var mark3 = new ymaps.Placemark([50.078732, 29.91486], {
+				balloonContentHeader: 'Однажды',
+				balloonContentBody: 'В студёную зимнюю пору',
+				balloonContentFooter: 'Мы пошли в гору',
+				hintContent: 'Зимние происшествия'
+			}, { preset: pointStyle }, {balloonPane: 'outerBalloon'}); // outer balloon show!
+			
+			MAP.geoObjects.add(mark1); // add point to map
+			MAP.geoObjects.add(mark2);
+			MAP.geoObjects.add(mark3);
+			*/
+			
+/* BIG DATA */	
+			var adressGroup = [
+				{
+					coords : [50.450361, 30.523639],
+					hint: 'Київ',
+					balloon: 'Столица Украины'
+				},
+				{
+					coords : [50.511079, 30.790897],
+					hint: 'Бровары',
+					balloon: 'Город Украины'
+				},
+				{
+					coords : [50.078732, 29.91486],
+					hint: 'Фастов',
+					balloon: 'Город Украины'
+				},
+			];
+			
+/* GEOCODER */		
+			var myGeocoder = ymaps.geocode('Киев');
+			console.log(myGeocoder);
+			myGeocoder.then(
+				function (res) {
+					//alert('Координаты объекта :' + res.geoObjects.get(0).geometry.getCoordinates());
+				},
+				function (err) {
+					alert('Ошибка');
+				}
+			);
+				
+			myCollection = new ymaps.GeoObjectCollection({}, {
+				preset: 'islands#darkGreenDotIcon'
+			});
+			for (var i in adressGroup) {
+				myCollection.add(new ymaps.Placemark(adressGroup[i].coords, {hintContent: adressGroup[i].hint, balloonContent: adressGroup[i].balloon}, {balloonPane: 'outerBalloon'}));
+			}
+
+			MAP.geoObjects.add(myCollection);
+			
+			
+			
+			
+			/* добавление всякой дичи в любое место
+			MAP.balloon.open([50.511079, 30.790897], 
+				{
+					contentHeader: 'Однажды',
+					contentBody: 'В студёную зимнюю пору' +	' <span style="color:red; font-weight:bold">Я</span>' + ' из лесу <b>вышел</b>'
+				}
+			);
+			
+			MAP.hint.open([50.511079, 30.790897], 'Кто <em>поднимается</em> в гору?');
+			*/
+			
+			
+		};
+		
+		
+		/* добавление всякой дичи в любое место
+			MAP.balloon.open([50.511079, 30.790897], 
+				{
+					contentHeader: 'Однажды',
+					contentBody: 'В студёную зимнюю пору' +	' <span style="color:red; font-weight:bold">Я</span>' + ' из лесу <b>вышел</b>'
+				}
+			);
+			
+			MAP.hint.open([50.511079, 30.790897], 'Кто <em>поднимается</em> в гору?');
+			*/
