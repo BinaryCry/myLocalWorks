@@ -7,4 +7,5 @@
 DirectoryIndex index.php
 
 #PHP [--- указываем, что флаг php ---] [--- название из php.ini ---] [--- режим ---]
-php_flag short_open_tag off
+#php_flag short_open_tag off
+php_flag short_open_tag on
