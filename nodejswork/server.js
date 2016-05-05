@@ -20,9 +20,10 @@ function startServer(route,handle) {
 	console.log("\n~S~ Server has started.\n");
 }
 
+/*
 function exportedFoo(){
 	console.log('Text from exportedFoo');
-}
+} */
 
 exports.startServer = startServer;
 exports.exportedFoo = exportedFoo;
