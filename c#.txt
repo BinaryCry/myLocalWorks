@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿C# Sharp
+=======
+﻿C#
+>>>>>>> 82a4f85ad7eb7d11eed1f074f19bb6ac4aba998f
 ---
 
 CLR - common language runtime - среда выполнения языка (C#, BASIK.NET)
