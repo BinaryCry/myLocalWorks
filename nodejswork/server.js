@@ -26,7 +26,7 @@ function exportedFoo(){
 } */
 
 exports.startServer = startServer;
-exports.exportedFoo = exportedFoo;
+//exports.exportedFoo = exportedFoo;
 
 
 
