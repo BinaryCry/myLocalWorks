@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="windows-1251">
+		<title>Call Script</title>
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="underscore-min.js"></script>
+		<script type="text/javascript">
+			$( function() {
+				var sPATH = 'Modules/';
+				var	ePATH = '/js/event/index.js';
+				// Modules
+				var Modules = new Array('Alert', 'Console', 'Print');
+				var eventSelectors = new Array(); // массив селекторов на основе имен модулей
+				for (var i in Modules) {
+					eventSelectors[i] = '.'+Modules[i];
+				}
+				eventSelectors = eventSelectors.join(', ');
+				
+					/* $.ajax({
+						type     : 'POST',
+						url      : 'alert',
+						dataType : 'text',
+						success  : function( data, status ) { ifSucces( data ) },
+						error    : function( data, status ) { ifError( data ) },
+						complete : function() {  }
+					}); */
+				
+				function ifSuccess(data) {
+					$('#scriptBox').append( data );
+				}
+				function ifError(data,status) {
+					console.log('Error!');
+					console.log(data);
+					console.log(status);
+				}
+				
+				/* Core */
+				function Init( elemClassName ) {
+					if ( _.indexOf(Modules, elemClassName) != -1 ) {
+						// checking!
+console.log( $('#scriptBox').children().is('#'+elemClassName) );
+						if( $('#scriptBox').children().is('#'+elemClassName) ) {
+							eval( elemClassName+'()' );
+						} else {
+							$.ajax( {
+								type     : 'POST',
+								url      : sPATH+elemClassName+ePATH,
+								dataType : 'text',
+								success  : function( data, satus ) { ifSuccess( data ) },
+								error    : function( data, satus ) { ifError( data, status ) }
+							} );
+						}
+					} else {
+console.log( $('#scriptBox').children().is('#'+elemClassName) );
+						console.log('Module has been not found');
+					}
+				}
+				
+				$('body').on('click', eventSelectors, function() {
+					
+					//console.log( $(this).attr('class') );
+					Init( $(this).attr('class') );
+					
+				} );
+				
+			} );
+		</script>
+	</head>
+	<body>
+		<div id="scriptBox"></div>
+		<button class="Alert">Alert</button>
+		<button class="Console">Console</button>
+		<button class="Print">Print</button>
+		<button class="Flow">Flow</button>
+	</body>
+</html>

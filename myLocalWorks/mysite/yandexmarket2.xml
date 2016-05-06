@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2015-11-13 14:30">
+	<shop>
+		<name>LadyShop</name>
+		<company>LadyShop</company>
+		<url>http://ladyshop.ua/</url>
+		<currencies>
+			<currency id="UAH" rate="1"/>
+		</currencies>
+		<categories>
+			<category id="4">Макияж</category>
+			<category id="12">хиты продаж</category>
+			<category id="13">рекомендуемые</category>
+			<category id="488">Парфюмерия</category>
+			<category id="2556">Лицо</category>
+			<category id="5378">Волосы</category>
+			<category id="5379" parentId="5378">Уход и лечение</category>
+			<category id="5390">Тело</category>
+			<category id="5392">Ногти</category>
+			<category id="5396">Здоровье</category>
+			<category id="5409" parentId="5378">Cтайлинг</category>
+			<category id="5417" parentId="6446">Лаки</category>
+			<category id="5418" parentId="6446">Блеск</category>
+			<category id="5423" parentId="6446">Фиксация</category>
+			<category id="5424" parentId="6446">Текстурирование (воск, пасты)</category>
+			<category id="5425" parentId="5378">Окрашивание, химическая завивка и др.</category>
+			<category id="5426" parentId="6448">Защита кожи и снятие краски</category>
+			<category id="5427" parentId="6448">Оттеночные средства</category>
+			<category id="5429" parentId="6409">Расчески</category>
+			<category id="5430" parentId="6409">Фены, утюжки, плойки</category>
+			<category id="5441" parentId="6446">Объем</category>
+			<category id="5444" parentId="5425">Ламинирование волос</category>
+			<category id="5455" parentId="6447">Выпрямление вьющихся волос</category>
+			<category id="5456" parentId="6447">Формирование локонов</category>
+			<category id="5457" parentId="6446">Термозащита</category>
+			<category id="5459" parentId="6448">Краски для волос</category>
+			<category id="5461" parentId="6448">Окислители</category>
+			<category id="5473" parentId="6448">Дополнительные средства</category>
+			<category id="5484" parentId="6447">Эффект &quot;Купание в море&quot;</category>
+			<category id="5489" parentId="5390">Для ванны, душа, сауны</category>
+			<category id="5493" parentId="5425">Химическая завивка</category>
+			<category id="5498" parentId="5390">Депиляция</category>
+			<category id="5499" parentId="5498">Уход после депиляции</category>
+			<category id="5513" parentId="6414">Тонизация</category>
+			<category id="5516" parentId="6418">Уход и коррекция фигуры</category>
+			<category id="5525">Ароматерапия</category>
+			<category id="5526" parentId="5525">Массажное масло для тела</category>
+			<category id="5527" parentId="5378">Кератиновое выпрямление</category>
+			<category id="5530" parentId="488">Для женщин</category>
+			<category id="5533" parentId="488">Для мужчин</category>
+			<category id="5539" parentId="4">Лицо</category>
+			<category id="5540" parentId="6455">Тональные, BB, CC кремы</category>
+			<category id="5543" parentId="6318">Отдельные кисти для</category>
+			<category id="5544" parentId="5543">пудры</category>
+			<category id="5545" parentId="5543">румян, коррекции, бронзаторов</category>
+			<category id="5546" parentId="5543">веерные</category>
+			<category id="5547" parentId="4">Губы</category>
+			<category id="5548" parentId="5547">Помады</category>
+			<category id="5549" parentId="5547">Блески</category>
+			<category id="5550" parentId="5547">Карандаши</category>
+			<category id="5551" parentId="4">Глаза</category>
+			<category id="5552" parentId="5551">Для бровей</category>
+			<category id="5553" parentId="5551">Карандаш для глаз</category>
+			<category id="5554" parentId="5539">Румяна</category>
+			<category id="5556" parentId="5551">Тени: палитры и одиночные</category>
+			<category id="5557" parentId="6453">Тушь</category>
+			<category id="5559" parentId="6456">Спонжи, Пуховки</category>
+			<category id="5560" parentId="6455">Корректоры, консилеры</category>
+			<category id="5561" parentId="5551">Подводка</category>
+			<category id="5562" parentId="5551">Рост ресниц, бровей. База под тушь</category>
+			<category id="5563" parentId="6453">Накладные</category>
+			<category id="5566" parentId="4">Наборы для макияжа</category>
+			<category id="5568" parentId="6461">Трафареты</category>
+			<category id="5569" parentId="6459">Лаки</category>
+			<category id="5570" parentId="5392">Уход за ногтями</category>
+			<category id="5571" parentId="6471">Разбавители</category>
+			<category id="5572" parentId="5392">Наращивание, накладные ногти</category>
+			<category id="5573" parentId="6461">Пилки, бафы</category>
+			<category id="5574" parentId="6456">Точилки</category>
+			<category id="5575" parentId="5572">Накладные ногти</category>
+			<category id="5579" parentId="6318">Наборы и чехлы</category>
+			<category id="5581" parentId="5543">основного цвета теней</category>
+			<category id="5582" parentId="6456">Аппликаторы</category>
+			<category id="5583" parentId="6456">Косметички</category>
+			<category id="5588" parentId="5551">Базы, фиксаторы для теней</category>
+			<category id="5589" parentId="5543">подводки</category>
+			<category id="5590" parentId="5543">бровей, ресниц</category>
+			<category id="5591" parentId="5543">губ</category>
+			<category id="5592" parentId="5543">для точного нанесения теней</category>
+			<category id="5593" parentId="5543">минеральной пудры (кабуки)</category>
+			<category id="5594" parentId="5543">корректора</category>
+			<category id="5596" parentId="6455">Фиксаторы</category>
+			<category id="5597" parentId="5543">тональной основы</category>
+			<category id="5598" parentId="5543">растушевки теней</category>
+			<category id="5599" parentId="6318">Очистители</category>
+			<category id="5601" parentId="5547">Палитры</category>
+			<category id="5603" parentId="6456">Кейсы</category>
+			<category id="5604" parentId="5543">растушевки карандаша для глаз</category>
+			<category id="5610" parentId="6458">Покрытие гель-лаком</category>
+			<category id="5612" parentId="6415">Для глаз</category>
+			<category id="5613" parentId="5612">От отеков</category>
+			<category id="5616" parentId="6416">Маски</category>
+			<category id="5621" parentId="6415">Для губ</category>
+			<category id="5622" parentId="5621">Для контура губ</category>
+			<category id="5631" parentId="6414">Скрабы</category>
+			<category id="5635" parentId="6414">Очищение и демакияж лица</category>
+			<category id="5642" parentId="6416">Сыворотки</category>
+			<category id="5648" parentId="5621">Уход за губами</category>
+			<category id="5673" parentId="6445">Подсушки, карандаши</category>
+			<category id="5685" parentId="5489">Пилинги, скрабы</category>
+			<category id="5693" parentId="5390">Уход за руками</category>
+			<category id="5694" parentId="6443">Защита от холода</category>
+			<category id="5699" parentId="6445">От демодекса</category>
+			<category id="5704" parentId="6443">Омоложение</category>
+			<category id="5705" parentId="6443">Увлажнение</category>
+			<category id="5706" parentId="6443">Питание</category>
+			<category id="5709" parentId="5621">Для объема губ</category>
+			<category id="5723" parentId="6445">Для проф. процедур</category>
+			<category id="5727" parentId="2556">Инструменты и акссесуары</category>
+			<category id="5731" parentId="5727">Аксессуары</category>
+			<category id="5732" parentId="5525">Масло для лица</category>
+			<category id="5735" parentId="6443">Осветление</category>
+			<category id="5738" parentId="6418">Массажеры, аксессуары и др.</category>
+			<category id="5742" parentId="6418">С лечебным эффектом</category>
+			<category id="5747" parentId="6418">Для шеи и декольте</category>
+			<category id="5748" parentId="6418">Для бюста</category>
+			<category id="5749" parentId="6418">Для интимной зоны</category>
+			<category id="5750" parentId="6418">Дезодоранты</category>
+			<category id="5752" parentId="5612">От морщин</category>
+			<category id="5753" parentId="5612">Общий уход</category>
+			<category id="5755" parentId="5489">Подарочные наборы для тела</category>
+			<category id="5756" parentId="5693">Подарочные наборы</category>
+			<category id="5759" parentId="5390">Уход за ногами</category>
+			<category id="5760" parentId="5759">Укрепление сосудов</category>
+			<category id="5762" parentId="6417">Для солярия</category>
+			<category id="5773" parentId="5498">Воски</category>
+			<category id="5774" parentId="5498">Воскоплавы</category>
+			<category id="5775" parentId="5498">Акссесуары для депиляции</category>
+			<category id="5776" parentId="5693">Парафино- терапия</category>
+			<category id="5777" parentId="5498">До депиляции</category>
+			<category id="5783" parentId="5489">Губки, мочалки, щетки</category>
+			<category id="5784" parentId="5612">Лифтинг</category>
+			<category id="5790" parentId="5693">Скрабы и пилинги</category>
+			<category id="5792" parentId="6442">Для грубой, сухой кожи</category>
+			<category id="5793" parentId="6442">Кремы, гели</category>
+			<category id="5794" parentId="5759">Дезодоранты для ног</category>
+			<category id="5795" parentId="6471">Для снятия лака</category>
+			<category id="5796" parentId="5570">Укрепление ногтей и уход (масло, концентрат)</category>
+			<category id="5797" parentId="6459">Выравнивание</category>
+			<category id="5799" parentId="6471">Сушки</category>
+			<category id="5800" parentId="6459">Закрепители</category>
+			<category id="5802" parentId="5570">Против обкусывания ногтей</category>
+			<category id="5803" parentId="6457">Для удаления кутикулы</category>
+			<category id="5805" parentId="6443">Очищение</category>
+			<category id="5806" parentId="5759">Пилинги и скрабы</category>
+			<category id="5807" parentId="6443">Регенерация</category>
+			<category id="5808" parentId="6443">Для массажа</category>
+			<category id="5809" parentId="6442">Очищение, ванночки</category>
+			<category id="5810" parentId="6442">Для размягчения мозолей</category>
+			<category id="5812" parentId="6442">От трещин</category>
+			<category id="5813" parentId="6442">Для холодных ног</category>
+			<category id="5814" parentId="5759">Силиконовая продукция</category>
+			<category id="5815" parentId="5814">Для пальцев рук и ног</category>
+			<category id="5816" parentId="5814">Для переднего отдела стопы</category>
+			<category id="5817" parentId="5814">Для пяток и стоп</category>
+			<category id="5818" parentId="5814">Наклейки</category>
+			<category id="5819" parentId="6471">Дезинфекция</category>
+			<category id="5820" parentId="6459">Отбеливание</category>
+			<category id="5821" parentId="6443">Для &quot;холодных&quot; рук</category>
+			<category id="5823" parentId="5759">Для массажа ног</category>
+			<category id="5825" parentId="6461">LED, УФ лампы</category>
+			<category id="5826" parentId="6442">От грибка</category>
+			<category id="5828" parentId="6492">Наборы по уходу для ногтей</category>
+			<category id="5829" parentId="5396">Для похудения</category>
+			<category id="5830" parentId="5396">Витаминизация</category>
+			<category id="5831" parentId="5396">Для вен</category>
+			<category id="5832" parentId="5396">Для красоты кожи</category>
+			<category id="5835" parentId="5396">Детоксикация, очищение</category>
+			<category id="5837" parentId="5396">Для носа</category>
+			<category id="5842" parentId="5396">Для зубов</category>
+			<category id="5848">Детям</category>
+			<category id="5849" parentId="5848">Для кожи</category>
+			<category id="5850" parentId="5848">Для волос</category>
+			<category id="5852" parentId="5848">Парфюмерия для детей</category>
+			<category id="5856" parentId="5425">Осветление</category>
+			<category id="5860" parentId="5525">Эфирные масла</category>
+			<category id="5921" parentId="5612">От кругов под глазами</category>
+			<category id="5937" parentId="5612">От усталости</category>
+			<category id="5945" parentId="5525">Масла-основы</category>
+			<category id="5946" parentId="5525">Композиции масел</category>
+			<category id="5978">Только VIP</category>
+			<category id="6000" parentId="6457">Уход за кутикулой</category>
+			<category id="6019" parentId="5759">От отеков, уставших, &quot;горящих&quot; ног</category>
+			<category id="6037" parentId="5570">Лечение грибковых заболеваний</category>
+			<category id="6047" parentId="6459">Основы (лечебные, уходовые)</category>
+			<category id="6051" parentId="5396">Для загара</category>
+			<category id="6052" parentId="5396">Для хорошего самочувствия</category>
+			<category id="6054" parentId="6417">Защита от солнца</category>
+			<category id="6055" parentId="6417">После загара</category>
+			<category id="6068" parentId="5425">Инструменты и акссесуары для окрашивания и др.</category>
+			<category id="6069" parentId="6471">Корректоры</category>
+			<category id="6070" parentId="5693">Защита от солнца</category>
+			<category id="6072" parentId="6453">Инструменты</category>
+			<category id="6078" parentId="2556">Загар</category>
+			<category id="6081" parentId="6416">Пилинги</category>
+			<category id="6090" parentId="6417">Автозагары, бронзеры</category>
+			<category id="6091" parentId="6417">Активаторы загара на солнце</category>
+			<category id="6097" parentId="6409">Заколки и др. украшения</category>
+			<category id="6098" parentId="5693">Дезодорант</category>
+			<category id="6101" parentId="5396">Для красоты волос, от выпадения</category>
+			<category id="6102" parentId="5396">Для суставов</category>
+			<category id="6106" parentId="4">Грим, Боди-арт, Фэйс-арт</category>
+			<category id="6109" parentId="5551">Глиттер (блестки)</category>
+			<category id="6110" parentId="488">Ароматизаторы для дома</category>
+			<category id="6111" parentId="5525">Свечи ароматические</category>
+			<category id="6158" parentId="2556">Наборы</category>
+			<category id="6159">Мужчинам</category>
+			<category id="6161" parentId="6436">После бритья</category>
+			<category id="6162" parentId="6432">Для тела</category>
+			<category id="6164" parentId="6435">Пищевые добавки</category>
+			<category id="6165" parentId="6436">Для бритья</category>
+			<category id="6166" parentId="6432">Дезодоранты, антиперсперанты</category>
+			<category id="6167" parentId="6159">Наборы MEN</category>
+			<category id="6168" parentId="6431">Для глаз</category>
+			<category id="6170" parentId="6436">Бритвенные принадлежности</category>
+			<category id="6171" parentId="6432">Гели для душа, мыло</category>
+			<category id="6172" parentId="6159">Волосы MEN</category>
+			<category id="6173" parentId="6172">Шампуни для мужчин</category>
+			<category id="6177" parentId="6431">Кремы, гели, маски</category>
+			<category id="6178" parentId="6172">Кондиционеры для мужчин</category>
+			<category id="6179" parentId="6172">Средства для укладки</category>
+			<category id="6189" parentId="6435">Спортивные добавки</category>
+			<category id="6190" parentId="6432">Для ногтей</category>
+			<category id="6191" parentId="6172">Наборы для волос для мужчин</category>
+			<category id="6193" parentId="6416">Кремы и гели</category>
+			<category id="6198" parentId="488">Подарочные наборы</category>
+			<category id="6291">SALE</category>
+			<category id="6300" parentId="6445">Биоревитализация</category>
+			<category id="6318" parentId="4">Кисти и акссесуары</category>
+			<category id="6322" parentId="6456">Пустые палитры, футляры</category>
+			<category id="6323" parentId="488">Пробники, миниатюры, наборы для путешествий</category>
+			<category id="6331">Подарочные сертификаты</category>
+			<category id="6334">Здоровье</category>
+			<category id="6335" parentId="6334">Для зубов</category>
+			<category id="6336">Тело</category>
+			<category id="6337" parentId="6336">Уход за руками</category>
+			<category id="6338" parentId="6337">Увлажнение кожи</category>
+			<category id="6339">Лицо</category>
+			<category id="6340" parentId="6339">Очищение, демакияж</category>
+			<category id="6341" parentId="6339">Тонизирование</category>
+			<category id="6342" parentId="6339">Кремы и гели</category>
+			<category id="6343">Детям</category>
+			<category id="6344" parentId="6343">Для кожи</category>
+			<category id="6345">Волосы</category>
+			<category id="6346" parentId="6345">Cтайлинг</category>
+			<category id="6347" parentId="6346">Для придания ОБЪЕМА волосам</category>
+			<category id="6348" parentId="6455">Основы (базы)</category>
+			<category id="6349" parentId="5539">Пудры</category>
+			<category id="6350" parentId="5539">Бронзеры</category>
+			<category id="6351" parentId="5539">Иллюминаторы</category>
+			<category id="6352" parentId="5551">Корректор, консилер, антисерн</category>
+			<category id="6353" parentId="6345">Гигиена и Уход</category>
+			<category id="6354" parentId="6339">Сыворотки</category>
+			<category id="6355" parentId="6339">Маски</category>
+			<category id="6356" parentId="5530">Парфюмерия</category>
+			<category id="6357" parentId="5530">Для ванны и тела</category>
+			<category id="6358" parentId="5530">Дезодоранты</category>
+			<category id="6359" parentId="5530">Для волос</category>
+			<category id="6360" parentId="5533">До и после бритья</category>
+			<category id="6361" parentId="5533">Дезодоранты</category>
+			<category id="6362" parentId="5533">Для душа и тела</category>
+			<category id="6363" parentId="5533">Парфюмерия</category>
+			<category id="6364" parentId="6198">Наборы для женщин</category>
+			<category id="6365" parentId="6198">Наборы для мужчин</category>
+			<category id="6366" parentId="6339">Для глаз</category>
+			<category id="6367" parentId="6366">от отеков</category>
+			<category id="6368" parentId="6367">от морщин</category>
+			<category id="6370" parentId="6339">Для губ</category>
+			<category id="6371" parentId="6370">уход за губами</category>
+			<category id="6372" parentId="6172">Маскировка седины</category>
+			<category id="6373" parentId="6172">Интенсивный уход: концентраты</category>
+			<category id="6374" parentId="6343">Для волос</category>
+			<category id="6375" parentId="6106">Корректоры для тела</category>
+			<category id="6376" parentId="6106">Для танцев</category>
+			<category id="6377" parentId="6106">Фэйс и боди-арт</category>
+			<category id="6378" parentId="6106">Пигменты, блестки</category>
+			<category id="6379" parentId="6106">Акссесуары</category>
+			<category id="6380" parentId="6106">Грим</category>
+			<category id="6382">SALE</category>
+			<category id="6383" parentId="5547">Уход и лечение</category>
+			<category id="6384" parentId="5547">Для увеличения объема</category>
+			<category id="6385" parentId="6414">Демакияж глаз</category>
+			<category id="6386" parentId="6078">Кремы и гели SPF от 16 и больше</category>
+			<category id="6387" parentId="6078">Автозагары</category>
+			<category id="6388" parentId="6336">Дезодоранты</category>
+			<category id="6389" parentId="6336">Уход и коррекция фигуры</category>
+			<category id="6390" parentId="6368">лифтинг</category>
+			<category id="6391" parentId="6390">от кругов под глазами</category>
+			<category id="6392">Макияж</category>
+			<category id="6393" parentId="6339">Тональные основы, BB, CC кремы</category>
+			<category id="6394" parentId="5379">Защита от солнца</category>
+			<category id="6395" parentId="5379">Шампуни и кондиционеры</category>
+			<category id="6396" parentId="6444">Истончение и выпадение</category>
+			<category id="6397" parentId="6444">От перхоти</category>
+			<category id="6398" parentId="6444">От себореи</category>
+			<category id="6399" parentId="6444">Лечение кожи головы</category>
+			<category id="6401" parentId="6444">Для секущихся кончиков</category>
+			<category id="6402" parentId="6353">Окрашивание, химическая завивка и др.</category>
+			<category id="6403" parentId="6402">Оттеночные средства</category>
+			<category id="6404" parentId="6403">Уход по типам волос</category>
+			<category id="6405" parentId="6353">Усиление роста</category>
+			<category id="6406">Мужчинам</category>
+			<category id="6407" parentId="5379">Интенсивный уход и лечение</category>
+			<category id="6408" parentId="5378">Наборы</category>
+			<category id="6409" parentId="5378">Инструменты и акссесуары</category>
+			<category id="6410" parentId="6345">Уход и лечение</category>
+			<category id="6411" parentId="6410">Интенсивный уход и лечение</category>
+			<category id="6412">BeautyBag</category>
+			<category id="6413" parentId="6336">Автозагары, бронзеры</category>
+			<category id="6414" parentId="2556">Очищение и тонизация</category>
+			<category id="6415" parentId="2556">Для глаз и губ</category>
+			<category id="6416" parentId="2556">Полный уход</category>
+			<category id="6417" parentId="5390">Загар</category>
+			<category id="6418" parentId="5390">Уход и коррекция фигуры</category>
+			<category id="6419" parentId="6414">Гоммажи</category>
+			<category id="6420" parentId="6081">Кислотные пилинги</category>
+			<category id="6421" parentId="6081">Пилинги энзимные</category>
+			<category id="6422" parentId="6078">После загара</category>
+			<category id="6423" parentId="6078">Активатор загара</category>
+			<category id="6424" parentId="5738">Мезороллеры</category>
+			<category id="6425" parentId="5738">Аксессуары</category>
+			<category id="6426" parentId="5738">Массажеры, аппараты</category>
+			<category id="6427" parentId="5727">Мезороллеры</category>
+			<category id="6428" parentId="5727">Аппараты</category>
+			<category id="6429" parentId="5489">Соль, пена и др. для ванны</category>
+			<category id="6430" parentId="5489">Гели для душа, мыло</category>
+			<category id="6431" parentId="6159">Лицо MEN</category>
+			<category id="6432" parentId="6159">Тело MEN</category>
+			<category id="6435" parentId="6159">БАД MEN</category>
+			<category id="6436" parentId="6159">Бритье MEN </category>
+			<category id="6437" parentId="6158">Дорожные наборы</category>
+			<category id="6438" parentId="6158">Процедурные наборы</category>
+			<category id="6439" parentId="6158">Подарочные наборы</category>
+			<category id="6440" parentId="6336">Для ванны, душа, сауны</category>
+			<category id="6441" parentId="6440">Гели для душа, мыло</category>
+			<category id="6442" parentId="5759">Уход</category>
+			<category id="6443" parentId="5693">Уход</category>
+			<category id="6444" parentId="5379">Решение проблем</category>
+			<category id="6445" parentId="6416">Решение конкретных задач</category>
+			<category id="6446" parentId="5409">Укладка</category>
+			<category id="6447" parentId="5409">Эффекты</category>
+			<category id="6448" parentId="5425">Окрашивание</category>
+			<category id="6449" parentId="6408">Подарочные наборы</category>
+			<category id="6450" parentId="6408">Дорожные наборы</category>
+			<category id="6451" parentId="5572">Гели</category>
+			<category id="6453" parentId="5551">Ресницы</category>
+			<category id="6455" parentId="5539">Идеальный тон</category>
+			<category id="6456" parentId="6318">Акссесуары</category>
+			<category id="6457" parentId="5570">Для кутикулы</category>
+			<category id="6458" parentId="5392">Маникюр</category>
+			<category id="6459" parentId="6458">Покрытие лаком</category>
+			<category id="6460" parentId="6461">Кисти</category>
+			<category id="6461" parentId="5392">Инструменты и акссесуары</category>
+			<category id="6465" parentId="6461">Разделители пальцев</category>
+			<category id="6466" parentId="6461">Кусачки, ножницы, пушеры</category>
+			<category id="6467" parentId="6461">Аппараты</category>
+			<category id="6468" parentId="6461">Остальные акссесуары</category>
+			<category id="6469" parentId="6461">Педикюрные пилки, пемзы</category>
+			<category id="6470" parentId="6471">Обезжириватель</category>
+			<category id="6471" parentId="6458">Доп. средства</category>
+			<category id="6472" parentId="6471">Белые карандаши</category>
+			<category id="6473" parentId="5610">Гель-лаки</category>
+			<category id="6474" parentId="5610">Основы</category>
+			<category id="6475" parentId="5610">Закрепители</category>
+			<category id="6476" parentId="5610">Выравнивание</category>
+			<category id="6477" parentId="5610">Дополнительные средства</category>
+			<category id="6481" parentId="6492">Наборы лаков</category>
+			<category id="6482" parentId="5759">Подарочные наборы</category>
+			<category id="6483" parentId="5572">Наращивание</category>
+			<category id="6484" parentId="5570">Ремонт ногтей</category>
+			<category id="6485" parentId="6458">Nail-art</category>
+			<category id="6486" parentId="5570">Ванночки</category>
+			<category id="6492" parentId="5392">Наборы</category>
+			<category id="6502" parentId="6445">Для массажа лица</category>
+			<category id="6503" parentId="6078">Для солярия</category>
+			<category id="6504" parentId="6418">При физических нагрузках</category>
+			<category id="6505" parentId="5842">Зубная паста</category>
+			<category id="6506" parentId="5842">Зубная нить</category>
+			<category id="6507" parentId="6445">Гели алоэ</category>
+			<category id="6512" parentId="5842">Ополаскиватели</category>
+			<category id="6513" parentId="5842">Для десен</category>
+			<category id="6514" parentId="6414">Термальная вода</category>
+			<category id="6519" parentId="6081">Био пилинги</category>
+			<category id="6535" parentId="6431">Очищение</category>
+			<category id="6536" parentId="6431">Тонизация</category>
+			<category id="6537" parentId="6431">Для губ</category>
+			<category id="6538" parentId="6431">Скрабы</category>
+			<category id="6539" parentId="6431">Сыворотки</category>
+			<category id="6540" parentId="5842">Отбеливание</category>
+			<category id="6541" parentId="5849">Очищение</category>
+			<category id="6542" parentId="5849">Уход</category>
+			<category id="6543" parentId="5849">Защита от солнца</category>
+			<category id="6544" parentId="5849">Под подгузники</category>
+			<category id="6545" parentId="6445">Лучший уход Осень-Зима</category>
+			<category id="6548" parentId="5498">От вросших волос</category>
+			<category id="6549" parentId="5498">Масло для удаления остатков воска</category>
+		</categories>
+		<offers>
+			<offer id="63400">
+				<url>http://ladyshop.ua/sijajuschij-vzgljad-krem-dlja-vek-50-ml-plazan.html?utm_content=5613</url>
+				<sku>pl-94</sku>
+				<price>653.0000</price>
+				<categoryId>5613</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-22794.png</picture>
+				<name>Сияющий взгляд Крем для век / 50 мл - Plazan</name>
+				<description> Ультраактивный крем для век. Деликатно сбалансированный состав крема идеально подходит для ухода за нежной и подверженной быстрому увяданию кожей вокруг глаз. Он радикально избавляет её от последствий переутомления. Регулярное применение крема заметно сокращает количество морщин и их глубину. Этот крем стимулирует клеточный метаболизм, эффективно устраняя отеки и круги под глазами. Он обеспечивает интенсивный и надежный уход за тонкой и чувствительной кожей этой деликатной области. Крем бережно питает кожу, повышая прочность клеточных мембран и надежно нейтрализуя действие &amp;laquo;свободных&amp;raquo; радикалов. </description>
+			</offer>
+			<offer id="63402">
+				<url>http://ladyshop.ua/star-sight-vip-krem-sijajuschij-vzgljad-plazan.html?utm_content=5752</url>
+				<sku>208-0</sku>
+				<price>653.0000</price>
+				<categoryId>5752</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-208.png</picture>
+				<name>ВИП Крем « Сияющий взгляд» - Plazan</name>
+				<description> Ультраактивный крем для век. Деликатно сбалансированный состав крема идеально подходит для ухода за нежной и подверженной быстрому увяданию кожей вокруг глаз. Он радикально избавляет её от последствий переутомления. Регулярное применение крема заметно сокращает количество морщин и их глубину. Этот крем стимулирует клеточный метаболизм, эффективно устраняя отеки и круги под глазами. Он обеспечивает интенсивный и надежный уход за тонкой и чувствительной кожей этой деликатной области. Крем бережно питает кожу, повышая прочность клеточных мембран и надежно нейтрализуя действие &amp;laquo;свободных&amp;raquo; радикалов. </description>
+			</offer>
+			<offer id="63403">
+				<url>http://ladyshop.ua/birth-of-stars-vip-krem-rozhdenie-zvezdy-plazan.html?utm_content=6193</url>
+				<sku>pl-96</sku>
+				<price>768.0000</price>
+				<categoryId>6193</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-209.jpg</picture>
+				<name>ВИП Крем « Рождение звезды» - Plazan / 50 мл</name>
+				<description> Ультраактивный крем для любого типа кожи лица и шеи. Этот крем обеспечивает кожу полным набором активных компонентов, необходимых для сбалансированного питания и воспроизводства полноценных клеток кожи, заряжая их жизненной энергией. Крем интенсивно восполняет недостаток питательных веществ, насыщая кожу микроэлементами и пептидами. Полисахариды ускоряют деление клеток базального слоя, нормализуя их регенерацию и активно гидратируя все слои кожи. Они восстанавливают её водный баланс, нормализуют обменные процессы и активизируют тканевое дыхание. Новая технология, используемая в производстве крема, позволяет активным компонентам проникнуть в настолько глубокие слои кожи, что дает эффект лифтинга и &amp;laquo;подтяжки&amp;raquo;, альтернативный эффекту от мезотерапии. Но при этом, применение нашего крема безопасно и доступно любой женщине. Крем &quot;Рождение звезды&quot; серии &amp;laquo;Plazan&amp;raquo; рекомендуется для женщин в возрасте после 30 лет. Наибольший эффект отмечен в возрастной группе старше 45 лет. </description>
+			</offer>
+			<offer id="63404">
+				<url>http://ladyshop.ua/krem-uvlazhnjajuschij-dnevnoj-50-ml-plazan.html?utm_content=6193</url>
+				<sku>pl-93</sku>
+				<price>531.0000</price>
+				<categoryId>6193</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-22798.jpg</picture>
+				<name>Крем увлажняющий, дневной / 50 мл - Plazan</name>
+				<description> Нежная текстура крема дарит коже ощущение комфорта, специально подготовленная гиалуроновая кислота и гликозаминогликаны плаценты превосходно увлажняют все слои кожи. Это обеспечивает замечательный эффект лифтинга, тонизируя и повышая упругость кожи. Кожа разглаживается, становится мягкой, выравнивается цвет лица. Поверхностная плёночка гиалуроновой кислоты, сохраняет естественную увлажненность эпидермиса и оберегает кожу от воздействия вредных факторов окружающей среды. Ваша кожа выглядит безупречно. </description>
+			</offer>
+			<offer id="63407">
+				<url>http://ladyshop.ua/vip-krem-zvezdnaja-noch-50-ml-plazan.html?utm_content=6193</url>
+				<sku>pl-95</sku>
+				<price>531.0000</price>
+				<categoryId>6193</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-211.jpg</picture>
+				<name>ВИП Крем «Звездная ночь»/ 50 мл - Plazan</name>
+				<description> Применение этого питательного крема обеспечивает высококачественный уход за кожей лица. Высокая концентрация активных компонентов, прошедших специальную обработку, позволяет импреодолеть эпидермальный барьер и обеспечить собственно дерму необходимым количеством пептидов, эластином и коллагеном. Крем эффективно стимулирует процессы синтеза собственного эластина и коллагена, активизирует обменные процессы в коже. Применение крема укрепляет структуру межклеточного каркаса дермы, повышает прочность оболочек клеток кожи, защищая их от действия &amp;laquo;свободных радикаров&amp;raquo;, восстанавливает жизненную силу клеток во время сна и после дневного стресса. В результате регулярного использования этого крема заметно повышается тонус кожи, её упругость и эластичность, укрепляются и подтягиваются контуры лица. Кожа приобретает цветущий и здоровый вид. Крем &quot;Ночная Звезда&quot; (Starlit night) &amp;laquo;Plazan&amp;raquo; предназначен для женщин в возрасте после 30 лет. Наибольший эффект отмечен в возрастной группе старше 45 лет. </description>
+			</offer>
+			<offer id="63408">
+				<url>http://ladyshop.ua/krem-vokrug-glaz-35-ml-plazan.html?utm_content=5752</url>
+				<sku>pl-25</sku>
+				<price>209.0000</price>
+				<categoryId>5752</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-39403.jpg</picture>
+				<name>Крем «Вокруг глаз» / 35 мл - Plazan</name>
+				<description> Крем разработан специально для разглаживания морщин и питания тонкой и очень чувствительной кожи вокруг глаз. Особенностью этого крема является невысокая концентрация активного компонента, что связано с особой чувствительностью и восприимчивостью кожи вокруг глаз.&amp;nbsp; В качестве активного компонента в креме используются гликозаминогликаны плаценты, гиалуроновая кислота и низкомолекулярные компоненты (АТФ, аминокислоты, моносахара, нуклеотиды).&amp;nbsp; Высокоэффективное средство ухода за нежными участками кожи контура глаз. Обладает лечебно-косметическим действием, улучшает микроциркуляцию крови, нормализует обменные процессы в коже. Он необходим людям, носящим контактные линзы и очки.&amp;nbsp; 
+ Сочетание всех компонентов в креме способствует удерживанию влаги в клетке и межклеточном пространстве, повышает эластичность и упругость соединительно-тканных структур, глубокое проникновение в кожу защищает ее от вредных воздействий внешней среды. Снижается количество морщин около глаз. Уменьшается отечность глаз, снимается усталость.&amp;nbsp; </description>
+			</offer>
+			<offer id="63410">
+				<url>http://ladyshop.ua/krem-vokrug-glaz-plazan.html?utm_content=5753</url>
+				<sku>219-0</sku>
+				<price>209.0000</price>
+				<categoryId>5753</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-219.jpg</picture>
+				<name> Крем «Вокруг глаз» - Plazan </name>
+				<description> Крем разработан специально для разглаживания морщин и питания тонкой и очень чувствительной кожи вокруг глаз. Особенностью этого крема является невысокая концентрация активного компонента, что связано с особой чувствительностью и восприимчивостью кожи вокруг глаз.&amp;nbsp; В качестве активного компонента в креме используются гликозаминогликаны плаценты, гиалуроновая кислота и низкомолекулярные компоненты (АТФ, аминокислоты, моносахара, нуклеотиды).&amp;nbsp; Высокоэффективное средство ухода за нежными участками кожи контура глаз. Обладает лечебно-косметическим действием, улучшает микроциркуляцию крови, нормализует обменные процессы в коже. Он необходим людям, носящим контактные линзы и очки.&amp;nbsp; 
+ Сочетание всех компонентов в креме способствует удерживанию влаги в клетке и межклеточном пространстве, повышает эластичность и упругость соединительно-тканных структур, глубокое проникновение в кожу защищает ее от вредных воздействий внешней среды. Снижается количество морщин около глаз. Уменьшается отечность глаз, снимается усталость.&amp;nbsp; </description>
+			</offer>
+			<offer id="63411">
+				<url>http://ladyshop.ua/krem-kontur-gub-plazan.html?utm_content=5622</url>
+				<sku>pl-26</sku>
+				<price>219.0000</price>
+				<categoryId>5622</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-220.jpg</picture>
+				<name> Крем «Контур губ» - Plazan / 50 мл</name>
+				<description> Создан специально для тонкой кожи губ. Многие женщины знают, что со временем кожа губ грубеет, теряет цвет и, как результат, форма губ расплывается, контур размывается, женщина вынуждена прибегать к декоративной косметике, чтобы выделить контур губ. Особенность кожи губ - наличие близко расположенных капилляров и особая тонкость защитного слоя.&amp;nbsp; Плацентарный крем &quot;Контур губ&quot; cодержит активные компоненты - Плазан низкомолекулярный, гиалуроновую кислоту. Они обладают высокой ангиостимулирующей активностью (стимулирует рост сосудов). Именно нормальное состояние сосудов дает губам приятный, естественный розовый цвет. Применение этого крема придает упругость и четкую форму очертаниям губ с восстановлением их контуров.&amp;nbsp; </description>
+			</offer>
+			<offer id="63412">
+				<url>http://ladyshop.ua/placentarnaja-kollagenovaja-maska-salfetka-plazan.html?utm_content=5616</url>
+				<sku>pl-2</sku>
+				<price>161.0000</price>
+				<categoryId>5616</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-221.jpg</picture>
+				<name> Плацентарная коллагеновая маска-салфетка - Plazan / 1 шт.</name>
+				<description> Плацентарная коллагеновая маска-салфетка &amp;laquo;Plazan&amp;raquo; представляет собой салфетку из специальной ткани с прорезями для глаз, носа и рта, пропитанную активными компонентами плаценты. Маска разработана для всех типов кожи, для всех возрастов и всех времен года. Она применяется для уменьшения морщин, снятия напряжения и усталости кожи, увлажняет и питает кожу низкомолекулярными компонентами, улучшает цвет лица. Эффективна после пластических операций и для снятия раздражения после пилинга и мезотерапии. Восстанавливает поврежденную кожу. Разглаживает морщины и предупреждает преждевременное старение кожи. Эффективно увлажняет кожу. Способствует выведению перекисных соединений (свободных радикалов). Предотвращает возрастную пигментацию. Обладает противовоспалительным действием. Активизирует клеточное дыхание и периферическую циркуляцию крови. 
+ 
+ </description>
+			</offer>
+			
+			<offer id="65704">
+				<url>http://ladyshop.ua/mild-creamy-cleanser-nezhnoe-ochischajuschee-molochko-dlja-suhoj-kozhi-janssen.html?utm_content=5635</url>
+				<sku>jan-500</sku>
+				<price>520.0000</price>
+				<categoryId>5635</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-26709.jpg</picture>
+				<name>Нежное очищающее молочко для сухой кожи - Janssen / 200 мл</name>
+				<description> Нежное и тщательное очищение особенно важно для обезвоженной кожи. С одной стороны, полностью нужно удалить загрязнения, макияж и мертвые клетки, а с другой стороны, этот процесс должен наименее обезводить или даже раздражить кожу. MILD CREAMY CLEANSER растворимый в воде и обладает насыщенной, кремообразной консистенцией. Это дает возможность быстрого, тщательного и аккуратного снятия макияжа. Загрязнения и кожный секрет легко удаляются с поверхности кожи и просто смываются водой. Ощущение приятной чистоты дополняется заметным улучшением мягкости и эластичности кожи. Действие: &amp;bull;Оптимально подготавливает кожу для дальнейшего ухода &amp;bull;Содержит очень мягкую формулу с уровнем pH соответствующим физиологическому уровню кожи &amp;bull;Имеет кремовую консистенцию, которая легко наносится и смывается &amp;bull;Удерживает природную влагу в коже &amp;bull;Не оставляет ощущения стянутости на коже &amp;bull;Обеспечивает интенсивное, но мягкое очищение &amp;bull;Оставляет ощущение чистоты на коже </description>
+			</offer>
+			<offer id="65705">
+				<url>http://ladyshop.ua/radiant-firming-tonic-vosstanavlivajuschij-tonik-dlja-suhoj-kozhi-lica-janssen.html?utm_content=5513</url>
+				<sku>jan-501</sku>
+				<price>520.0000</price>
+				<categoryId>5513</categoryId>
+				<picture>http://ladyshop.ua/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-id-26710.jpg</picture>
+				<name>Восстанавливающий тоник для сухой кожи лица - Janssen / 200 мл</name>
+				<description> Тщательное, глубокое очищение пор - залог эффективного ухода за кожей - может быть завершено только после применения тоника для лица. Тоник удаляет нежелательные остатки воды и любого очищающего средства с поверхности кожи. Благодаря освежающей и оживляющей функциям, восстанавливает кожный баланс и усиливает действие последующих препаратов. RADIANT FIRMING TONIC мягкий, не содержащий спирта тоник с приемлемым для кожи уровнем pH. Он улучшает состояние кожи с каждым последующим применением, восстанавливает кожу, тонизирует и освежает. Действие: &amp;bull; Разглаживает кожу, тонизирует &amp;bull; Подготавливает кожу к лучшему впитыванию последующих препаратов &amp;bull; Заметно восстанавливает и освежает кожу &amp;bull; Содержит приемлемый для кожи уровень pH &amp;bull; Оставляет приятное ощущение чистоты и свежести на коже </description>
+			</offer>
+		</offers>
+	</shop>
+</yml_catalog>

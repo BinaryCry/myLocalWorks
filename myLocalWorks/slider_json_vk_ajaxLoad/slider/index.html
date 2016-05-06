@@ -1,0 +1,456 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<style type="text/css">
+		html, body {
+			
+		}
+		html {
+			background-color: #678678;
+		}
+		body {
+			background-color: #fff;
+			width: 62%;
+			margin: 50px auto;
+		}
+			.slider {
+				width: 100%;
+				border: 1px solid grey;
+				box-sizing: content-box;
+			}
+			.sliderInn {
+				margin: .5%;
+			}
+			.sliderCore {
+				/* background-color: violet; */
+				width: 62%;
+				float: left;
+			}
+			.sliderAdv {
+				float: right;
+				width: 38%;
+				/* background-color: yellow; */
+			}
+			.sliderBody {
+				margin-right: 0.5096497075629978003518621581015%;
+				background-color: #9C9CF5;
+			}
+			.sliderMainImageBox, .sliderSub, .sliderPreviewItemInner {
+				position: relative;
+			}
+			.sliderAdvBody {
+				margin-left: 0.8153168135705970397472143688675%;
+				background-color: #9C9CF5;
+			}
+			.sliderPreviewItem {
+				width: 33.333333333333333333333333333333%;
+				float: left;
+				/* background-color: pink; */
+			}
+			.sliderMainImageBox {
+				width: 100%;
+			}
+			.sliderPreviewItemInner {
+				margin: 2.5%;
+			}
+			.sliderPreviewItem:first-child .sliderPreviewItemInner, .sliderPreviewItem:last-child .sliderPreviewItemInner {
+				margin-left: 0;
+				margin-right: 0;
+			}
+			.sliderMainImage, .sliderPreviewImage, .sliderAdvImage {
+				min-width: 100%;
+				width: 100%;
+			}
+			.sliderInn, .sliderPreviewItem, .sliderMainImageBox, .sliderPreviewItemInner, .sliderSub, .sliderHeaders {
+				overflow: hidden;
+			}
+			.sliderArrowLeft, .sliderArrowRight {
+				position: absolute;
+				width: 6.5%;
+				opacity: .6;
+				cursor: pointer;
+				display: none;
+				z-index: 10;
+			}
+			.sliderArrowLeft {
+				top: 45%;
+				left: 5%;
+			}
+			.sliderArrowRight {
+				top: 45%;
+				right: 5%;
+			}
+			.sliderSub .sliderArrowLeft, .sliderSub .sliderArrowRight {
+				width: 4.5%;
+			}
+			.sliderSub .sliderArrowLeft {
+				top: 35%;
+				left: 3%;
+			}
+			.sliderSub .sliderArrowRight {
+				top: 35%;
+				right: 3%;
+			}
+			.sliderArrowLeft:hover, .sliderArrowRight:hover {
+				opacity: 1;
+				-moz-transition: .5s;
+			}
+			.sliderArrowLeft:active, .sliderArrowRight:active {
+				opacity: .5;
+				-moz-transition: .2s;
+			}
+			.sliderHeaders {
+				position: absolute;
+				bottom: 0;
+				z-index: 5;
+				width: 100%;
+			}
+			.sliderHeaders p {
+				margin: 0;
+				color: #fff;
+				padding: 1.5% 2%;
+			}
+			.sliderHeaders p:first-child {
+				font-weight: bold;
+				font-size: 1.2em;
+				padding-bottom: 0%;
+			}
+			.sliderHeaders p:last-child {
+				padding-bottom: 2.5%;
+			}
+			.sliderHeadersMain {
+				background-color: rgba(84,85,86,.75);
+			}
+			.sliderHeadersSub {
+				background-color: rgba(84,85,86,.7);
+			}
+			.Prev{
+				font-size: .8em !important;
+				font-weight: normal !important;
+			}
+			.sliderPreviewItemInner > .sliderHeaders {
+				display: none;
+			}
+			.sliderPreviewItemInner > .sliderHeaders p {
+				padding-bottom: 5%;
+			}
+			.sliderContent, .sliderPreview {
+				margin: 0;
+				padding: 0;
+			}
+			.sliderContentItem, .sliderPreviewBox {
+				float: left;
+				display: inline-block;
+			}
+			.slider a {
+				display: block;
+			}
+			/* скрыть картинки, а потом скриптом открыть */
+			.sliderContentItem, .sliderPreviewBox {
+				display: none;
+			}
+		</style>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		
+		<script type="text/javascript">
+		
+			$(window).load( function() {
+				$('.sliderContentItem, .sliderPreviewBox').css('display','block'); // делаем видимыми main и sub
+				var control = true;
+				/* slider adaptation */
+				$('.sliderBody, .sliderMainImageBox').height( 	
+					$('.sliderBody').width() * 0.62
+				);
+				$('.sliderPreviewItem').height( 	
+					$('.sliderPreviewItem').width() * 0.38
+				);
+				$('.sliderAdv').height( 
+					$('.sliderBody').height() + $('.sliderPreviewItem').height()
+				);
+				$('.sliderAdvBody').height( $('.sliderAdv').height() );
+				
+				/* выравниванеи высоты внутреннего блока превью с внешним, дабы в него нормально становился абсолютный блок с заголовком (если этого не сделать, картинка растянет блок и прилипший внизу загловок не будет видно) */
+				$('.sliderPreviewItemInner').height( $('.sliderPreviewItem').height() );
+				
+				/* arrows & stop sliding */
+				$('.sliderMainImageBox').on('mouseenter', function() {
+					$('.sliderMainImageBox > .sliderArrowLeft, .sliderMainImageBox > .sliderArrowRight').show('normal');
+					clearInterval(sliderInterval); // останавливаем автматическое пролистывание
+				} );
+				$('.sliderMainImageBox').on('mouseleave', function() {
+					$('.sliderMainImageBox > .sliderArrowLeft, .sliderMainImageBox > .sliderArrowRight').hide('normal');
+					setSliderInterval(); // запускаем заново пролистывание слайдера
+				} );
+				/* arrows preview */
+				$('.sliderSub').on('mouseenter', function() {
+					$('.sliderSub > .sliderArrowLeft, .sliderSub > .sliderArrowRight').show('normal');
+					control = false; // отключаем функцию, которая сравнивает позицию главного и превью
+				} );
+				$('.sliderSub').on('mouseleave', function() {
+					$('.sliderSub > .sliderArrowLeft, .sliderSub > .sliderArrowRight').hide('normal');
+					control = true; // включаем функцию
+				} );
+				/* выкидывалка заголовков у превьюшек */
+				$('.sliderPreviewItem').on('mouseenter', function() {
+					$(this).find('.sliderPreviewItemInner > .sliderHeaders').show('normal');
+				} );
+				$('.sliderPreviewItem').on('mouseleave', function() {
+					$(this).find('.sliderPreviewItemInner > .sliderHeaders').hide('normal');
+				} );
+					
+				/* slider adaptation after resizing */
+				$(window).on('resize', function() {
+					$('.sliderBody, .sliderMainImageBox').height( 	
+						$('.sliderBody').width() * 0.62
+					);
+					$('.sliderPreviewItem').height( 	
+						$('.sliderPreviewItem').width() * 0.38
+					);
+					$('.sliderAdv').height( 
+						$('.sliderBody').height() + $('.sliderPreviewItem').height()
+					);
+					$('.sliderAdvBody').height( $('.sliderAdv').height() );
+					$('.sliderPreviewItemInner').height( $('.sliderPreviewItem').height() );
+				} );
+				
+				/* main slider Core */
+				var elements = $('.sliderContent > .sliderContentItem'); // блоки слайдера с фото и заголовками
+				var totalSub = $('.sliderPreview .sliderPreviewItem'); // все элементы превью внизу слайдера
+				var current = 1; // стартовое значение
+				function allMainHide(){
+					elements.each( function(i, elem){
+						$(elem).css({'display':'none'}); // сначала скрываем все блоки в слайдере
+					} );
+				}
+				function checkSliderPosition(control) {
+					if (control == false) { console.log('false'); return false; }
+					if ( totalSub.eq(current-1).is(':hidden') ) { // если элемент, прядковый номер которого == с прядковым номером элемента, который отображается в главном блоке; также он является скрытым; скрываются все родительские блоки подобных элементов с превьюхами, а лишь родитель данного блока делается видимым
+						$('.sliderPreview > .sliderPreviewBox').each( function(i, elem){
+							$(elem).css({'display':'none'});
+						} );
+						totalSub.eq(current-1).parent('.sliderPreviewBox').slideDown('slow');
+					}
+				}
+				function activeSub() {
+					totalSub.each( function(i, elem){
+						$(elem).on('click', function() {
+						console.log(i);
+							if ( elements.eq(i).is(':hidden') ) {
+								clearInterval(sliderInterval);
+								allMainHide();
+								elements.eq(i).slideDown('slow');
+								setSliderInterval();
+								current = i;
+							} else {
+								clearInterval(sliderInterval);
+								setSliderInterval();
+							}
+						} );
+					} );
+				}
+				
+				allMainHide();
+				activeSub();
+				
+				elements.eq(current-1).slideDown('slow'); // открывает первый элемент
+				$('.sliderMainImageBox > .sliderArrowLeft').on('click', function(){
+					elements.eq(current-1).slideUp('slow');
+					current--;
+					if( current < 1 ) {
+						current = $('.sliderContent > .sliderContentItem').length;
+					}
+					elements.eq(current-1).slideDown('slow');
+					checkSliderPosition(control);
+				} );
+				$('.sliderMainImageBox > .sliderArrowRight').on('click', function(){
+					elements.eq(current-1).slideUp('slow');
+					current++;
+					if( current > $('.sliderContent > .sliderContentItem').length ) {
+						current = 1;
+					}
+					elements.eq(current-1).slideDown('slow');
+					checkSliderPosition(control);
+				} );
+				/* end main slider Core */
+				
+				/* sub slider Core */
+				var elementsSub = $('.sliderPreview > .sliderPreviewBox');
+				elementsSub.each( function(i, elem){
+					$(elem).css({'display':'none'});
+				} );
+				var currentSub = 1; // стартовое значение
+				elementsSub.eq(currentSub-1).slideDown('slow'); // открывает первый элемент
+				$('.sliderSub > .sliderArrowLeft').on('click', function(){
+					elementsSub.eq(currentSub-1).slideUp('slow');
+					currentSub--;
+					if( currentSub < 1 ) {
+						currentSub = $('.sliderPreview > .sliderPreviewBox').length;
+					}
+					elementsSub.eq(currentSub-1).slideDown('slow');
+				} );
+				$('.sliderSub > .sliderArrowRight').on('click', function(){
+					elementsSub.eq(currentSub-1).slideUp('slow');
+					currentSub++;
+					if( currentSub > $('.sliderPreview > .sliderPreviewBox').length ) {
+						currentSub = 1;
+					}
+					elementsSub.eq(currentSub-1).slideDown('slow');
+				} );
+				/* end sub slider Core */
+				
+				/* self sliding */
+				var sliderDellay = 4500; // value / 1000 = 1s
+				var sliderInterval; // создаем
+				function setSliderInterval(){
+					sliderInterval = setInterval( function(){
+						$('.sliderMainImageBox > .sliderArrowRight').trigger('click');
+					} , sliderDellay);
+				}
+				setSliderInterval();
+				/* end self sliding */
+			} );
+		</script>
+	</head>
+	<body>
+	
+		<div class="slider">
+			<div class="sliderInn">
+				<div class="sliderCore">
+					<div class="sliderBody">					
+						<div class="sliderMainImageBox">
+							<img class="sliderArrowLeft" src="arrow_l.png">
+							<img class="sliderArrowRight" src="arrow_r.png">
+							<ul class="sliderContent">
+								<li class="sliderContentItem">
+									<a href="#">
+										<img class="sliderMainImage" src="http://cs616627.vk.me/v616627670/1f3ec/51iT--Qb48E.jpg">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain">Заголовок 1-й статьи</p>
+											<p class="sliderHeadersSub">Подзаголовок 1-й статьи в слайдере</p>
+										</div>
+									</a>
+								</li>
+								<li class="sliderContentItem">
+									<img class="sliderMainImage" src="http://cs7056.vk.me/c540105/v540105121/2c629/SAG3g3sSYVc.jpg">
+									<div class="sliderHeaders">
+										<p class="sliderHeadersMain">Заголовок 2-й статьи</p>
+										<p class="sliderHeadersSub">Подзаголовок 2-й статьи в слайдере</p>
+									</div>
+								</li>
+								<li class="sliderContentItem">
+									<img class="sliderMainImage" src="http://cs408622.vk.me/v408622768/1aa9/HLvOn2Nxc6M.jpg">
+									<div class="sliderHeaders">
+										<p class="sliderHeadersMain">Заголовок 3-й статьи</p>
+										<p class="sliderHeadersSub">Подзаголовок 3-й статьи в слайдере</p>
+									</div>
+								</li>
+								<li class="sliderContentItem">
+									<img class="sliderMainImage" src="http://cs543105.vk.me/v543105113/a028/UTCYPcXuEtM.jpg">
+									<div class="sliderHeaders">
+										<p class="sliderHeadersMain">Заголовок 4-й статьи</p>
+										<p class="sliderHeadersSub">Подзаголовок 4-й статьи в слайдере</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="sliderSub">
+							<img class="sliderArrowLeft" src="arrow_l.png">
+							<img class="sliderArrowRight" src="arrow_r.png">
+							<ul class="sliderPreview">
+								<li class="sliderPreviewBox">
+									<div class="sliderPreviewItem">
+										<div class="sliderPreviewItemInner">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain Prev">Заголовок статьи</p>
+										</div>
+											<img class="sliderPreviewImage" src="http://cs616627.vk.me/v616627670/1f3ec/51iT--Qb48E.jpg">
+										</div>
+									</div>
+									<div class="sliderPreviewItem">
+										<div class="sliderPreviewItemInner">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain Prev">Заголовок статьи</p>
+										</div>
+											<img class="sliderPreviewImage" src="http://cs7056.vk.me/c540105/v540105121/2c629/SAG3g3sSYVc.jpg">
+										</div>
+									</div>
+									<div class="sliderPreviewItem">
+										<div class="sliderPreviewItemInner">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain Prev">Заголовок статьи</p>
+										</div>
+											<img class="sliderPreviewImage" src="http://cs408622.vk.me/v408622768/1aa9/HLvOn2Nxc6M.jpg">
+										</div>
+									</div>
+								</li>
+								<li class="sliderPreviewBox">
+									<div class="sliderPreviewItem">
+										<div class="sliderPreviewItemInner">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain Prev">Заголовок статьи</p>
+										</div>
+											<img class="sliderPreviewImage" src="http://cs543105.vk.me/v543105113/a028/UTCYPcXuEtM.jpg">
+										</div>
+									</div>
+									
+									<div class="sliderPreviewItem">
+										<div class="sliderPreviewItemInner">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain Prev">Заголовок статьи</p>
+										</div>
+											<img class="sliderPreviewImage" src="http://cs7056.vk.me/c7008/v7008852/73dbb/3wQ790X6s-I.jpg">
+										</div>
+									</div>
+									<div class="sliderPreviewItem">
+										<div class="sliderPreviewItemInner">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain Prev">Заголовок статьи</p>
+										</div>
+											<img class="sliderPreviewImage" src="http://cs7056.vk.me/c7008/v7008852/73dbb/3wQ790X6s-I.jpg">
+										</div>
+									</div>
+								</li>
+								<li class="sliderPreviewBox">
+									<div class="sliderPreviewItem">
+										<div class="sliderPreviewItemInner">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain Prev">Заголовок статьи</p>
+										</div>
+											<img class="sliderPreviewImage" src="http://cs7056.vk.me/c7008/v7008852/73dbb/3wQ790X6s-I.jpg">
+										</div>
+									</div>
+									<div class="sliderPreviewItem">
+										<div class="sliderPreviewItemInner">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain Prev">Заголовок статьи</p>
+										</div>
+											<img class="sliderPreviewImage" src="http://cs7056.vk.me/c7008/v7008852/73dbb/3wQ790X6s-I.jpg">
+										</div>
+									</div>
+									<div class="sliderPreviewItem">
+										<div class="sliderPreviewItemInner">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain Prev">Заголовок статьи</p>
+										</div>
+											<img class="sliderPreviewImage" src="http://cs7056.vk.me/c7008/v7008852/73dbb/3wQ790X6s-I.jpg">
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="sliderAdv">
+					<div class="sliderAdvBody">
+						<img class="sliderAdvImage" src="adv.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</body>
+</html>

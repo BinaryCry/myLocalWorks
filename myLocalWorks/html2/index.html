@@ -1,0 +1,2381 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="initialscale=1.0, width=device-width">
+        <!--
+        initialscale=1.0 - браузер устройства с маленьким экраном не будет пытаться уместить весь сайт в маленькое окно; 
+        соотношение разрешения будет 1 к 1 что на мобильно, что на обычном дисплее
+        width=device-width - ширина самой области просмотра будет равна ширине экрана устройства
+         --> 
+		<title>MedTheme2</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<style type="text/css">
+		@font-face {
+			font-family: 'Open Sans Bold';
+			src: url(Fonts/open_sans_bold_0.ttf);
+		}
+		@font-face {	
+			font-family: 'Open Sans Italic';
+			src: url(Fonts/open_sans_italic_0.ttf);
+		}
+		@font-face {
+			font-family: 'Open Sans';
+			src: url(Fonts/open_sans_regular_0.ttf);
+		}
+		@font-face {
+			font-family: 'Open Sans Semibold';
+			src: url(Fonts/open_sans_semibold_0.ttf);
+		}		
+			html {
+				font-family: 'Open Sans';
+				color: #525252;
+				font-size: 1em;
+			}
+            body {
+                margin: 0;
+                background-color: #fff;
+                min-width: 1280px;
+            }
+			#Up, #Inside {
+				width: 85%;
+				max-width: 1600px;
+			/*	overflow: hidden; */
+				margin: 1.5625em auto 0;
+			}
+            #Inside {
+                margin-top: 0;
+            }
+            #Down {
+                background-color: #f6f6f6;
+                overflow: hidden;
+                margin-top: 1.5em;
+            }
+			#Logo {
+				width: 25%;
+				height: 50px;
+				float: left;
+                background-image: url('logo_f3.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                cursor: pointer;
+			}
+			#Info {
+				width: 60%;
+				float: left;
+			}
+            #innrInfo {
+				margin: 0 5% 0 8%;
+			}
+            .achInfo {
+                float: left;
+                box-sizing: border-box;
+                border: 1px solid #e8e8e8;
+                margin-right: .5em;
+                overflow: hidden;
+                padding-left: .5em;
+            }
+            .achInfo:hover {
+                cursor: pointer; /* default; */
+            }
+            .achInfo:last-child .descInfo {
+               margin-right: 1em;
+            }
+            .achInfo p {
+                margin: 0;
+            }
+            .achInfo p:first-child {
+                font-family: 'Open Sans Bold';
+                font-size: 1.3125em;
+                margin-top: .5em;
+            }
+            .achInfo p:last-child  {
+                font-size: 0.875em;
+            }
+            .aptInfo {
+                color: #0087bf;
+            }
+            .docInfo {
+                color: #005c9d;
+            }
+            .filInfo {
+                color: #001d69;
+            }
+            .imgInfo {
+                float: left;
+                margin-right: .55em;
+                overflow: hidden;
+                height:  4.2857142857142857142857142857143em; 
+            }
+            .imgInfo img {
+                height: 70px;
+            }
+            .descInfo {
+                float: right;
+                margin-right: 1.5em;
+            }
+			#Info h3 {
+				margin: 0 0 1em;
+				color: #001d69;
+				text-transform: uppercase;
+				/* font-size: 1.3125em; */
+				font-size: 1.5em;
+                line-height: 1em;
+			}
+			#Phones {
+				width: 15%;
+				height: 50px;
+				float: left;
+			}
+            #Phones div#shortNum {
+                border: 1px solid #d24a43;
+                text-align: center;
+                color: #d24a43;
+            }
+            #Phones div#shortNum p  {
+                text-transform: uppercase;
+                margin: 0;
+            }
+            #Phones div#shortNum p:first-child  {
+                font-size: .8em;
+                margin-top: .5em;
+            }
+            #Phones div#shortNum p:last-child  {
+                font-size: 1.5em;
+                font-family: 'Open Sans Bold';
+                margin: .2em 0;
+            }
+            #Phones #actionPhone {
+                position: relative;
+                z-index: 100;
+            }
+            #Phones > div:last-child {
+                border: 1px solid #e8e8e8;
+                text-align: center;
+                font-size: .9em;
+                margin-top: .5em;
+            }
+            #Phones > div:last-child span#mainPhone {
+                line-height: 2.8em;
+            }
+            #Phones > div:last-child span#mainPhone:after {
+                content: '\25bc';
+                padding-left: .5em;
+                font-size: .8em;
+            }
+            .afterNONE:after {
+                display: none;
+            }
+            #Phones #subPhones {
+                border: 0px none;
+                display: none;
+                padding-bottom: 1.05em;
+            }
+            #Phones #subPhones:hover {
+            }
+            #Phones #subPhones span {
+               /* line-height: 1.5em; */
+            }
+            #Phones > div:last-child, #Phones #subPhones {
+                background-color: #fff;
+            }
+            #Phones div#shortNum, #Phones > div:last-child, #Phones #subPhones, .achInfo, #Menu ul#mainMenu, #backHome, #buttons li, .mainBox {
+                border-radius: 0.35714285714285714285714285714286em;
+            }
+            
+            /* ------------------------------- */
+            #Menu ul#mainMenu, #backHome, .submitSearch {
+                border-bottom: 2px solid #871f19;
+            }
+			#Menu {
+                position: relative;
+			}
+			#Menu ul#mainMenu {
+				list-style: none;
+                padding: 0;
+				float: right; /* right; */
+               /* width: 94.9%; */
+				background-color: #d24a43;
+                overflow: hidden;
+			}
+			#Menu ul#mainMenu li.mainMenuItem {
+				float: left;
+                padding: .5em 0;
+                z-index: 50;
+                text-align: center;
+                display: block;
+			}
+			#Menu ul#mainMenu li.mainMenuItem a.mainMenuItemLink{
+				display: block;
+                color: #fff;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 0.875em;
+                padding: .2em 1.2em;
+                border-right: 1px solid #fff;
+			}
+         /*   #Menu ul li a:after {
+                content: "|";
+                display: block;
+                position: absolute;
+                top: 22%;
+                right: -2%;
+                color: #fff;
+            } */
+            #Menu ul#mainMenu li.mainMenuItem:last-child a.mainMenuItemLink{
+                border-right: 0px none;                  
+			}
+			#backHome {
+				width: 4.5%;
+                background-image: url('icon/icon_home.png');
+				background-color: #d24a43;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 55%;
+				height: 2.5em;
+				float: left;
+                cursor: pointer;
+			}
+            #Menu ul#mainMenu, #backHome {
+                margin: 0em 0 .25em 0;
+            }
+            
+            #Menu ul#mainMenu li.mainMenuItem:hover, #backHome:hover {
+                background-color: #001d69;
+            }
+            #backHome:hover {
+                border-bottom: 2px solid #00154c;
+            }
+            /* -------- */
+            .hiddenMenu {
+                width: 100%;
+                overflow: hidden;
+                position: absolute;
+                left: 0;
+                display: none;
+                z-index: 11;
+            }
+            .hiddenMenu ul.subMenu {
+                padding: .4em 0;
+                margin: .4em 0;
+                list-style: none;
+                overflow: hidden;
+                background-color: #fff;
+                border-radius: 0 0 0.35714285714285714285714285714286em 0.35714285714285714285714285714286em;
+                box-shadow: 0 3px 3px rgba(0,0,0,0.15);
+                
+                border: 2px solid #fff;
+                box-sizing: border-box;
+            }
+            .hiddenMenu ul.subMenu li.subMenuItem {
+                float: left;
+              /*  width: 25%; */
+                width: 33.333333333333333333333333333333%;
+                text-align: left;
+                font-size: 0.875em;
+            }
+            .hiddenMenu ul.subMenu li.subMenuItem a.subMenuItemLink {
+                display: block;
+                text-decoration: none;
+                color: #525252;
+                padding: .25em 0 .25em 1em;
+            }
+            .hiddenMenu ul.subMenu li.subMenuItem:hover {
+                background-color: #f6f6f6;
+            }
+            
+            /* -------------- */
+			#Search {
+				background: #005c9d;
+                background: linear-gradient(to bottom, #0087bf, #005c9d, #001d69);
+                margin-top: .021em;
+                height: 3.6em;
+                padding: 1em 0 0;
+                position: relative;
+			}
+            #inSearch {
+                margin: 0em 1em 0em;
+                background-color: transparent;
+            }
+            #inSearchLeft {
+                float: left;
+                width: 66%;
+            }
+            #inSearchCenter {
+                float: left;
+                width: 24%;
+            }
+            #inSearchRight {
+                float: right;
+                width: 10%;
+            }
+            .inSearchFilters {
+                width: 48.5%;
+                float: left;
+                padding: 0;
+                border: 0 none;
+                margin-right: 1.25%;
+                margin-bottom: .65em;
+                border-radius: 0.35714285714285714285714285714286em;
+                background-color: #f6f6f6;
+                height: 2.5em;
+                box-shadow: inset 0px 0px 4px rgba(0,0,0,0.3);
+                position: relative;
+                background-image: url('icon/arrow_down.png');
+                background-position: 97% 55%;
+                background-repeat: no-repeat;
+                display: none;
+            }
+            .inSearchFilters.search {
+                background-image: none !important;
+                box-shadow : 0px 0px 3px 2px rgb(165, 225, 250);
+                display: block;
+                width: 97%;
+            }
+			
+			.Box .inSearchFilters {
+				display: block;
+			}
+			
+            .innrF {
+                position: absolute;
+                width: 100%;
+                top: 0;
+                left:0;
+                z-index: 1;
+            }
+            .activeF {
+                cursor: pointer;
+                display: none;
+            }
+            .inSearchFilters ul.filters li, .inSearchFilters input, span.current {
+                line-height: 2.75em;
+                padding-left: 1em;
+                font-size: .9em;
+                color: #b5b5b5;
+            }
+            .inSearchFilters ul.filters li {
+                color : #525252;
+                line-height : 2.25em;
+            }
+            .inSearchFilters ul.filters {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                position: absolute;
+                top: 2.5em;
+                width: 100%;
+                border-radius: 0px 0px 0.35714285714285714285714285714286em 0.35714285714285714285714285714286em;
+                overflow: hidden;
+                background-color: #fff;
+                display: none;
+            }
+            ul.filters li:hover {
+                background-color: #f6f6f6;
+            }
+            .inSearchFilters input {
+                background-color: transparent;
+                border: 0px none;
+                width: 92.5%;
+            }
+            .inSearchFilters input:focus {
+                color: #525252;
+            }
+            .inSearchFiltersCheck {
+                height: 2.5em;
+                /* width: 100%; */
+                /* float: left; */
+                margin-bottom: .65em;
+                position: relative;
+                box-sizing: border-box;
+                border: 1px solid transparent;
+                cursor: pointer;
+            }
+            .inSearchFiltersCheck:first-child {
+                width: 45%;
+                float: left;                
+            }
+            .inSearchFiltersCheck:last-child {
+                width: 52%;
+                float: right;                
+            }
+            .inSearchFiltersCheck:hover {
+                border: 1px solid #fff;
+                border-radius: 0.35714285714285714285714285714286em;
+            }
+            .checkBox {
+                width: 1.25em;
+                height: 1.25em;
+                border-radius: 0.35714285714285714285714285714286em;
+                background-color: #f6f6f6;
+                position: absolute;
+                left: .5em;
+                top: .6em;
+                float: left;
+                z-index: 10;
+            }
+            .checkBox div {
+                margin-left: 1.8em;
+            }
+            .checkBox div span {
+                padding-left: 1.8em;
+                background-image: url('icon/arrow_clock.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+                white-space: nowrap;
+                color: #fff;
+            }
+            .submitSearch {
+                float: right;
+                display: block;
+                background-color: #d24a43;
+                color: white;
+                text-transform: uppercase;
+                border-radius: 0.35714285714285714285714285714286em;
+                border-top: 0px none;
+                border-right: 0px none;
+                border-left: 0px none;
+                padding: .6em 1.5em;
+                font-family: 'Open Sans';
+                font-size: .875em;
+                cursor: pointer;
+            }
+            .submitSearch:hover {
+                background-color: #001d69;
+                border-bottom: 2px solid #00154c;
+            }
+            #openCloseF {
+                background-color: #001d69;
+                background-image: url('icon/openF.png');
+                background-repeat: no-repeat;
+                background-size: 40%;
+                background-position: top center;
+                position: absolute;
+                top: 100%;
+                right: 1.4%;
+                height: 1em;
+                width: 2.5em;
+                border-radius: 0 0 0.35714285714285714285714285714286em 0.35714285714285714285714285714286em;
+                cursor: pointer;
+            }
+            
+            
+            /* ----------------- */
+            .slider {
+				width: 100%;
+                margin: 0 0 .5em 0;
+			/*	border: 1px solid grey;
+				box-sizing: content-box; */
+			}
+			.sliderInn {
+			/*	margin: .5%; */
+			}
+			.sliderCore {
+				width: 70%;
+				float: left;
+			}
+			.sliderAdv {
+				float: right;
+				width: 30%;
+			}
+            .sliderAdvItem {
+                float: left;
+                width: 100%;
+            }            
+			.sliderBody {
+				background-color: #0087bf;
+			}
+			.sliderMainImageBox {
+				position: relative;
+			}
+			.sliderMainImageBox {
+				width: 100%;
+			}
+			.sliderMainImage, .sliderAdvImage {
+				min-width: 100%;
+				width: 100%;
+			}
+			.sliderInn, .sliderMainImageBox, .sliderHeaders {
+				overflow: hidden;
+			}
+			.sliderArrowLeft, .sliderArrowRight {
+				position: absolute;
+				width: 2%;
+				opacity: .6;
+				cursor: pointer;
+				display: none;
+			}
+			.sliderArrowLeft {
+				top: 40%;
+				left: 2%;
+			}
+			.sliderArrowRight {
+				top: 40%;
+				right: 2%;
+			}
+			.sliderArrowLeft:hover, .sliderArrowRight:hover {
+				opacity: 1;
+				-moz-transition: .5s;
+			}
+			.sliderArrowLeft:active, .sliderArrowRight:active {
+				opacity: .5;
+				-moz-transition: .2s;
+			}
+            /* заголовок */
+			.sliderHeaders {
+				position: absolute;
+				bottom: 5%;
+                left: 5%;
+				width: 28%;
+                background: #005c9d;
+                background: linear-gradient(to bottom, #0087bf, #005c9d, #001d69);
+                border-radius: 50%;
+			}
+			.sliderHeaders p {
+				color: #fff;
+				font-size: 1.2em;
+                text-align: center;
+			}
+            /* --------------------- */
+			.sliderContent, .sliderPreview {
+				margin: 0;
+				padding: 0;
+                list-style: none;
+			}
+			.sliderContentItem {
+				float: left;
+				display: inline-block;
+			}
+			.slider a {
+				display: block;
+			}
+			/* скрыть картинки, а потом скриптом открыть */
+			.sliderContentItem {
+				display: none;
+			}
+            .sliderPreview {
+                position: absolute;
+                bottom: 6.5%;
+            }
+            .sliderPreviewBox {
+                width: 1.25em;
+                height: 1.25em;
+                float: left;
+                margin-right: .75em;
+                top: 0;
+                left: 0;
+                position: static;
+                cursor: pointer;
+            }
+            .sliderPreviewBox:last-child {
+                margin-right: 0;
+            }
+            
+            /* ----------------- */
+            
+			
+			#Content {
+                overflow: hidden;
+				background-color: #fff;
+			}
+			#Main {
+				width: 70%;
+                float: left;
+                margin-bottom: 2em;
+			}
+            #innerContent {
+                padding: 1em 0em 1em 1.5em;
+            }
+            #innerContent h1 {
+                border-bottom: 1px solid #001d69;
+            }
+			#innerContent h1, #innerContent h2 {
+				line-height: 1.5em;
+                font-size: 1.5em;
+                margin: 0;
+                text-transform: uppercase;
+                color: #001d69;
+			}
+            #innerContent a {
+                font-family: 'Open Sans Bold';
+                color: #001d69;
+            }
+            #innerContent a:hover {
+                color: #0087bf;
+            }
+			#Aside {
+                width: 28%;
+				float: right;
+			}
+            .banner {
+                background-color: #e8e8e8;
+                margin:  0 auto;
+                width: 89.5%;
+                margin-top: 1em;
+                text-align: center;
+            }
+			.clearfix {
+				clear: both;
+			}
+			#Footer {
+				background-color: #001d69;
+                color: #fff;
+                overflow: hidden;
+                font-family: 'Open Sans Semibold';
+                font-size: .8em;
+			}
+            .footerItem {
+                width: 33.333333333333333333333333333333%;
+                float: left;
+                text-align: center;
+                padding: 1em 0;
+            }
+            .contacts {
+                text-align: center;
+            }
+            .contacts a {
+                color: #fff;
+                text-decoration: none;
+            }
+            #sm {
+                margin: 0;
+                padding: 0;
+                margin-left: 50%;
+                margin-top: .35em;
+            }
+            #sm li {
+                list-style: none;
+                margin-right: 1em;
+                float: left
+            }
+            
+			.semi {
+                font-family: 'Open Sans Semibold';
+            }
+            #scroller {
+                position: fixed;
+                right: 2.15%;
+                bottom: 4%;
+                background-color: #001d79;
+                
+                background-image: url('icon/closeF.png');
+                background-repeat: no-repeat;
+                background-size: 55%;
+                background-position: center center;
+                
+                
+                box-shadow: 0 3px 3px rgba(0,0,0,0.15);               
+                width: 2.5em;
+                height: 2.5em;
+                cursor: pointer;
+                display: none;
+                text-align: center;
+                line-height: 50px;
+                color: white;
+                font-family: 'Open Sans Bold';
+                border-radius: 5px;
+            }
+            #scroller:hover {
+                background-color: #0087bf;
+            }
+            
+            /* ---------------------------- BOXES */
+            
+            #controlPanel {
+                margin: 1em 0 6em;
+            }
+            #controlPanel .activeF {
+                display: block;
+                float: right;
+            }
+            #controlPanel .inSearchFilters, .Box .inSearchFilters {
+                margin: 0;
+                height: 2.5em;
+                box-shadow: none;
+                width: 25.5%;
+            }
+			.Box .inSearchFilters {
+				width: 100%;
+			}
+			.Box .inSearchFilters span {
+				padding-left: 1em;
+			}
+			
+            #controlPanel .inSearchFilters, #controlPanel ul#buttons li, .mainBox, #controlPanel ul.filters, .Box .inSearchFilters, .Box ul.filters, .Box ul#buttons li {
+                box-sizing: border-box;
+                border: 1px solid #e8e8e8;
+            }
+			
+            #controlPanel ul.filters, .Box ul.filters {
+                border-top: 0px none;
+                width: 101%;
+                margin-left: -1px;
+            }
+			.Box ul.filters {
+                width: 101.5%;
+				
+			}
+            #controlPanel ul#buttons, .Box ul#buttons {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                text-transform: uppercase;
+            }
+            #controlPanel ul#buttons li, .Box ul#buttons li {
+                float: left;
+                padding: .5em 1em;
+                margin-right: .5em;
+                cursor: pointer;
+            }
+            #controlPanel ul#buttons li:hover, .Box ul#buttons li:hover {
+                color: #00154c;
+            }
+			.Box ul.filters li {
+				float: left !important;
+				width: 100%;
+			}
+			.Box ul.filters li:last-child {
+				margin-bottom: 0;
+			}
+			
+            .Box {
+				margin-bottom: 1em;
+            }
+            .mainBox {
+                /* small
+                width: 33.333333333333333333333333333333%;
+                float: left;
+                */
+            }
+            .innrMainBox {
+                border: 1px solid #f6f6f6;
+                border-bottom: 2px solid #f34942;
+                border-radius: 0 0 0.35714285714285714285714285714286em 0.35714285714285714285714285714286em;
+                
+                /* small
+                margin: .5em;
+                */
+            }
+			.News .innrMainBox, .Results .innrMainBox {
+				overflow: hidden;
+			}
+            .innrImgBox {
+                /* bg img in style */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 55%;
+                
+                width: 32%;
+                background-color:  #fff;
+                float: left;
+				
+				box-sizing: border-box;
+				border-right: 1px solid rgb(232, 232, 232);
+				border-bottom: 1px solid rgb(232, 232, 232);
+				border-radius: 0 0 0.35714285714285714285714285714286em 0;
+            }
+			.News .innrImgBox {
+                background-size: cover;
+			}
+            .innrDataBox {
+                float: right;
+                width: 68%;
+                margin-top: .25em;
+            }
+            .Results .innrDataBox {
+                width: 100%;
+            }
+            .higherBox {
+                background-color: #f6f6f6;
+                width: 68%;
+                float: right;
+				min-height: 1em;
+            }
+            .Results .higherBox {
+                width: 100%;
+            }
+			.resultTable {
+				width: 100%;
+				margin-bottom: .5em;
+			}
+			.resultTable tbody {
+				margin-bottom: 1em;
+			}
+			.resultTable tr {
+				border-bottom: 1px solid #e8e8e8;
+				overflow: hidden;
+			}
+			.resultTable tr:last-child {
+				border-bottom: 0px none;
+			}
+			.resultTable tr p {
+				padding: .2em 1em;
+				margin: 0;
+			}
+			.resultTable tr, .resultTable td {
+				display: block;
+			}
+			td.phName {
+				width: 78%;
+				float: left;
+			}
+			td.phPrice {
+				width: 18%;
+				float:right;
+				text-align: right;
+			}
+			.higherBox .dateBox {
+                font-size: 0.875em;
+				float: right;
+				padding-right: .5em;
+			}
+            .lowerBox {
+                margin-left: .5em;
+            }
+            .diamond {
+                background-color: transparent;
+                background-image: url('icon/cards/bookmark.png');
+                background-repeat: no-repeat;
+                
+                height: 3.625em; /* 58px; */
+                width: 3.4375em; /* 55px; */
+                
+                float: left;
+                margin-right: .5em;
+                margin-top: -0.72em;
+            }
+			.notVip .diamond {
+				display: none;
+			}
+            .clientNameDescBox {
+                float: left;
+            }
+            h3.clientName {
+                margin: 0;
+                font-size: 1.2em;
+                text-transform: uppercase;
+            }
+			h3.clientName a {
+				text-decoration: none;
+                color: #d24a43 !important;
+			}
+			.notVip h3.clientName a {
+				text-decoration: none;
+                color: #001d69 !important;
+			}
+			.News h3.clientName a {
+				text-decoration: none;
+                color: green !important;
+			}
+			h3.clientName a:hover {
+				opacity: .75;
+			}
+            p.simple {
+                margin: 0;
+                font-size: 0.875em;
+                color: #525252; 
+            }
+            .infoPanel, .infoBox {
+                clear: both;
+            }
+            .infoBox {
+				padding: .5em 1em .5em;
+            }
+			.News .innrMainBox {
+				border-bottom: 2px solid green;
+			}
+			.notVip .innrMainBox {
+				border-bottom: 2px solid #001d69;
+			}
+			.News .infoBox {
+				clear: none !important;
+				width: 68%;
+				float: right;
+				padding: 0;
+				margin-top: 1em;
+				min-height: 4em;
+				overflow: hidden;
+			}
+			.News .infoBox p.simple {
+				padding: 0 1em .5em;
+			}
+			.News .clientNameDescBox h3, .notVip .clientNameDescBox h3  {
+				padding-left: .45em;
+			}
+			
+			.News .clientNameDescBox p, .notVip .clientNameDescBox p {
+				padding-left: .65em;
+			}
+			.News .clientNameDescBox h3 {
+				color: green;
+			}
+			.News .clientNameDescBox p {
+				font-family: 'Open Sans Semibold';
+			}
+			.boxLink {
+				display: block;
+			}
+            .infoPanel ul {
+                margin: 1em 1em .5em;
+                padding: 0;
+                list-style: none;
+				/* overflow: hidden; */
+            }
+            .infoPanel ul li {
+                display: block;
+                width: 50%;
+				font-size: 0.875em;
+				min-height: 2.5em;
+				margin-bottom: .5em;
+				float: left;
+            }
+            .infoPanel ul li:nth-child(odd) {
+                float: left;
+            }
+            .infoPanel ul li:nth-child(even) {
+                float: right;
+            }
+			.infoPanel ul li a {
+				font-family: 'Open Sans' !important;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			.infoPanel ul li a, .infoPanel ul li span {
+				padding: 0  1.5em 0 3.25em;
+				display: block;
+				float: left;
+				line-height: 1.25em
+			}
+			.boxLink, .boxPhone, .boxAddr, .boxInfo, .boxShed, .boxAdv {
+                background-position: 0 0;
+                background-repeat: no-repeat;
+			}
+			.boxLink {
+				background-image: url('icon/cards/site.png');
+			}
+			.boxPhone {
+				background-image: url('icon/cards/contacts.png');
+			}
+			.boxAddr {
+				background-image: url('icon/cards/address.png');
+			}
+			.boxInfo {
+				background-image: url('icon/cards/information.png');
+			}
+			.boxShed {
+				background-image: url('icon/cards/opening-hours.png');
+			}
+			.boxAdv {
+				background-image: url('icon/cards/comment.png');
+				color: green;
+			}
+			
+			.instrMain {
+				margin-top: 1.5em;
+			}
+			.instrImg {
+				background-color: #fff;
+				background-position: center;
+                background-repeat: no-repeat;
+                background-size: 75%;
+				box-sizing: border-box;
+				border: 1px solid rgb(232, 232, 232);
+				border-radius: 0.35714285714285714285714285714286em;
+				
+				float: left;
+			}
+			.innrInstr {
+				padding-left: 2em;
+			}
+			.instrMainInfo {
+				width: 55%;
+				float: right;
+			}
+			.instrImg {
+				width: 45%;
+			}
+			.instrOtherInfo {
+				margin-top: 2em;
+			}
+			.contr {
+				border-radius: 0.35714285714285714285714285714286em;
+				overflow: hidden;
+				margin: 1.5em 0;
+			}
+			.contrHead {
+				background-color: #fc7037;
+				background-position: 1.5em center;
+                background-repeat: no-repeat;
+				background-image: url('icon/contr.png');
+			}
+			.contrHead p {
+				margin: 0;
+				color: #fff;
+				font-family: 'Open Sans Semibold';
+				padding: 1.5em 0 1.5em 3.5em;
+			}
+			.contrInnr {
+				background-color: #fff6ed;
+				overflow: hidden;
+			}
+			.contrInnr ul {
+				list-style: none;
+				margin: 0;
+				padding: .85em 1.5em;
+			}
+			.contrInnr ul li:before {
+				content: '- ';
+			}
+			
+			.semibold {
+				font-family: 'Open Sans Semibold';
+			}
+			.uppercase {
+				text-transform: uppercase;
+			}
+
+			.filials {
+				width: 100%;
+				font-size: 0.875em;
+				box-sizing: border-box;
+				border: 1px solid #e8e8e8;
+				border-radius: 0.35714285714285714285714285714286em;
+				overflow: hidden;
+				margin-bottom: .5em;
+			}
+			.comb .combInnr {
+				padding: .5em 1em;
+				overflow: hidden;
+				border-bottom: 1px solid #e8e8e8;
+			}
+			.filials:last-child {
+				border-bottom: 0px none;
+			}
+			.filials .top {
+				width: 30%;
+				float: left;
+			}
+			.filials .mid {
+				width: 35%;
+				float: left;
+			}
+			.filials .bot {
+				width: 35%;
+				float: left;
+				background-image: url('icon/arrow_clock_dark.png');
+				background-repeat: no-repeat;
+				background-size: 1.5em;
+			}
+			.bot span {
+				padding-left: 2em;
+			}
+			
+			
+			/* Media Calls */
+			@media screen and (max-width: 320px) {
+	
+			}
+			
+		</style>
+		<script src="jquery.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
+        
+		<script type="text/javascript">
+          
+          $( function(){
+            
+            
+            
+            
+          } )
+            
+		  $(window).on('load', function(){
+		      // GLOBAL
+              var durationValue = 200;
+              var effect = 'blind';
+              function borderChangeOn(elem){
+                elem.animate({
+                    borderColor : '#0087bf',
+                    borderColor : '#005c9d',
+                    borderColor : '#001d69'
+	            },durationValue);
+              }
+              function borderChangeOff(elem){
+                elem.animate({
+                    borderColor : '#005c9d',
+                    borderColor : '#001d69',
+                    borderColor : '#e8e8e8'
+                },durationValue);
+              }
+		      // изменения рамки вокруг ачивок
+              $('.achInfo, #actionPhone, #buttons li').on('mouseenter', function(){
+                  borderChangeOn($(this))
+		      } );
+              $('.achInfo, #actionPhone, #buttons li').on('mouseleave', function(){
+                  borderChangeOff($(this))
+		      } );
+              
+              // показать все телефоны
+              function showPhones() {
+                $('#actionPhone').on('mouseenter', function(){
+                    borderChangeOn($(this))
+                    $('#actionPhone').off('mouseleave')
+                    $('#Phones #subPhones').show(effect,durationValue, hidePhones);
+                    $('#Phones > div:last-child span#mainPhone').addClass('afterNONE');
+                } );
+              }
+              function hidePhones() {
+                  $('#actionPhone').on('mouseleave', function(){
+                     borderChangeOff($(this))
+                     $('#actionPhone').off('mouseenter')
+                     $('#Phones #subPhones').hide(effect,durationValue, showPhones);
+                     $('#Phones > div:last-child span#mainPhone').removeClass('afterNONE');
+    		      } ); 
+              }
+              showPhones(); hidePhones()
+              
+              // Home
+              $('#backHome, #Logo').on('click', function(){
+                document.location = 'http://meddovidka.ua';
+              })
+              
+              // Меню              
+              function menuEqualizer() {
+                var summ=0;
+                var allLi = $('#Menu ul#mainMenu li.mainMenuItem');
+                allLi.each(function(){
+                    summ += $(this).width()
+                });
+                var addition = ( $('#Menu').width() * 0.949 - summ ) / allLi.length;
+                allLi.each(function(){
+                $(this).width( $(this).width() + addition );
+                })
+              }
+              menuEqualizer();
+              $(window).on('resize', menuEqualizer);
+              
+              /* menu borders */ /* show hidden */
+              $('#Menu ul#mainMenu li.mainMenuItem').on('mouseenter', function(){
+                $(this).parent().css({'border-bottom':'2px solid #00154c'})
+                                
+                if( $(this).is(":first-child") ) {
+                    $(this).children('a').css({'border-right' : '1px solid #001D69'})
+                } else if( $(this).is(":last-child")) {
+                    $(this).prev().children('a').css({'border-right' : '1px solid #d24a43'})
+                } else {
+                    $(this).children('a').css({'border-right' : '1px solid #001D69'})
+                    $(this).prev().children('a').css({'border-right' : '1px solid #d24a43'})
+                }
+                $(this).children('.hiddenMenu').css(
+                    {
+                        'display' : 'block',
+                        'top' : $('ul#mainMenu').height() + parseFloat( $('ul#mainMenu').css('margin-top') )
+                    }
+                )
+              });
+              $('#Menu ul#mainMenu li.mainMenuItem').on('mouseleave', function(){
+                $(this).parent().css({'border-bottom':'2px solid #871f19'})
+                
+                if( $(this).is(":first-child") ) {
+                    $(this).children('a').css({'border-right' : '1px solid #fff'})
+                } else if( $(this).is(":last-child")) {
+                    $(this).prev().children('a').css({'border-right' : '1px solid #fff'})
+                } else {
+                    $(this).children('a').css({'border-right' : '1px solid #fff'})
+                    $(this).prev().children('a').css({'border-right' : '1px solid #fff'})
+                }
+                $(this).children('.hiddenMenu').css(
+                    {
+                        'display' : 'none',
+                        'top' : 0
+                    }
+                )
+              })
+              
+              /* filters events */
+              $('.inSearchFilters').on('mouseenter', function(){
+                $(this).css({'background-color' : '#fff'})
+              })
+              $('.inSearchFilters').on('mouseleave', function(){
+                $(this).css({'background-color' : '#f6f6f6'})
+              })
+              
+              $('.inSearchFilters:first-child input').on('focus',function(){
+                    $(this).parent().css({
+                        'background-color' : '#fff',
+                    })
+                    $(this).parent().on('mouseleave', function(){
+                        $(this).css({'background-color' : '#fff'})
+                    })
+              })
+              $('.inSearchFilters:first-child input').on('focusout',function(){
+                    $(this).parent().css({
+                        'background-color' : '#f6f6f6'
+                    })
+                    $('.inSearchFilters').on('mouseleave', function(){
+                        $(this).css({'background-color' : '#f6f6f6'})
+                    })
+              })
+              
+              /* filter activation */
+              /* open */
+              var temp
+              var currentF
+              function open(evnt, elem) {
+                evnt.stopPropagation()
+                    currentF = elem
+                    temp = elem.children('span.current').text()
+                    elem.children('span.current').text('')
+                    elem.css({
+                        "background-image": "url('icon/arrow_up.png')",
+                        "border-radius" : "0.35714285714285714285714285714286em 0.35714285714285714285714285714286em 0 0"
+                        })
+                    elem.children('.innrF').children('ul.filters').css({'display' : 'block'})
+                    /* bg */   
+                    elem.on('mouseleave', function(){
+                        $(this).css({'background-color' : '#fff'})
+                    })
+                    $('.activeF').off('click')
+                    /* clise filter if click anywhere */
+                    $('body').on('click', '*', function(event){
+                        event.stopPropagation()
+                        if( !$(this).hasClass('activeF') ) {
+                            close(currentF)
+                        } else {                            
+                            if( $(this).index() == currentF.index() ) { close($(this)) }
+                                else {
+                                    close(currentF)
+                                    open(event, $(this))
+                                }
+                        }
+                    })
+              }
+              function close(elem){
+                elem.children('span.current').text(temp)
+                    elem.css({
+                        "background-color" : "#f6f6f6",
+                        "background-image" : "url('icon/arrow_down.png')",
+                        "border-radius"    : "0.35714285714285714285714285714286em"
+                    })
+                    elem.children('.innrF').children('ul.filters').css({'display' : 'none'})
+                    elem.on('mouseleave', function(){
+                        elem.css({'background-color' : '#f6f6f6'})
+                    })
+                    /* off any ckick */
+                    $('body').off('click', '*')
+                     $('.activeF').on('click', function(e){
+                        open(e, $(this))
+                     })
+              }
+              $('.activeF').on('click', function(e){
+                open(e, $(this))
+              })
+              /* filters works */
+              $('ul.filters li').on('click', function(e){
+                $(this).parents('.activeF').children('input').val( $(this).data('id') )
+                temp = $(this).text()
+              })
+              
+              /* check */
+              checkBoxes()
+              function checkBoxes(){
+                  $('.inSearchFiltersCheck').each(function(){
+                    if( $(this).children('input').val() == 0 ) {
+                        $(this).children('.checkBox').css({
+                            'background-image' : 'none'
+                        })
+                    } else {
+                        $(this).children('.checkBox').css({
+                            'background-image' : 'url("icon/chkd.png")',
+                            'background-position' : 'center',
+                            'background-size' : '50%',
+                            'background-repeat' : 'no-repeat'
+                        })
+                    }
+                  })
+              }           
+              $('.inSearchFiltersCheck').on('click', function(){
+                if( $(this).children('input').val() == 1 ) {
+                    $(this).children('input').val('0');
+                    $(this).children('.checkBox').css({
+                        'background-image' : 'none'
+                    })
+                } else {
+                    $(this).children('input').val('1');
+                    $(this).children('.checkBox').css({
+                        'background-image' : 'url("icon/chkd.png")',
+                        'background-position' : 'center',
+                        'background-size' : '50%',
+                        'background-repeat' : 'no-repeat'
+                    })
+                }
+              })
+              
+              /* Form Submit (глюк формы) */
+              $('#mainForm').on('submit', function(){
+              //  $('.inSearchFiltersCheck').off('click') // чтобы не вызывать двойной клик при возврате назад
+              })
+              
+              /* simple or full */
+              var flag = true
+              $('#openCloseF').on('click', openOrClose)
+              function openOrClose() {
+                if( flag ) {
+                    var elem = $(this).parent().children().find('.inSearchFilters')
+                    elem.siblings().each(function(){ $(this).css({'display': 'block'})})
+                    elem.css({'width':'48.5%'})
+                    elem.parents('#Search').css({'height':'6.6em'})
+                    elem.parents('#inSearchLeft').css({'width':'78%'})
+                    elem.parents('#inSearch').find('#inSearchCenter').css({'width':'12%'})
+                    elem.parents('#inSearch').find('#inSearchCenter').children('.inSearchFiltersCheck').each(function(){
+                        $(this).css({'width':'100%','float':'left'})
+                    })
+                    $(this).css({'background-image':'url("icon/closeF.png")'})
+                    flag = false                
+                } else {
+                    var elem = $(this).parent().children().find('.inSearchFilters')
+                    elem.siblings().each(function(){$(this).css({'display': ''})})
+                    elem.css({'width':''})
+                    elem.parents('#Search').css({'height':''})
+                    elem.parents('#inSearchLeft').css({'width':''})
+                    elem.parents('#inSearch').find('#inSearchCenter').css({'width':''})
+                    elem.parents('#inSearch').find('#inSearchCenter').children('.inSearchFiltersCheck').each(function(){
+                        $(this).css({'width':'','float':''})
+                    })
+                    $(this).css({'background-image':'url("icon/openF.png")'})
+                    flag = true
+                }
+              }
+              $('#openCloseF').trigger('click')
+              
+              /* Разбор полетов */
+              if ( location.search ) {
+                var tmp   = new Array()
+                var tmp2  = new Array()
+                var param = new Array()
+                var GET = location.search;
+                tmp = (GET.substr(1)).split('&');
+                console.log(tmp)
+                for(var i=0; i < tmp.length; i++) {
+                    tmp2 = tmp[i].split('=');
+                    param[tmp2[0]] = tmp2[1];
+                }
+                for (var i in param) {
+                    $('#inSearchLeft').find('[data-fname="'+i+'"]').children('input').val( decodeURIComponent(param[i]) )
+                    $('#inSearchCenter').find('[data-fname="'+i+'"]').children('input').val( decodeURIComponent(param[i]) )
+                }
+                // сверка после сабмита
+                $('#Search .activeF').each(function(){
+                    $(this).children('span.current').text(
+                        $(this).find('li[data-id='+$(this).children('input').val()+']').text()
+                    )
+                })
+                checkBoxes()
+                //
+              } else {
+                console.log('no GET')
+              }
+              
+              /* scroller */
+              showHideScroller()
+              function showHideScroller(){
+                  if ( $(window).height() < ($(document).scrollTop() * 4) ) {
+                    $('#scroller').show(durationValue)
+                  } else {
+                    $('#scroller').hide(durationValue)
+                  }
+              }
+              $(window).on('scroll', showHideScroller)
+              $('#scroller').on('click', up)
+              function up() {
+                  var top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+                  if(top > 0) {
+                      window.scrollBy(0,-50);
+                      t = setTimeout(up,15);
+                  } else clearTimeout(t);
+                    return false;
+              }
+              
+              /* Logo */
+              logoAdaptation()
+              function logoAdaptation(){
+                $('#Logo').height(
+                    $('#Info').height()
+                  )
+              }
+			  
+              /* ------------------------ */
+			  /* BOXES */
+			  
+			function getHeight(elem) {
+				var H = 0
+				elem.children().each(function(){
+					H += $(this).height()
+				})
+				return H + parseInt(elem.find('.infoBox').css('margin-top')) + parseInt(elem.find('.innrDataBox').css('margin-top'))
+			}
+			  function boxElementsAdaptation(){
+				  $('.infoPanel ul li a, .infoPanel ul li span').each(function(){
+					if( $(this).height() < $(this).parent().height() ) {
+						$(this).css({'margin-top' : 
+							( $(this).parent().height() / 2 ) - ( $(this).height() / 2 )
+						})
+					}
+				  })
+				  $('.innrImgBox').each(function(){
+					if ( $(this).parents('.Box').hasClass('News') ) {
+						$(this).height(
+							getHeight( $(this).parents('.innrMainBox') )
+						)
+					} else {
+						$(this).height(
+							$(this).parents('.Box').children().find('.innrDataBox').height()
+						)
+					}
+				  })
+				  
+				  //$('.innrImgBox').height( $('.innrDataBox').height() )
+			  }
+			  boxElementsAdaptation()
+			  
+              /* ------------------------ */
+			  /* Instruction */
+			  
+			  function instrImgAdapt(){
+				$('.instrImg').height(
+					$('.instrImg').width()
+				)
+			  }
+			  instrImgAdapt()
+			  
+              /* ------------------------ */
+			  
+              /* Slider */
+              
+                /* slider and other adaptations after resizing */
+				$(window).on('resize', function() {
+					sliderAdaptation()
+					advAdaptation()
+                    positionBoxLeft()
+                    normalizeSliderheaders()
+                    sizingHeadersBox()
+                    
+					// not slider
+                    showHideScroller() // скроллер
+                    logoAdaptation() // лого
+					boxElementsAdaptation() // картинки карточек
+					instrImgAdapt() // картинка инструкции
+					littleFix() // фильтр в филиалах
+				} );
+				
+				/* arrows & stop sliding */
+				$('.sliderMainImageBox').on('mouseover', function() {
+					$('.sliderMainImageBox > .sliderArrowLeft, .sliderMainImageBox > .sliderArrowRight').show(durationValue);
+					clearInterval(sliderInterval); // останавливаем автматическое пролистывание
+				} );
+				$('.sliderMainImageBox').on('mouseleave', function() {
+					$('.sliderMainImageBox > .sliderArrowLeft, .sliderMainImageBox > .sliderArrowRight').hide(durationValue);
+					setSliderInterval(); // запускаем заново пролистывание слайдера
+				} );
+                
+                /* клики по стрелкам */
+				$('.sliderMainImageBox > .sliderArrowLeft').on('click', leftSliding )
+                $('.sliderMainImageBox > .sliderArrowRight').on('click', rightSliding )
+                
+                /* Start */
+				var elements = $('.sliderContent > .sliderContentItem'); // блоки слайдера с фото и заголовками
+				var totalSub = $('.sliderPreviewBox'); // все квадратики                
+				var current = 1; // стартовое значение
+                sliderAdaptation() // adaptation
+                advAdaptation()
+                allMainHide(); // скрываем все
+				activeSub(); // включаем отработку кликов по квадратикам
+				elements.eq(current-1).slideDown(durationValue, function(){
+                    current = 1 // бред, но надо
+				}); // открывает первый элемент и позиционируем заголовок
+                sizingHeadersBox() // подстройка размера блока заголовка
+                normalizeSliderheaders() // центровка заголовка по вертикали
+                positionBoxLeft() // кнопки слайдов
+                activBg() // тут и должна быть
+                
+                /* self sliding */
+				var sliderDellay = 14000; // value / 1000 = 1s
+				function setSliderInterval(){
+					sliderInterval = setInterval( function(){
+					rightSliding()
+					} , sliderDellay)
+				}
+				setSliderInterval();
+                
+                /* main slider Core */
+                function leftSliding() {
+                    elements.eq(current-1).slideUp(durationValue);
+					current--;
+					if( current < 1 ) {
+						current = $('.sliderContent > .sliderContentItem').length;
+					}
+					elements.eq(current-1).slideDown(durationValue);
+					checkSliderPosition();
+                    sizingHeadersBox()
+                    normalizeSliderheaders()
+				}
+                function rightSliding() {
+                    elements.eq(current-1).slideUp('slow');
+					current++;
+					if( current > $('.sliderContent > .sliderContentItem').length ) {
+						current = 1;
+					}
+					elements.eq(current-1).slideDown(durationValue);
+					checkSliderPosition();
+                    sizingHeadersBox()
+                    normalizeSliderheaders()
+				}
+                function allMainHide(){
+					elements.each( function(i, elem){
+						$(elem).css({'display':'none'}); // сначала скрываем все блоки в слайдере
+					} );
+				}
+				function checkSliderPosition() {
+                    if ( totalSub.eq(current-1).css('background-image') == 'none' ) {
+						$('.sliderPreviewBox').each( function(i, elem){
+							$(elem).css({
+                                'background-image' : 'none'
+                            })
+						} );
+						totalSub.eq(current-1).css({
+                            'background-image' : 'url("icon/chkd.png")',
+                            'background-position' : 'center',
+                            'background-size' : '50%',
+                            'background-repeat' : 'no-repeat'
+                        })
+					}
+				}
+				function activeSub() {
+                    totalSub.each( function(i, elem){
+                    	$(elem).on('click', function() {
+                    		if ( elements.eq(i).is(':hidden') ) {
+                    			clearInterval(sliderInterval);
+                    			allMainHide();
+                    			elements.eq(i).slideDown(durationValue)                                
+                                sizingHeadersBox()
+                                normalizeSliderheaders()
+                    			setSliderInterval();
+                    			current = i;
+                                activBg($(this))
+                    		} else {
+                    			clearInterval(sliderInterval);
+                    			setSliderInterval();
+                    		}
+                    	} );
+                    } );
+				}
+				
+				/* sub slider Core */
+				function activBg(Elem) {
+                    current++ // here
+				    $('.sliderPreview > .sliderPreviewBox').each( function(i, elem){
+    					$(elem).css({
+                            'background-image' : 'none'
+                        })
+    				})
+                    if(Elem) {
+                        Elem.css({
+                            'background-image' : 'url("icon/chkd.png")',
+                            'background-position' : 'center',
+                            'background-size' : '50%',
+                            'background-repeat' : 'no-repeat'
+                        })
+                    } else {
+                        $('.sliderPreview > .sliderPreviewBox').eq(0).css({
+                            'background-image' : 'url("icon/chkd.png")',
+                            'background-position' : 'center',
+                            'background-size' : '50%',
+                            'background-repeat' : 'no-repeat'
+                        })
+                    }
+				}
+                
+                /* adaptation */
+                function sliderAdaptation(){
+				    $('.sliderBody, .sliderMainImageBox').height( 	
+    					$('.sliderBody').width() * 0.4285714285714285714285714285714
+    				);
+				}
+                function advAdaptation() {
+                    $('.sliderAdv').height( 
+    					$('.sliderBody').height()
+    				);
+                    
+                    $('.sliderAdvItem').each(function(){
+                        $(this).height(
+                            $(this).parent().height() / 2
+                        )
+                    })
+                }
+                function positionBoxLeft(){
+                    $('.sliderPreview').css({
+                        'left' : ($('.sliderPreview').parent().width() / 2) - ( $('.sliderPreview').width() / 2 )
+                    })  
+                }
+                
+                /* slider header */
+                function sizingHeadersBox() {
+                    
+                    $('.sliderHeaders').each(function(){
+                        $(this).height( 
+                            $(this).width()
+                        ) 
+                    })
+                }
+                function normalizeSliderheaders(){
+                    $('.sliderHeadersMain').each(function(){
+                        $(this).css({
+                            'margin-top' : ( $(this).parent().height() / 2 ) - ( $(this).height() / 2 )
+                        })
+                    })
+                }      
+
+				/* Fix */
+				function littleFix() {
+					$('.Box .inSearchFilters').each(function(){
+						$(this).width(
+							$(this).parents().find('.boxAddr').width() - parseInt($(this).parent().css('padding-left')) - parseInt($(this).parent().css('padding-right'))
+						)
+					})
+				}
+				littleFix()
+              
+		  })
+		</script>
+	</head>
+	<body>    
+		<div id="Up">
+			<div id="Head">
+    			<div id="Logo">
+    			</div>
+    			<div id="Info">
+                    <div id="innrInfo">
+    				  <h3>БЕСПЛАТНАЯ МЕДИЦИНСКАЯ СПРАВОЧНАЯ</h3>
+                      <div>
+                        <div class="achInfo">
+                            <div class="imgInfo"><img src="icon/icon_1.svg"></div>
+                            <div class="descInfo">
+                                <p class="aptInfo">540</p>
+                                <p>аптек</p>
+                            </div>
+                        </div>
+                        
+                        <div class="achInfo">
+                            <div class="imgInfo"><img src="icon/icon_2.svg"></div>
+                            <div class="descInfo">
+                                <p class="docInfo">150</p>
+                                <p>врачей</p>
+                            </div>
+                        </div>
+                        
+                        <div class="achInfo">
+                            <div class="imgInfo"><img src="icon/icon_3.svg"></div>
+                            <div class="descInfo">
+                                <p class="filInfo">126</p>
+                                <p>медучреждений</p>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+    			</div>
+            </div>
+    			<div id="Phones">
+                    <div id="shortNum">
+                        <p>Звонки бесплатные</p>
+                        <p>15 - 77</p>
+                    </div>
+                    <div id="actionPhone">
+                        <span id="mainPhone">(044) 581-6000</span>
+                        <div id="subPhones">
+                            <span>(067) 581-6000</span><br>
+                            <span>(063) 581-6000</span><br>
+                        </div>
+                    </div>
+    		    </div>
+		  </div>
+          
+			<div class="clearfix"></div>
+
+        <div id="Down">
+            <div id="Inside">
+                <div id="Menu">
+    				<div id="backHome">
+    				</div>
+    				<ul id="mainMenu">
+    					<li class="mainMenuItem">
+                            <a class="mainMenuItemLink" href="#">ВСЕ Справочники</a>
+                            <div class="hiddenMenu">
+                                <ul class="subMenu">
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Аптеки</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Клиники</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Институты</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Травмпункты</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Стоматологии</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Диагностика</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Отдых</a></li>
+                                </ul>
+                            </div>
+                        </li>
+    					<li class="mainMenuItem">
+                            <a class="mainMenuItemLink" href="#">Клиники и услуги</a>
+                            <div class="hiddenMenu">
+                                <ul class="subMenu">
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Обследование</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Осмотр</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Советы</a></li>
+                                    <li class="subMenuItem"><a class="subMenuItemLink" href="#">Рекомендации</a></li>
+                                </ul>
+                            </div>
+                            </li>
+    					<li class="mainMenuItem"><a class="mainMenuItemLink" href="#">Аптеки</a></li>
+    					<li class="mainMenuItem"><a class="mainMenuItemLink" href="#">Поиск врача</a></li>
+    					<li class="mainMenuItem"><a class="mainMenuItemLink" href="#">Здоровое тело</a></li>
+    					<li class="mainMenuItem"><a class="mainMenuItemLink" href="#">Новости</a></li>
+    					<li class="mainMenuItem"><a class="mainMenuItemLink" href="#">Акции</a></li>
+    					<li class="mainMenuItem"><a class="mainMenuItemLink" href="#">Контакты</a></li>
+    				</ul>
+    			</div>
+                <div class="clearfix"></div>
+    	
+    			<div id="Search">
+                    <div id="inSearch">
+                        <form id="mainForm">
+                        <div id="inSearchLeft">
+                            <div class="inSearchFilters search" data-fname="search">
+                                <input class="" placeholder="Поиск" type="text" name="search" value="" >
+                            </div>
+                            <div class="inSearchFilters activeF" data-fname="city">
+                                <span class="current">Киев</span>
+                                <input type="hidden" name="city" value="1">
+                                <div class="innrF">
+                                    <ul class="filters">
+                                        <!-- for future   <input type="text"> -->
+                                        <li data-id="1">Киев</li>
+                                        <li data-id="2">Харьков</li>
+                                        <li data-id="3">Львов</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="inSearchFilters activeF" data-fname="region">
+                                <span class="current">Район</span>
+                                <input type="hidden" name="region" value="0">
+                                <div class="innrF">    
+                                    <ul class="filters">
+                                        <li data-id="0">Район</li>
+                                        <li data-id="1">Шевченковский</li>
+                                        <li data-id="2">Голосеевский</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="inSearchFilters activeF" data-fname="metro">
+                                <span class="current">Метро</span>
+                                <input type="hidden" name="metro" value="0">
+                                <div class="innrF">
+                                    <ul class="filters">
+                                        <li data-id="0">Метро</li>
+                                        <li data-id="1">Дорогожичи</li>
+                                        <li data-id="2">Сырец</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="inSearchCenter">
+                            <div class="inSearchFiltersCheck" data-fname="shed1">
+                                <input type="hidden" name="shed1" value="0">
+                                <div class="checkBox">
+                                    <div>
+                                        <span>24 h</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inSearchFiltersCheck" data-fname="shed2">
+                               <input type="hidden" name="shed2" value="0">
+                                <div class="checkBox">
+                                    <div>
+                                        <span>7/24 h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="inSearchRight">
+                            <input class="submitSearch" type="submit" value="ПОИСК">
+                        </div>
+                        </form>
+                    </div>
+                    <div id="openCloseF"></div>
+    			</div>
+                
+                <div class="clearfix"></div>
+    		<!-- Slider -->		
+    			<div class="slider">
+        			<div class="sliderInn">
+        				<div class="sliderCore">
+        					<div class="sliderBody">					
+        						<div class="sliderMainImageBox">
+        							<img class="sliderArrowLeft" src="icon/arrow_l.png">
+        							<img class="sliderArrowRight" src="icon/arrow_r.png">
+        							<ul class="sliderContent">
+        								<li class="sliderContentItem">
+        									<a href="#">
+        										<img class="sliderMainImage" src="http://cs616627.vk.me/v616627670/1f3ec/51iT--Qb48E.jpg">
+        										<div class="sliderHeaders">
+        											<p class="sliderHeadersMain"><span class="semi">ЧТО ДЕЛАТЬ</span><br>если<br>предъявили<br><span class="semi">ЗА ДЕЛО?</span></p>
+        										</div>
+        									</a>
+        								</li>
+        								<li class="sliderContentItem">
+        									<img class="sliderMainImage" src="http://cs7056.vk.me/c540105/v540105121/2c629/SAG3g3sSYVc.jpg">
+        									<div class="sliderHeaders">
+        										<p class="sliderHeadersMain">Заголовок<br>2-й статьи</p>
+        									</div>
+        								</li>
+        								<li class="sliderContentItem">
+        									<img class="sliderMainImage" src="http://cs408622.vk.me/v408622768/1aa9/HLvOn2Nxc6M.jpg">
+        									<div class="sliderHeaders">
+        										<p class="sliderHeadersMain">Заголовок<br>3-й статьи</p>
+        									</div>
+        								</li>
+        								<li class="sliderContentItem">
+        									<img class="sliderMainImage" src="http://cs543105.vk.me/v543105113/a028/UTCYPcXuEtM.jpg">
+        									<div class="sliderHeaders">
+        										<p class="sliderHeadersMain">Заголовок 4-й статьи</p>
+        									</div>
+        								</li>
+        							</ul>
+                                    
+                                    <!-- SUB -->
+                                    <ul class="sliderPreview">
+        								<li class="sliderPreviewBox checkBox">
+        									
+        								</li>
+        								<li class="sliderPreviewBox checkBox">
+        									
+        								</li>
+        								<li class="sliderPreviewBox checkBox">
+        								
+        								</li>
+                                        <li class="sliderPreviewBox checkBox">
+        								
+        								</li>
+        							</ul>
+                                    
+        						</div>
+        					</div>
+        				</div>
+        				<div class="sliderAdv">
+        					<div class="sliderAdvItem">
+        						<img class="sliderAdvImage" src="icon/adv.jpg">
+        					</div>
+        					<div class="sliderAdvItem">
+        						<img class="sliderAdvImage" src="icon/adv.jpg">
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+                <div class="clearfix"></div>
+    		<!-- End Slider -->	
+    			<div id="Content">
+    				<div id="Main">
+                        <div id="innerContent">
+                            <h1>Главная часть Й Ё q Д у</h1>
+                            <p><a href="#">Lorem Ipsum</a> - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum. Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>
+                            
+                            
+                            
+                            <h1>Где купить?</h1>
+                            
+                            <div id="controlPanel">
+                                <ul id="buttons">
+                                    <li>Цены</li>
+                                    <li>Карта</li>
+                                </ul>
+                                
+                                
+                                <div class="inSearchFilters activeF" data-fname="sort">
+                                    <span class="current">Сортировать по цене:</span>
+                                    <input type="hidden" name="sort" value="0">
+                                    <div class="innrF">    
+                                        <ul class="filters">
+                                            <li data-id="1">От дешевых к дорогим</li>
+                                            <li data-id="2">От дорогих к дешевым</li>
+                                            <li data-id="3">Акционные</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="clearfix"></div>
+							<div id="BOXES">
+							
+								<h2>Клиент/Филиал</h2>
+							
+								<div class="Box" data-client-id="123">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<span class="dateBox"></span>
+												</div>
+											</div>
+											<a href="#" class="boxLink">
+												<div class="innrImgBox" style="background-image: url('http://meddovidka.ua/images/client/logo/338.png')">
+												</div>
+											</a>
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="diamond" title="Специальное предложение!"></div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
+														   <p class="simple">аптека, которая всегда рядом</p>
+													   </div>
+												   </div>
+												</div>
+												<div class="clearfix"></div>
+												<div class="infoPanel">
+													<ul>
+														<li class="boxLink"><a href="#">Перейти на сайт</a></li>
+														<li class="boxPhone"><span>(044) 123-45-67, (044) 123-45-67</span></li>
+														<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
+														<li class="boxInfo"><a>Информация</a></li>
+														<li class="boxShed"><span>Ежедневно :: Круглосуточно</span></li>
+														<li class="boxAdv"><span>Действует скидка 5%</span></li>
+													</ul>
+												</div>
+											</div>
+											<div class="infoBox">
+												<p class="simple">В аптеке "Новофарм" - низкие цены! Провизоры предоставят вам развернутую информацию по применению лекарственных препаратов, в т.ч. сведения о составе и формах выпуска, фармакологических свойствах. Мы защитим  Ваше здоровье!  </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<h2>Не VIP</h2>
+								
+								<div class="Box notVip" data-filial-id="123">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<span class="dateBox"></span>
+												</div>
+											</div>
+											<a href="#" class="boxLink">
+												<div class="innrImgBox" style="background-image: url('http://meddovidka.ua/images/client/logo/338.png')">
+												</div>
+											</a>
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="diamond" title="Специальное предложение!"></div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
+														   <p class="simple">аптека, которая всегда рядом</p>
+													   </div>
+												   </div>
+												</div>
+												<div class="clearfix"></div>
+												<div class="infoPanel">
+													<ul>
+														<li class="boxLink"><a href="#">Перейти на сайт</a></li>
+														<li class="boxPhone"><span>(044) 123-45-67, (044) 123-45-67</span></li>
+														
+														<li class="boxAddr">
+															<a>
+																<div class="inSearchFilters activeF" data-fname="city">
+																	<span class="current">Киев (5)</span>
+																	<input type="hidden" name="city" value="0">
+																	<div class="innrF">    
+																		<ul class="filters">
+																			<li data-id="1">Киев</li>
+																			<li data-id="2">Полтава</li>
+																			<li data-id="3">Днепропетровск</li>
+																			<li data-id="3">Львов</li>
+																			<li data-id="3">Харьков</li>
+																		</ul>
+																	</div>
+																</div>
+															</a>
+														</li>
+														
+														<li class="boxInfo"><a>Информация</a></li>
+														<li class="boxShed"><span>Ежедневно :: Круглосуточно</span></li>
+														<li class="boxAdv"><span>Действует скидка 5%</span></li>
+													</ul>
+												</div>
+											</div>
+											<div class="infoBox">
+												<div class="filials">
+													<div class="comb">
+														<div class="combInnr">
+															<div class="top">
+																ул. Тараса Шевченка, 4
+															</div>
+															
+															<div class="mid">
+																(044) 123-45-67, (044) 123-45-67
+															</div>
+															
+															<div class="bot">
+																<span>Ежедневно :: Круглосуточно</span>
+															</div>
+														</div>
+													</div>
+													<div class="comb">	
+														<div class="combInnr">
+															<div class="top">
+																ул. Тараса Шевченка, 4
+															</div>
+															
+															<div class="mid">
+																(044) 123-45-67, (044) 123-45-67
+															</div>
+															
+															<div class="bot">
+																<span>Ежедневно :: Круглосуточно</span>
+															</div>
+														</div>
+													</div>
+													<div class="comb">	
+														<div class="combInnr">
+															<div class="top">
+																ул. Тараса Шевченка, 4
+															</div>
+															
+															<div class="mid">
+																(044) 123-45-67, (044) 123-45-67
+															</div>
+															
+															<div class="bot">
+																<span>Ежедневно :: Круглосуточно</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							<h2>Новость, акции, скидки</h2>
+							
+								<div class="Box News">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<span class="dateBox">Категория // 18.12.2016</span>
+												</div>
+											</div>
+											<a href="#" class="boxLink">
+												<div class="innrImgBox" style="background-image: url('img/news1.jpg')">
+												</div>
+											</a>	
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">Акция и скидка</a></h3>
+														   <p class="simple">в аптеке раздают аспирин</p>
+													   </div>
+												   </div>
+												</div>
+											</div>
+											<div class="infoBox">
+												<p class="simple">В аптеке "Новофарм" - низкие цены! Провизоры предоставят вам развернутую информацию по применению лекарственных препаратов, в т.ч. сведения о составе и формах выпуска, фармакологических свойствах. Мы защитим  Ваше здоровье!  </p>
+											</div>
+										</div>
+									</div>
+								</div>	
+								
+							<h2>Выдача результатов</h2>
+								
+								<div class="Box Results">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<table class="resultTable">
+														<tr>
+															<td class="phName">
+																<p>Фарингосепт (Дарница)</p>
+															</td>
+															<td class="phPrice">
+																<p>86.70 грн.</p>
+															</td>
+														</tr>
+														<tr>
+															<td class="phName">
+																<p>Корвалтаб</s>
+															</td>
+															<td class="phPrice">
+																<p>34.25 грн.</p>
+															</td>
+														</tr>
+														<tr>
+															<td class="phName">
+																<p>Мазь "Доктор Мом" 25мг</s>
+															</td>
+															<td class="phPrice">
+																<p>125.60 грн.</p>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="diamond" title="Специальное предложение!"></div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
+														   <p class="simple">аптека, которая всегда рядом</p>
+													   </div>
+												   </div>
+												</div>
+												<div class="clearfix"></div>
+												<div class="infoPanel">
+													<ul>
+														<li class="boxLink"><a href="#">Перейти на сайт</a></li>
+														<li class="boxPhone"><span>(044) 123-45-67, (044) 123-45-67</span></li>
+														<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
+														<li class="boxInfo"><a>Информация</a></li>
+														<li class="boxShed"><span>Ежедневно :: Круглосуточно</span></li>
+														<li class="boxAdv"><span>Действует скидка 5%</span></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="Box notVip Results">
+									<div class="mainBox">
+										<div class="innrMainBox">
+										<div class="higherBox">
+												<div class="higherBoxData">
+													<table class="resultTable">
+														<tr>
+															<td class="phName">
+																<p>Фарингосепт (Дарница)</p>
+															</td>
+															<td class="phPrice">
+																<p>86.70 грн.</p>
+															</td>
+														</tr>
+														<tr>
+															<td class="phName">
+																<p>Корвалтаб</s>
+															</td>
+															<td class="phPrice">
+																<p>34.25 грн.</p>
+															</td>
+														</tr>
+														<tr>
+															<td class="phName">
+																<p>Мазь "Доктор Мом" 25мг</s>
+															</td>
+															<td class="phPrice">
+																<p>125.60 грн.</p>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<div class="innrDataBox">
+												<div class="lowerBox">
+												   <div>
+													   <div class="diamond" title="Специальное предложение!"></div>
+													   <div class="clientNameDescBox">
+														   <h3 class="clientName"><a href="#">"Новофарм"</a></h3>
+														   <p class="simple">аптека, которая всегда рядом</p>
+													   </div>
+												   </div>
+												</div>
+												<div class="clearfix"></div>
+												<div class="infoPanel">
+													<ul>
+														<li class="boxLink"><a href="#">Перейти на сайт</a></li>
+														<li class="boxPhone"><span>(044) 123-45-67, (044) 123-45-67</span></li>
+														<li class="boxAddr"><a>г. Киев, ул. Тараса Шевченка, 4</a></li>
+														<li class="boxInfo"><a>Информация</a></li>
+														<li class="boxShed"><span>Ежедневно :: Круглосуточно</span></li>
+														<li class="boxAdv"><span>Действует скидка 5%</span></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+							</div> <!-- end BOXES -->
+							
+							<h1>Инструкция</h1>
+							<div class="Instrunction">
+								<div class="instrMain">
+									<div class="instrImg" style="background-image: url('http://meddovidka.ua/images/stories/1clinics/laferobion-2.jpg');"></div>
+									<div class="instrMainInfo">
+										<div class="innrInstr">
+											<h2>Лаферобион</h2>
+											<p class="uppercase">
+												Альтернативное название
+											</p>
+											<p>
+												<span class="uppercase">Фармакологическая группа:</span><br>такая-то, такая-то
+											</p>
+											<p>
+												Эффективный комплексный препарат противовирусного, антимикробного, антихламидийного, антипролиферативного и иммуномодулирующего действия. Латинское название: Laferobion Фармакологические группы: Иммуномодуляторы. Противовирусные средства.
+											</p>
+											
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="instrOtherInfo">
+										<p>
+										 <span class="semibold">Нозологическая классификация (МКБ-10):</span>
+											<ul>
+												<li>
+													<span class="semibold">A63</span> Другие болезни, передающиеся преимущественно половым путем, не классифицированные в других рубриках.
+												</li>
+												<li>
+													<span class="semibold">B18</span> Хронический вирусный гепатит.
+												</li>
+												<li>
+													<span class="semibold">B25</span> Цитомегаловирусная болезнь.
+												</li>
+												<li>
+													<span class="semibold">J18</span> Пневмония без уточнения возбудителя.
+												</li>
+												<li>
+													<span class="semibold">N12</span> Тубулоинтерстициальный нефрит, не уточненный как острый или хронический.
+												</li>
+												<li>
+													<span class="semibold">O95-O99</span> Другие акушерские состояния, не классифицированные в других рубриках.
+												</li>
+												<li>
+													<span class="semibold">P35- P39</span> Инфекционные болезни, специфичные для перинатального периода. 
+												</li>
+											</ul>
+										</p>
+										
+										<div class="contr">
+											<div class="contrHead">
+												<p class="uppercase">Противопоказания:</p>
+											</div>
+											<div class="contrInnr">
+												<ul>
+													<li> Непереносимости действующего вещества – интерферона, а также других компонентов препарата,
+													</li>Тяжелых заболеваниях почек и печени;
+													<li>Тяжелых сердечно-сосудистых заболеваниях;
+													</li>
+													<li>Угнетении миелоидного ростка кроветворения;
+													</li>
+													<li>Заболевания щитовидной железы; Эпилепсии и другие заболевания центральной нервной системы;
+													</li>
+													<li>Лаферобион противопоказан к применению при беременности и в период лактации из-за отсутствия необходимых исследований.
+													</li>
+												</ul>
+												     
+											</div>
+										</div>
+										<p>
+											<span class="uppercase">Преимущества лекарственной формы препарата</span>
+										</p>
+										<p>
+											Лаферобион выпускается в ректальных суппозиториях. Необходимо отметить, что интерферон, входящий в состав Лаферобиона, производят с помощью методов биотехнологии без использования донорской крови, что исключает возможность заражения различными опасными вирусами (гепатитов, ВИЧ и т.д.).
+
+											В процессе применения не вызывает образования нейтрализующих антител и развития побочных эффектов, может использоваться для лечения новорожденных (недоношенных) детей и беременных женщин.
+
+											Лекарственная форма удобна и безболезненна в применении, позволяет применять Лаферобион больным самостоятельно и в амбулаторных условиях.
+
+											Основой суппозиториев препарата Лаферобион является твердый жир (пальмовое масло), что позволяет избежать аллергических реакций, часто встречающихся при применении ректальных форм на основе масла какао.
+										</p>
+									</div>
+								</div>
+							</div>
+                        </div> <!-- end innerContent -->
+    				</div> <!-- end Main -->
+					<div id="Aside">
+						<div class="banner">
+							BANNER<br>
+							BANNER<br>
+							BANNER<br>
+							BANNER<br>
+							BANNER<br>
+						</div>
+					</div>
+				</div> <!-- end Content -->
+    				
+    			</div>
+                <div class="clearfix"></div>
+    			<div id="Footer">
+                    <div class="footerItem">&copy; 2008-2015<br>Меддовідка. Все права защищены</div>
+                    <div class="footerItem contacts">
+                        
+                        Украина, г. Киев, ул. Елены Телиги, 23А<br>
+                        Тел: (044) 581-6000, E-mail: <a href="mailto:info@meddovidka.ua">info@meddovidka.ua</a>
+
+                    </div>
+                    <div class="footerItem">
+                        <ul id="sm">
+                            <li><a href="#"><img src="icon/sm/fb.png"></a></li>
+                            <li><a href="#"><img src="icon/sm/inst.png"></a></li>
+                            <li><a href="#"><img src="icon/sm/tw.png"></a></li>
+                            <li><a href="#"><img src="icon/sm/lk.png"></a></li>
+                        </ul>
+                    </div>
+    			</div>
+   		   </div>
+        </div>
+    <div id="scroller"></div>
+	
+	</body>
+</html>

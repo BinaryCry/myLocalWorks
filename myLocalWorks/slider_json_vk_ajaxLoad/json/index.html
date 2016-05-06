@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="windows-1251">
+		<title>JSON</title>
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="underscore-min.js"></script>
+		<script type="text/javascript">
+			$( function() {
+				
+				/*
+				http://habrahabr.ru/post/42426/
+				http://ruseller.com/lessons.php?rub=28&id=1212
+				http://jquery.page2page.ru/index.php5/Ajax-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81
+				http://lobach.info/develop/javascript/croossdomain-ajax-request/
+				*/
+				
+				var user = {
+					"name"    : "Alex",
+					"sName"   : "Step",
+					"job"     : "Programmer",
+					"numbers" : [1,2,3]
+				}
+				
+				//console.log( JSON.stringify(user) ); // получить json-строку из объекта js (объект js должен быть создан по правилам оформления json)
+				var U = JSON.parse( JSON.stringify(user) ); // получаем объект из json-строки
+				//console.log( U.name );
+				
+			
+				$.ajax({
+					crossDomain: true,
+					type:"GET",
+					url: "http://mgr.meddovidka.ua/jsonString.php",
+					dataType: "jsonp",
+					jsonp : 'callback', // ключ
+					jsonpCallback: 'fnsuccesscallback', // значение ключа - функция, котрая будет вызвана из сервера
+					// echo $_GET['callback'].'({"name":"Alex","sName":"Step","job":"Programmer","numbers":[1,2,3]});';
+					
+					error: function (xhr, errorType, exception) {
+					var errorMessage = exception || xhr.statusText;
+					alert(errorMessage); }
+				});
+				
+				$.ajax({
+					
+					type:"GET",
+					url: "jsonString.txt",
+					dataType: "json",
+					success : function( json ) { succ(json) },
+					error: function (xhr, errorType, exception) {
+					var errorMessage = exception || xhr.statusText;
+					alert(errorMessage); }
+				});
+				
+				function succ(data) {
+					console.log(data.name);
+				}
+				
+			} );
+			/* почему-то функция должна быть вне функции jQuery */
+			var fnsuccesscallback = function(data) { // сюда приходит от сервера объект, если изначально передавался объект или объект из json-строки, если передавалась json-строка
+					console.log(this);
+					console.log(data);
+			}
+			// также рабочий упрощенный пример jsonp
+			/* $.getJSON("http://mgr.meddovidka.ua/jsonString.phpcallback=?", function(data){
+					console.log(data);
+				}); */
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
