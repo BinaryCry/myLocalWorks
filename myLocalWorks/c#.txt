@@ -5,6 +5,8 @@
 >>>>>>> 82a4f85ad7eb7d11eed1f074f19bb6ac4aba998f
 ---
 
+here changes <--
+
 CLR - common language runtime - среда выполнения языка (C#, BASIK.NET)
 MSIL - Microsoft Intermediate Language - Common Intermediate Language (уже новый) - промежуточный язык для .NET - C#, BASIC.NET (из VS на машину клиента может прийти код на промежуточном языке) --> CIL --> .NET (на этом этапе компилируется CIL в машинный код специально под то железо, на котором запускается программа)
 
