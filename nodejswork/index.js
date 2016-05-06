@@ -16,7 +16,7 @@ server.startServer(router.route,handle);
 	let foo = () => {
 		console.log('short foo declaration')
 	}
-	foo()
+	foo();
 	
 }
 
