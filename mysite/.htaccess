@@ -1,0 +1,11 @@
+# в phpinfo(); в левой колонке:
+#Local-настройки описываются в .htaccess (они применяются к тому сайту, которому принадлежит .htaccess)
+# в правой:
+#Master-настройки в самом php.ini
+
+
+DirectoryIndex index.php
+
+#PHP [--- указываем, что флаг php ---] [--- название из php.ini ---] [--- режим ---]
+#php_flag short_open_tag off
+php_flag short_open_tag on

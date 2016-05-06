@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<style type="text/css">
+		html, body {
+			
+		}
+		html {
+			background-color: #678678;
+		}
+		body {
+			background-color: #fff;
+			width: 75%;
+			margin: 50px auto;
+		}
+			.slider {
+				width: 100%;
+				border: 1px solid grey;
+				box-sizing: content-box;
+			}
+			.sliderInn {
+				margin: .5%;
+			}
+			.sliderCore {
+				/* background-color: violet; */
+				width: 62%;
+				float: left;
+			}
+			.sliderAdv {
+				float: right;
+				width: 38%;
+				/* background-color: yellow; */
+			}
+			.sliderBody {
+				margin-right: 0.5096497075629978003518621581015%;
+				background-color: #9C9CF5;
+			}
+			.sliderMainImageBox {
+				position: relative;
+			}
+			.sliderAdvBody {
+				margin-left: 0.8153168135705970397472143688675%;
+				background-color: #9C9CF5;
+			}
+			.sliderMainImageBox {
+				width: 100%;
+			}
+			.sliderMainImage, .sliderAdvImage {
+				min-width: 100%;
+				width: 100%;
+			}
+			.sliderInn, .sliderMainImageBox, .sliderHeaders {
+				overflow: hidden;
+			}
+			.sliderArrowLeft, .sliderArrowRight {
+				position: absolute;
+				width: 6.5%;
+				opacity: .6;
+				cursor: pointer;
+				display: none;
+			}
+			.sliderArrowLeft {
+				top: 45%;
+				left: 5%;
+			}
+			.sliderArrowRight {
+				top: 45%;
+				right: 5%;
+			}
+			.sliderArrowLeft:hover, .sliderArrowRight:hover {
+				opacity: 1;
+				-moz-transition: .5s;
+			}
+			.sliderArrowLeft:active, .sliderArrowRight:active {
+				opacity: .5;
+				-moz-transition: .2s;
+			}
+            /* заголовок */
+			.sliderHeaders {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+			}
+			.sliderHeaders p {
+				margin: 0;
+				color: #fff;
+				padding: 1.5% 2%;
+			}
+			.sliderHeaders p:first-child {
+				font-weight: bold;
+				font-size: 1.2em;
+				padding-bottom: 0%;
+			}
+			.sliderHeaders p:last-child {
+				padding-bottom: 2.5%;
+			}
+			.sliderHeadersMain {
+				background-color: rgba(84,85,86,.75); 
+			}
+            /* --------------------- */
+			.sliderContent, .sliderPreview {
+				margin: 0;
+				padding: 0;
+                list-style: none;
+			}
+			.sliderContentItem {
+				float: left;
+				display: inline-block;
+			}
+			.slider a {
+				display: block;
+			}
+			/* скрыть картинки, а потом скриптом открыть */
+			.sliderContentItem {
+				display: none;
+			}
+            .sliderPreview {
+                position: absolute;
+                bottom: 10%;
+            }
+            .sliderPreviewBox {
+                width: 1em;
+                height: 1em;
+                float: left;
+                margin-right: 1em;
+            }
+		</style>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		
+		<script type="text/javascript">
+		
+			$(window).load( function() {
+			/*	$('.sliderContentItem, .sliderPreviewBox').each(function(){
+				    $(this).css('display','block')
+				}); // делаем видимыми main и sub */
+                
+                
+                
+				var control = true;
+				/* slider adaptation */
+				$('.sliderBody, .sliderMainImageBox').height( 	
+					$('.sliderBody').width() * 0.38
+				);
+				$('.sliderPreviewItem').height( 	
+					$('.sliderPreviewItem').width() * 0.38
+				);
+				$('.sliderAdv').height( 
+					$('.sliderBody').height() + $('.sliderPreviewItem').height()
+				);
+				$('.sliderAdvBody').height( $('.sliderAdv').height() );
+				
+				
+				/* arrows & stop sliding */
+				$('.sliderMainImageBox').on('mouseover', function() {
+					$('.sliderMainImageBox > .sliderArrowLeft, .sliderMainImageBox > .sliderArrowRight').show('normal');
+					clearInterval(sliderInterval); // останавливаем автматическое пролистывание
+				} );
+				$('.sliderMainImageBox').on('mouseleave', function() {
+					$('.sliderMainImageBox > .sliderArrowLeft, .sliderMainImageBox > .sliderArrowRight').hide('normal');
+					setSliderInterval(); // запускаем заново пролистывание слайдера
+				} );
+				
+					
+				/* slider adaptation after resizing */
+				$(window).on('resize', function() {
+					$('.sliderBody, .sliderMainImageBox').height( 	
+						$('.sliderBody').width() * 0.38
+					);
+					$('.sliderAdv').height( 
+						$('.sliderBody').height()
+					);
+				} );
+				
+				/* main slider Core */
+				var elements = $('.sliderContent > .sliderContentItem'); // блоки слайдера с фото и заголовками
+				var totalSub = $('.sliderPreviewBox'); // все квадратики
+				var current = 1; // стартовое значение
+				
+                allMainHide(); // скрываем все
+				activeSub(); // включаем отработку кликов по квадратикам
+                
+				elements.eq(current-1).slideDown('slow'); // открывает первый элемент
+                
+                /* клики по стрелкам */
+				$('.sliderMainImageBox > .sliderArrowLeft').on('click', function(){
+					elements.eq(current-1).slideUp('slow');
+					current--;
+					if( current < 1 ) {
+						current = $('.sliderContent > .sliderContentItem').length;
+					}
+					elements.eq(current-1).slideDown('slow');
+					checkSliderPosition(control);
+				} );
+				$('.sliderMainImageBox > .sliderArrowRight').on('click', function(){
+					elements.eq(current-1).slideUp('slow');
+					current++;
+					if( current > $('.sliderContent > .sliderContentItem').length ) {
+						current = 1;
+					}
+					elements.eq(current-1).slideDown('slow');
+					checkSliderPosition(control);
+				} );
+                
+                function allMainHide(){
+					elements.each( function(i, elem){
+						$(elem).css({'display':'none'}); // сначала скрываем все блоки в слайдере
+					} );
+				}
+                
+				function checkSliderPosition(control) {
+					if (control == false) { console.log('false'); return false; }
+					if ( totalSub.eq(current-1).css('background-color') == 'rgb(255, 255, 255)' ) { // если элемент, прядковый номер которого == с прядковым номером элемента, который отображается в главном блоке; также он является скрытым; скрываются все родительские блоки подобных элементов с превьюхами, а лишь родитель данного блока делается видимым
+						$('.sliderPreviewBox').each( function(i, elem){
+							$(elem).css({'background-color':'rgb(255, 255, 255)'});
+						} );
+						totalSub.eq(current-1).css({'background-color':'rgb(0,0,246)'});
+					}
+				}
+                
+				function activeSub() {
+					totalSub.each( function(i, elem){
+						$(elem).on('click', function() {
+						console.log(i);
+							if ( elements.eq(i).is(':hidden') ) {
+								clearInterval(sliderInterval);
+								allMainHide();
+								elements.eq(i).slideDown('slow');
+								setSliderInterval();
+								current = i;
+							} else {
+								clearInterval(sliderInterval);
+								setSliderInterval();
+							}
+						} );
+					} );
+				}
+				/* end main slider Core */
+				
+				/* sub slider Core */
+				var elementsSub = $('.sliderPreview > .sliderPreviewBox');
+				elementsSub.each( function(i, elem){
+					$(elem).css({'background-color':'rgb(255, 255, 255)'})
+				} );
+				var currentSub = 1; // стартовое значение
+				elementsSub.eq(currentSub-1).css({'background-color':'rgb(0,0,246)'}) // открывает первый элемент
+				
+				/* end sub slider Core */
+				
+				/* self sliding */
+				var sliderDellay = 4500; // value / 1000 = 1s
+				var sliderInterval; // создаем
+				function setSliderInterval(){
+					sliderInterval = setInterval( function(){
+						$('.sliderMainImageBox > .sliderArrowRight').trigger('click');
+					} , sliderDellay);
+				}
+				setSliderInterval();
+				/* end self sliding */
+                
+               
+               /* callback function  
+                function foo() {
+                    alert('Foo')
+                }
+                function callMe(F, x=1, y=2) {
+                    console.log(x+y)
+                    F()
+                }
+                callMe(foo) */
+                
+			} );
+		</script>
+	</head>
+	<body>
+	
+		<div class="slider">
+			<div class="sliderInn">
+				<div class="sliderCore">
+					<div class="sliderBody">					
+						<div class="sliderMainImageBox">
+							<img class="sliderArrowLeft" src="arrow_l.png">
+							<img class="sliderArrowRight" src="arrow_r.png">
+							<ul class="sliderContent">
+								<li class="sliderContentItem">
+									<a href="#">
+										<img class="sliderMainImage" src="http://cs616627.vk.me/v616627670/1f3ec/51iT--Qb48E.jpg">
+										<div class="sliderHeaders">
+											<p class="sliderHeadersMain">Заголовок 1-й статьи</p>
+										</div>
+									</a>
+								</li>
+								<li class="sliderContentItem">
+									<img class="sliderMainImage" src="http://cs7056.vk.me/c540105/v540105121/2c629/SAG3g3sSYVc.jpg">
+									<div class="sliderHeaders">
+										<p class="sliderHeadersMain">Заголовок 2-й статьи</p>
+									</div>
+								</li>
+								<li class="sliderContentItem">
+									<img class="sliderMainImage" src="http://cs408622.vk.me/v408622768/1aa9/HLvOn2Nxc6M.jpg">
+									<div class="sliderHeaders">
+										<p class="sliderHeadersMain">Заголовок 3-й статьи</p>
+									</div>
+								</li>
+								<li class="sliderContentItem">
+									<img class="sliderMainImage" src="http://cs543105.vk.me/v543105113/a028/UTCYPcXuEtM.jpg">
+									<div class="sliderHeaders">
+										<p class="sliderHeadersMain">Заголовок 4-й статьи</p>
+									</div>
+								</li>
+							</ul>
+                            
+                            <!-- SUB -->
+                            <ul class="sliderPreview">
+								<li class="sliderPreviewBox">
+									
+								</li>
+								<li class="sliderPreviewBox">
+									
+								</li>
+								<li class="sliderPreviewBox">
+								
+								</li>
+                                <li class="sliderPreviewBox">
+								
+								</li>
+							</ul>
+                            
+						</div>
+					</div>
+				</div>
+				<div class="sliderAdv">
+					<div class="sliderAdvBody">
+						<img class="sliderAdvImage" src="adv.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</body>
+</html>
