@@ -59,20 +59,85 @@ $( function(){
 } );
 
 $(window).on('load',function(){
+	// handler
+	var handler;
 
 	// events
 	$('.oneHour').on('click',function(e){
 		$(this).toggleClass('activeBG');
+		handler.genJSON()
 	})
 	$('.oneHour').on('mouseenter',function(e){
 		if(e.buttons == 1 || e.buttons == 3) {
 			$(this).addClass('activeBG');
+			handler.genJSON()
 		}
 	})
+	$('#clearShed').on('click',function(){
+		handler.clear();
+	})
+	$('.active24').on('click',function(){
+		handler.allDayRange(this);
+	})
 
+	function renderJSON(res){
+		this.baseJSON = res;
+		this.days     = $('.days').parent();
+		this.genJSON  = function(){
+			for (var i = 0; i < this.days.length; i++){
+				this.baseJSON[checkDay(i)] = new Array();
+				for(var j =0; j < this.days.eq(i).children('.oneHour').length; j++){
+					if( this.days.eq(i).children('.oneHour').eq(j).hasClass('activeBG') ) {
+						this.baseJSON[checkDay(i)].push({'bt':parseInt((j+1)*60-60), 'et': parseInt(((j+1)*60)-1)})
+					}
+				}
+			}
+			console.log(this.baseJSON);
+			this.checkDaysBG();
+			this.check24();
+		}
+		this.checkDaysBG = function(){
+			this.days.each(function(){
+				if( $(this).children('.oneHour.activeBG').length > 0 ) $(this).children('.days').addClass('activeBG');
+					else $(this).children('.days').removeClass('activeBG');
+			})
+		}
+		this.check24 = function(){
+			this.days.each(function(){
+				if( $(this).children('.oneHour.activeBG').length == 24 ) $(this).children('.active24').find('.fa').removeClass('hidden');
+					else $(this).children('.active24').find('.fa').addClass('hidden');
+			})
+		}
+		this.clear = function(){
+			$('.oneHour').removeClass('activeBG');
+			for (var i = 0; i < this.days.length; i++){
+				this.baseJSON[checkDay(i)] = new Array();
+			}
+			this.check24();
+			console.log(this.baseJSON);
+		}
+		this.allDayRange = function(elem){
+			var aHours = $(elem).parent().children('.oneHour.activeBG');
+			aHours.length == 24 ? aHours.removeClass('activeBG') : $(elem).parent().children('.oneHour').addClass('activeBG');
+			this.genJSON();
+		}
+	}
+	function checkDay(short){
+		switch(short) {
+			case 0 : return 'mo';
+			case 1 : return 'tu';
+			case 2 : return 'we';
+			case 3 : return 'th';
+			case 4 : return 'fr';
+			case 5 : return 'sa';
+			case 6 : return 'su';
+			default   : return false;
+		}
+	}
 	document.http.request().then( // повторный запрос можно вызывать без параметров, если успешным был предыдущий
 			function(res){
-				console.log(res);
+				// console.log(res)
+				handler = new renderJSON(res);
 			},
 			function(err){
 				console.log(err);
