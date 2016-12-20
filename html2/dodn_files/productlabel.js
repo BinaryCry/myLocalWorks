@@ -1,8 +1,0 @@
-jQuery.noConflict();
-jQuery(function ($) {
-
-    $('body').tooltip({
-        selector: "[data-toggle=tooltip]"
-    });
-
-});
