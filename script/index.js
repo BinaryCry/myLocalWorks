@@ -114,6 +114,7 @@ $(window).on('load',function(){
 				this.baseJSON[checkDay(i)] = new Array();
 			}
 			this.check24();
+			this.checkDaysBG();
 			console.log(this.baseJSON);
 		}
 		this.allDayRange = function(elem){
