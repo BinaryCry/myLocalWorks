@@ -60,17 +60,25 @@ $( function(){
 
 $(window).on('load',function(){
 
+	// events
 	$('.oneHour').on('click',function(e){
 		$(this).toggleClass('activeBG');
 	})
-
 	$('.oneHour').on('mouseenter',function(e){
 		if(e.buttons == 1 || e.buttons == 3) {
 			$(this).addClass('activeBG');
 		}
 	})
 
-})
+	document.http.request().then( // повторный запрос можно вызывать без параметров, если успешным был предыдущий
+			function(res){
+				console.log(res);
+			},
+			function(err){
+				console.log(err);
+			}
+		);
+	})
 
 
 // --------------------- Dev
