@@ -1,0 +1,167 @@
+<style type="text/css">
+	body {
+	min-width:1024px;
+	background-color:#eee;
+	font:normal .8em Tahoma,sans-serif;
+	}
+.nav div button{
+    float:left;
+    margin-left: 30px ;
+}
+	.filial {
+	box-sizing:border-box;
+	float:left;
+	text-align:center;
+	padding:.2em 0;
+	white-space:nowrap;
+	}
+
+	.filial a {
+	text-decoration:none;
+	}
+	
+	[data-type="static"] {
+	font-weight:bold;
+	overflow:hidden;
+	}
+
+	form {
+	line-height:1.8em;;
+	}
+	/* ------------------------------ */
+	/* Client */
+	#listClient .id {
+	width:10%;
+	}
+
+	#listClient .name {
+	width:30%;
+	}
+
+	#listClient .type {
+	width:20%;
+	}
+
+	#listClient .url {
+	width:15%;
+	}
+
+	#listClient .status {
+	width:10%;
+	}
+
+	#listClient .email {
+	width:15%;
+	}
+	/* Filial */
+	#listFilial, #listClient {
+		margin: 2em 0;
+		overflow: hidden;
+	}
+	#listFilial .id {
+	width:5%;
+	}
+	/* #listFilial .date {
+					width: 10%;
+				} */
+	#listFilial .name {
+	width:20%;
+	}
+
+	#listFilial .address {
+	width:20%;
+	}
+
+	#listFilial .i_phone {
+	width:15%;
+	}
+
+	#listFilial .i_shedule {
+	width:15%;
+	}
+
+	#listFilial .i_comment {
+	width:15%;
+	}
+
+	#listFilial .status {
+	width:5%;
+	}
+
+	#listFilial .Price {
+	width:5%;
+	}
+	/* ----------------------------------- */
+	.filialInner {
+	border-radius:.2em;
+	margin:0 .3em;
+	padding-left:.5em;
+	overflow:hidden;
+	background-color:#fff;
+	font-size:.85em;
+	height:2em; /* if empty */
+	}
+
+	.name .filialInner,.address .filialInner,.i_phone .filialInner,.i_shedule .filialInner,.i_comment .filialInner, .status .filialInner, .type .filialInner {
+	cursor:pointer;
+	}
+
+	.name .filialInner:hover,.address .filialInner:hover,.i_phone .filialInner:hover,.i_shedule .filialInner:hover,.i_comment .filialInner:hover, .status .filialInner:hover, .type .filialInner:hover {
+	background-color:#d3d4d5 !important;
+	}
+
+	.status input[type="checkbox"] {
+	vertical-align:-0.2em;
+	}
+
+	.id .filialInner,.date .filialInner,.status .filialInner,.url .filialInner,.Price .filialInner {
+	padding-left:0;
+	}
+
+	.filialInner input[type="text"], .status select, .type select {
+	background-color:#ff5;
+	display:block;
+	width:100%;
+	}
+	.filial.i_shedule input {
+		background-color:#ff5;
+		width:95%;
+		margin: 0px 0.1em;
+	}
+	.status select{
+		font-variant: small-caps;
+	}
+
+	#header {
+	margin:0em 0 2em
+	}
+
+	#header #connect {
+	text-align:right;
+	float:right;
+	font:1.2em 'Courier New ',monospace;
+	color:#555;
+	cursor:help;
+	}
+
+	#header img {
+	height:18px;
+	vertical-align:-1px;
+	}
+
+	.clearfix {
+	clear:both;
+	}
+	
+	@media screen and (max-width:1150px) {
+	.date .filialInner,.url .filialInner {
+	padding-left:.5em;
+	}
+	}
+
+	.error {
+	width:100%;
+	text-align:center;
+	background-color:#FF8040;
+	}
+</style>
