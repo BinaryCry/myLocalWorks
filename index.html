@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initialscale=1.0, width=device-width">
+	<noscript>JS is disabled or not support</noscript>
+	<title>Shedule</title>
+	<link rel="stylesheet" type="text/css" href="style/normalize.css">
+	<link rel="stylesheet/less" type="text/css" href="style/index.less"> <!-- must be higher then less script -->
+	<script src="js_libs/less.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,700,700i&subset=cyrillic,cyrillic-ext,greek,latin-ext" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="style/fa/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="script/index.js"></script>
+</head>
+	<body>
+		<h1 class="header">Set shedule</h1>
+		<table id="shedule" cellpadding="0" cellspacing="0">
+			<tr>
+				<td rowspan="2" class="noBorder"></td>
+				<td class="noBorder largeText"><span>ALL<br>DAY</span></td>
+				<td colspan="3" class="time noBorder">00:00</td>
+				<td colspan="3" class="time noBorder">03:00</td>
+				<td colspan="3" class="time noBorder">06:00</td>
+				<td colspan="3" class="time noBorder">09:00</td>
+				<td colspan="3" class="time noBorder">12:00</td>
+				<td colspan="3" class="time noBorder">15:00</td>
+				<td colspan="3" class="time noBorder">18:00</td>
+				<td colspan="3" class="time noBorder">21:00</td>
+			</tr>
+			<tr>
+				<td class="noBorder borderRight"></td>
+				<td colspan="3" class="noBorder borderLeft"></td>
+				<td colspan="3" class="noBorder borderLeft"></td>
+				<td colspan="3" class="noBorder borderLeft"></td>
+				<td colspan="3" class="noBorder borderLeft"></td>
+				<td colspan="3" class="noBorder borderLeft"></td>
+				<td colspan="3" class="noBorder borderLeft"></td>
+				<td colspan="3" class="noBorder borderLeft"></td>
+				<td colspan="3" class="noBorder borderLeft"></td>
+			</tr>
+			<tr>
+				<td class="days">MO</td>
+				<td class="defaultBG lightBorderBottom pointer active24">
+					<i class="hidden fa fa-check fa-lg" style="color: #fff;"></i>
+				</td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+			</tr>
+			<tr>
+				<td class="days">TU</td>
+				<td class="defaultBG lightBorderBottom pointer active24">
+					<i class="hidden fa fa-check fa-lg" style="color: #fff;"></i>
+				</td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+			</tr>
+			<tr>
+				<td class="days">WE</td>
+				<td class="defaultBG lightBorderBottom pointer active24">
+					<i class="hidden fa fa-check fa-lg" style="color: #fff;"></i>
+				</td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+			</tr>
+			<tr>
+				<td class="days">TH</td>
+				<td class="defaultBG lightBorderBottom pointer active24">
+					<i class="hidden fa fa-check fa-lg" style="color: #fff;"></i>
+				</td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+			</tr>
+			<tr>
+				<td class="days">FR</td>
+				<td class="defaultBG lightBorderBottom pointer active24">
+					<i class="hidden fa fa-check fa-lg" style="color: #fff;"></i>
+				</td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+			</tr>
+			<tr>
+				<td class="days">SA</td>
+				<td class="defaultBG lightBorderBottom pointer active24">
+					<i class="hidden fa fa-check fa-lg" style="color: #fff;"></i>
+				</td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+			</tr>
+			<tr>
+				<td class="days">SU</td>
+				<td class="defaultBG lightBorderBottom pointer active24">
+					<i class="hidden fa fa-check fa-lg" style="color: #fff;"></i>
+				</td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+				<td class="oneHour"></td>
+			</tr>
+		</table>
+		<div class="rightButtonBox">
+			<button id="clearShed">Clear</button>
+			<button id="saveShed">Save Changes</button>
+		</div>
+	</body>
+</html>
