@@ -58,6 +58,20 @@ $( function(){
 	}
 } );
 
+$(window).on('load',function(){
+
+	$('.oneHour').on('click',function(e){
+		$(this).toggleClass('activeBG');
+	})
+
+	$('.oneHour').on('mouseenter',function(e){
+		if(e.buttons == 1 || e.buttons == 3) {
+			$(this).addClass('activeBG');
+		}
+	})
+
+})
+
 
 // --------------------- Dev
 // Promise for AJAX
