@@ -1,0 +1,157 @@
+@simpleTextColor: #989898;
+@headerColor: #8a8a8a;
+@tableBorderColor: #bfbfbf;
+@cellWidth: 3em;
+@cellHeight: 1.5em;
+@buttonHover: @headerColor;
+@buttonActive: #d8d8d8;
+@activeBG: #ececec;
+
+.clearMargPad {
+	padding: 0; margin: 0;
+}
+.borderBox {
+	box-sizing: border-box;
+}
+.defaultBorder {
+	border: 1px solid @tableBorderColor;
+	.borderBox
+}
+.defaultBG {
+	background-color: @headerColor;
+	width: 3.25em;
+	&:hover {
+		background-color: @buttonActive;
+	}
+}
+.lightBorderBottom {
+	border-bottom: 1px solid #fff !important;
+	&:last-child {
+		border-bottom: inherit;
+	}
+}
+.noBorder {
+	border: 0px none !important;
+}
+.borderLeft {
+	border-left: 1px solid @simpleTextColor !important;
+	border-right: 1px solid @simpleTextColor !important;
+	&:first-child {
+		
+	}
+	&:last-child {
+		border-right: 0px none !important;
+	}
+}
+.borderRight {
+	border-right: 1px solid @simpleTextColor !important;
+}
+.borderRadius5 {
+	border-radius: 5px;
+}
+.bold {
+	font-weight: bold;
+}
+.textLeft {
+	text-align: left;
+}
+.textCenter {
+	text-align: center;
+}
+.textRight {
+	text-align: right;
+}
+.largeText {
+	font-size: 1em;
+	line-height: 1.15em;
+	span {
+		display: block;
+		margin-bottom: -.5em;
+	}
+}
+.button {
+	.borderRadius5;
+	background-color: @tableBorderColor;
+	padding: .75em 1.75em;
+	margin-left: 1em;
+	.noBorder;
+	color: #fff;
+	.bold;
+}
+.pointer {
+	cursor: pointer;
+}
+.activeBG {
+	background-color: @activeBG;
+}
+.hidden {
+	display: none !important;
+}
+
+// -------------------------------------------------------------
+
+html {
+	font: normal .875em/.875em'Fira Sans', sans-serif;
+	color: @tableBorderColor;
+}
+body {
+	min-width: 1280px;
+}
+.header {
+	color: @headerColor;
+	.textCenter;
+	text-transform: uppercase;
+}
+#shedule {
+	.bold;
+	margin: 2em auto 0;
+	td {
+		width: @cellWidth;
+		height: @cellHeight;
+		.textCenter;
+		.clearMargPad;
+		.defaultBorder;
+	}
+	.time {
+		.textLeft
+	}
+	.days {
+		font-size: 1.15em;
+		line-height: 3.5em;
+		&::selection {
+			background-color: transparent;
+		}
+		&::-moz-selection {
+			background-color: transparent;
+		}
+		&::-webkit-selection {
+			background-color: transparent;
+		}
+	}
+	.oneHour {
+		width: 1.5em;
+		&:hover {
+			background-color: @activeBG;
+		}
+		&:active {
+			
+		}
+	}
+}
+.rightButtonBox {
+	.textCenter;
+	margin-top: 1em;
+	button {
+		.button;
+		margin-left: 1em;
+		&:hover {
+			background-color: @buttonHover;
+			.pointer;
+		}
+		&:active {
+			background-color: @buttonActive;
+			color: @headerColor;
+			.pointer;
+		}
+	}
+}
